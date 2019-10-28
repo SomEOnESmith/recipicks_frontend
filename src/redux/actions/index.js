@@ -1,3 +1,5 @@
+export { fetchRecipes } from "./recipes";
+export { fetchRecipeDetail } from "./recipe";
 export {
   login,
   logout,
@@ -9,3 +11,4 @@ export {
 } from "./authentication";
 
 export { setErrors, resetErrors } from "./errors";
+
