@@ -5,12 +5,12 @@ import { connect } from "react-redux";
 // Components
 import RecipesList from "./components/RecipesList";
 import RecipeDetail from "./components/RecipeDetail";
-import LoginForm from "./Components/Login/LoginForm";
-import SignupForm from "./Components/Signup/SignupForm";
-import NavBar from "./Components/Navigation/NavBar";
-import Home from "./Components/homepage/HomePage";
-import Profile from "./Components/Profile/Profile";
-import EditProfile from "./Components/Profile/EditProfile";
+import LoginForm from "./components/Login/LoginForm";
+import SignupForm from "./components/Signup/SignupForm";
+import NavBar from "./components/Navigation/NavBar";
+import Home from "./components/homepage/HomePage";
+import Profile from "./components/Profile/Profile";
+import EditProfile from "./components/Profile/EditProfile";
 import Loading from "./components/Loading";
 
 function App({ loading }) {
@@ -26,7 +26,9 @@ function App({ loading }) {
         <Route path="/edit-profile" component={EditProfile} />
         <Route path="/home" component={Home} />
         <Redirect exact from="/" to="/recipes" />
-
+      </Switch>
+    );
+  };
   return (
     <div>
       <div>{getView()}</div>
@@ -42,4 +44,3 @@ const mapStateToProps = state => {
 };
 
 export default withRouter(connect(mapStateToProps)(App));
-

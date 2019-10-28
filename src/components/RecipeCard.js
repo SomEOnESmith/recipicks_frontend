@@ -6,6 +6,7 @@ class RecipeCard extends Component {
     const recipe = this.props.recipe;
     return (
       <div className="col-lg-4 col-md-6 col-12">
+        <br />
         <Link to={`/recipes/${recipe.id}`} className="card">
           <div className="image">
             <img

@@ -12,7 +12,9 @@ class RecipesList extends Component {
 
     return (
       <div>
-        <div className="row">{RecipeCards}</div>
+        <div id="list" className="row">
+          {RecipeCards}
+        </div>
       </div>
     );
   }
