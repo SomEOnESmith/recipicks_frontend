@@ -1,5 +1,7 @@
 import React, { Component } from "react";
 
+import { connect } from "react-redux";
+
 class SearchBar extends Component {
   state = {
     items: [],
@@ -50,11 +52,15 @@ class SearchBar extends Component {
   //   }
   // };
 
-  isValid(email) {
+  isValid(ings) {
     let error = null;
 
-    if (this.isInList(email)) {
-      error = `${email} has already been added.`;
+    if (this.isInList(ings)) {
+      error = `${ings} has already been added.`;
+    }
+
+    if (!this.isInIngrediants(ings)) {
+      error = `${ings} is not an ingrediants.`;
     }
 
     // if (!this.isEmail(email)) {
@@ -70,8 +76,14 @@ class SearchBar extends Component {
     return true;
   }
 
-  isInList(email) {
-    return this.state.items.includes(email);
+  isInList(ings) {
+    return this.state.items.includes(ings);
+  }
+
+  isInIngrediants(ings) {
+    return this.props.ingrediantsReducer.ingrediants
+      .map(ing => ing.name)
+      .includes(ings);
   }
 
   // isEmail(email) {
@@ -109,4 +121,8 @@ class SearchBar extends Component {
   }
 }
 
-export default SearchBar;
+const mapStateToProps = state => ({
+  ingrediantsReducer: state.rootIngrediants
+});
+
+export default connect(mapStateToProps)(SearchBar);
