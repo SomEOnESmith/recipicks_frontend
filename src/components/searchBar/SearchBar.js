@@ -3,17 +3,17 @@ import React, { Component } from "react";
 import { MDCChipSet } from "@material/chips";
 
 class SearchBar extends Component {
-  // state = {
-  //   tags: [],
-  //   suggestions: [
-  //     { id: 1, name: "Apples" },
-  //     { id: 2, name: "Pears" },
-  //     { id: 3, name: "Bananas" },
-  //     { id: 4, name: "Mangos" },
-  //     { id: 5, name: "Lemons" },
-  //     { id: 6, name: "Apricots" }
-  //   ]
-  // };
+   state = {
+     tags: [],
+     suggestions: [
+       { id: 1, name: "Apples" },
+       { id: 2, name: "Pears" },
+       { id: 3, name: "Bananas" },
+       { id: 4, name: "Mangos" },
+       { id: 5, name: "Lemons" },
+       { id: 6, name: "Apricots" }
+     ]
+   };
 
   handleDelete = i => {
     const tags = this.state.tags.slice(0);
@@ -29,7 +29,7 @@ class SearchBar extends Component {
   render() {
     return (
       <div className="mt-5 ml-5">
-        {/* <ReactTags
+        <ReactTags
           tags={this.state.tags}
           suggestions={this.state.suggestions}
           handleDelete={this.handleDelete}
@@ -37,8 +37,7 @@ class SearchBar extends Component {
           className="btn"
           placeholder="Input your ingredients bro"
           autoresize={false}
-        /> */}
-        <MDCChipSet />
+        />
       </div>
     );
   }
