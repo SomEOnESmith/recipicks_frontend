@@ -1,11 +1,11 @@
-import { FETCH_INGREDIANTS } from "../actions/actionTypes";
+import { FETCH_INGREDIENTS } from "../actions/actionTypes";
 
 const initialState = {};
 
 export default (state = initialState, { type, payload }) => {
   switch (type) {
-    case FETCH_INGREDIANTS:
-      return { ingrediants: payload };
+    case FETCH_INGREDIENTS:
+      return { ingredients: payload };
 
     default:
       return state;

@@ -59,8 +59,8 @@ class SearchBar extends Component {
       error = `${ings} has already been added.`;
     }
 
-    if (!this.isInIngrediants(ings)) {
-      error = `${ings} is not an ingrediants.`;
+    if (!this.isInIngredients(ings)) {
+      error = `${ings} is not an ingredients.`;
     }
 
     // if (!this.isEmail(email)) {
@@ -80,8 +80,8 @@ class SearchBar extends Component {
     return this.state.items.includes(ings);
   }
 
-  isInIngrediants(ings) {
-    return this.props.ingrediantsReducer.ingrediants
+  isInIngredients(ings) {
+    return this.props.ingredientsReducer.ingredients
       .map(ing => ing.name)
       .includes(ings);
   }
@@ -122,7 +122,7 @@ class SearchBar extends Component {
 }
 
 const mapStateToProps = state => ({
-  ingrediantsReducer: state.rootIngrediants
+  ingredientsReducer: state.rootIngredients
 });
 
 export default connect(mapStateToProps)(SearchBar);

@@ -1,6 +1,6 @@
 export { fetchRecipes } from "./recipes";
 export { fetchRecipeDetail } from "./recipe";
-export { fetchIngrediants } from "./ingrediants";
+export { fetchIngredients } from "./ingredients";
 export {
   login,
   logout,

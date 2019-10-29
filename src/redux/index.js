@@ -1,7 +1,7 @@
 import { createStore, compose, applyMiddleware } from "redux";
 import {
   fetchRecipes,
-  fetchIngrediants,
+  fetchIngredients,
   checkForExpiredToken
 } from "./actions";
 import reducer from "./reducers";
@@ -12,7 +12,7 @@ const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
 const store = createStore(reducer, composeEnhancers(applyMiddleware(thunk)));
 
 store.dispatch(fetchRecipes());
-store.dispatch(fetchIngrediants());
+store.dispatch(fetchIngredients());
 store.dispatch(checkForExpiredToken());
 
 export default store;
