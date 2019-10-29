@@ -1,6 +1,5 @@
 import React, { Component } from "react";
-// import ReactTags from "react-tag-autocomplete";
-import { MDCChipSet } from "@material/chips";
+import ReactTags from "react-tag-autocomplete";
 
 class SearchBar extends Component {
    state = {
