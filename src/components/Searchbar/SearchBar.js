@@ -8,7 +8,7 @@ class SearchBar extends Component {
   };
 
   handleKeyDown = evt => {
-    if (["Enter", "Tab", ",", "Spacebar"].includes(evt.key)) {
+    if (["Enter", "Tab", ","].includes(evt.key)) {
       evt.preventDefault();
 
       var value = this.state.value.trim();
