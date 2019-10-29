@@ -7,7 +7,7 @@ import AuthButton from "./AuthButton";
 
 const NavBar = () => {
   return (
-    <nav className="navbar navbar-expand-lg fixed-top nav" id="mainNav">
+    <nav className="navbar navbar-expand-lg bg-light " id="mainNav">
       <Link
         style={{
           textDecoration: "none"
@@ -16,7 +16,6 @@ const NavBar = () => {
         to="/"
       >
         <div className="row">
-
           <h3
             id="logo-text-2"
             style={{

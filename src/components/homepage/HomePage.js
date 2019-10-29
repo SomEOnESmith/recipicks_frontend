@@ -1,9 +1,9 @@
 import React from "react";
-import SearchBar from "../searchBar/SearchBar";
+import SearchBar from "../SearchBar/SearchBar";
 
 const HomePage = () => {
   return (
-    <div>
+    <div className="mt-5 ml-5">
       <SearchBar />
     </div>
   );

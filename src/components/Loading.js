@@ -14,6 +14,7 @@ const Loading = () => (
         width: "150px",
         height: "150px"
       }}
+      alt="Loading"
       src={loadingIcon}
     ></img>
   </div>
