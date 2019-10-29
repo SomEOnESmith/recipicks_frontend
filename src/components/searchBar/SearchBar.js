@@ -28,12 +28,14 @@ class SearchBar extends Component {
 
   render() {
     return (
-      <ReactTags
-        tags={this.state.tags}
-        suggestions={this.state.suggestions}
-        handleDelete={this.handleDelete}
-        handleAddition={this.handleAddition}
-      />
+      <div>
+        <ReactTags
+          tags={this.state.tags}
+          suggestions={this.state.suggestions}
+          handleDelete={this.handleDelete}
+          handleAddition={this.handleAddition}
+        />
+      </div>
     );
   }
 }
