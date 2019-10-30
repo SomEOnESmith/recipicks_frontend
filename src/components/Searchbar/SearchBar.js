@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import { connect } from "react-redux";
 
 class SearchBar extends Component {
   state = {
@@ -57,9 +58,9 @@ class SearchBar extends Component {
       error = `${ingredient} has already been added.`;
     }
 
-    // if (!this.isIngredient(ingredient)) {
-    //   error = `${ingredient} is not a valid ingredient.`;
-    // }
+    if (!this.isInIngredients(ingredient)) {
+      error = `${ingredient} is not an ingredient.`;
+    }
 
     if (error) {
       this.setState({ error });
@@ -70,13 +71,16 @@ class SearchBar extends Component {
     return true;
   }
 
+
   isInList(ingredient) {
     return this.state.items.includes(ingredient);
   }
 
-  // isIngredient(ingredient) {
-  //   return /[\w\d\.-]+@[\w\d\.-]+\.[\w\d\.-]+/.test(ingredient);
-  // }
+  isInIngredients(ingredient) {
+    return this.props.ingredientsReducer.ingredients
+      .map(ing => ing.name)
+      .includes(ingredient);
+  }
 
   render() {
     return (
@@ -109,4 +113,8 @@ class SearchBar extends Component {
   }
 }
 
-export default SearchBar;
+const mapStateToProps = state => ({
+  ingredientsReducer: state.rootIngredients
+});
+
+export default connect(mapStateToProps)(SearchBar);

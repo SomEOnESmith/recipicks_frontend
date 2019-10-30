@@ -3,12 +3,14 @@ import recipesReducer from "./recipes";
 import recipeReducer from "./recipe";
 import authReducer from "./authentication";
 import errorReducer from "./errors";
+import ingredientsReducer from "./ingredients";
 
 const rootReducer = combineReducers({
   authReducer: authReducer,
   errors: errorReducer,
   rootRecipes: recipesReducer,
   rootRecipe: recipeReducer,
+  rootIngredients: ingredientsReducer
 });
 
 export default rootReducer;
