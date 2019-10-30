@@ -5,6 +5,8 @@ import ReactDOM from "react-dom";
 
 import "./index.css";
 import "bootstrap/dist/css/bootstrap.min.css";
+import "./assets/css/style.css";
+import "./assets/css/style.scss";
 
 import { BrowserRouter } from "react-router-dom";
 import { Provider } from "react-redux";
