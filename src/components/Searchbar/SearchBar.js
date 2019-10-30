@@ -1,5 +1,4 @@
 import React, { Component } from "react";
-
 import { connect } from "react-redux";
 
 class SearchBar extends Component {
@@ -41,10 +40,10 @@ class SearchBar extends Component {
   //   evt.preventDefault();
 
   //   var paste = evt.clipboardData.getData("text");
-  //   // var emails = paste.match(/[\w\d\.-]+@[\w\d\.-]+\.[\w\d\.-]+/g);
+  //   // var ingredients = paste.match(/[\w\d\.-]+@[\w\d\.-]+\.[\w\d\.-]+/g);
 
-  //   if (emails) {
-  //     var toBeAdded = emails.filter(email => !this.isInList(email));
+  //   if (ingredients) {
+  //     var toBeAdded = ingredients.filter(ingredient => !this.isInList(ingredient));
 
   //     this.setState({
   //       items: [...this.state.items, ...toBeAdded]
@@ -52,20 +51,16 @@ class SearchBar extends Component {
   //   }
   // };
 
-  isValid(ings) {
+  isValid(ingredient) {
     let error = null;
 
-    if (this.isInList(ings)) {
-      error = `${ings} has already been added.`;
+    if (this.isInList(ingredient)) {
+      error = `${ingredient} has already been added.`;
     }
 
-    if (!this.isInIngredients(ings)) {
-      error = `${ings} is not an ingredients.`;
+    if (!this.isInIngredients(ingredient)) {
+      error = `${ingredient} is not an ingredient.`;
     }
-
-    // if (!this.isEmail(email)) {
-    //   error = `${email} is not a valid email address.`;
-    // }
 
     if (error) {
       this.setState({ error });
@@ -76,19 +71,16 @@ class SearchBar extends Component {
     return true;
   }
 
-  isInList(ings) {
-    return this.state.items.includes(ings);
+
+  isInList(ingredient) {
+    return this.state.items.includes(ingredient);
   }
 
-  isInIngredients(ings) {
+  isInIngredients(ingredient) {
     return this.props.ingredientsReducer.ingredients
       .map(ing => ing.name)
-      .includes(ings);
+      .includes(ingredient);
   }
-
-  // isEmail(email) {
-  //   return /[\w\d\.-]+@[\w\d\.-]+\.[\w\d\.-]+/.test(email);
-  // }
 
   render() {
     return (
