@@ -9,13 +9,14 @@ class Logout extends Component {
   render() {
     const logout = () => {
       return (
-        <Link
+        <span
           id="nav-link"
           onClick={this.props.logout}
           className="nav-link nav"
+          style={{ cursor: "pointer" }}
         >
           Logout
-        </Link>
+        </span>
       );
     };
 

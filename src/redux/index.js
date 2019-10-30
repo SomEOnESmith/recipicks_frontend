@@ -11,8 +11,8 @@ const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
 
 const store = createStore(reducer, composeEnhancers(applyMiddleware(thunk)));
 
-store.dispatch(fetchRecipes());
-store.dispatch(fetchIngredients());
 store.dispatch(checkForExpiredToken());
+store.dispatch(fetchIngredients());
+store.dispatch(fetchRecipes());
 
 export default store;

@@ -57,6 +57,7 @@ class RecipeDetail extends Component {
                       height: 360,
                       width: 1400
                     }}
+                    alt=""
                     src={recipe.image}
                   ></img>
                 </div>
