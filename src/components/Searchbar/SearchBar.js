@@ -39,10 +39,10 @@ class SearchBar extends Component {
   //   evt.preventDefault();
 
   //   var paste = evt.clipboardData.getData("text");
-  //   // var emails = paste.match(/[\w\d\.-]+@[\w\d\.-]+\.[\w\d\.-]+/g);
+  //   // var ingredients = paste.match(/[\w\d\.-]+@[\w\d\.-]+\.[\w\d\.-]+/g);
 
-  //   if (emails) {
-  //     var toBeAdded = emails.filter(email => !this.isInList(email));
+  //   if (ingredients) {
+  //     var toBeAdded = ingredients.filter(ingredient => !this.isInList(ingredient));
 
   //     this.setState({
   //       items: [...this.state.items, ...toBeAdded]
@@ -50,15 +50,15 @@ class SearchBar extends Component {
   //   }
   // };
 
-  isValid(email) {
+  isValid(ingredient) {
     let error = null;
 
-    if (this.isInList(email)) {
-      error = `${email} has already been added.`;
+    if (this.isInList(ingredient)) {
+      error = `${ingredient} has already been added.`;
     }
 
-    // if (!this.isEmail(email)) {
-    //   error = `${email} is not a valid email address.`;
+    // if (!this.isIngredient(ingredient)) {
+    //   error = `${ingredient} is not a valid ingredient.`;
     // }
 
     if (error) {
@@ -70,12 +70,12 @@ class SearchBar extends Component {
     return true;
   }
 
-  isInList(email) {
-    return this.state.items.includes(email);
+  isInList(ingredient) {
+    return this.state.items.includes(ingredient);
   }
 
-  // isEmail(email) {
-  //   return /[\w\d\.-]+@[\w\d\.-]+\.[\w\d\.-]+/.test(email);
+  // isIngredient(ingredient) {
+  //   return /[\w\d\.-]+@[\w\d\.-]+\.[\w\d\.-]+/.test(ingredient);
   // }
 
   render() {
