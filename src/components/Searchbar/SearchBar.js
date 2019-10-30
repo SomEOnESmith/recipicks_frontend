@@ -12,7 +12,7 @@ class SearchBar extends Component {
     if (["Enter", "Tab", ","].includes(evt.key)) {
       evt.preventDefault();
 
-      var value = this.state.value.trim();
+      let value = this.state.value.trim();
 
       if (value && this.isValid(value)) {
         this.setState({
@@ -39,11 +39,11 @@ class SearchBar extends Component {
   // handlePaste = evt => {
   //   evt.preventDefault();
 
-  //   var paste = evt.clipboardData.getData("text");
-  //   // var ingredients = paste.match(/[\w\d\.-]+@[\w\d\.-]+\.[\w\d\.-]+/g);
+  //   let paste = evt.clipboardData.getData("text");
+  //   // let ingredients = paste.match(/[\w\d\.-]+@[\w\d\.-]+\.[\w\d\.-]+/g);
 
   //   if (ingredients) {
-  //     var toBeAdded = ingredients.filter(ingredient => !this.isInList(ingredient));
+  //     let toBeAdded = ingredients.filter(ingredient => !this.isInList(ingredient));
 
   //     this.setState({
   //       items: [...this.state.items, ...toBeAdded]
@@ -70,7 +70,6 @@ class SearchBar extends Component {
 
     return true;
   }
-
 
   isInList(ingredient) {
     return this.state.items.includes(ingredient);
@@ -104,8 +103,8 @@ class SearchBar extends Component {
           placeholder="Type or paste ingredients and press `Enter`..."
           onKeyDown={this.handleKeyDown}
           onChange={this.handleChange}
-          onPaste="This needs to be a function"
         />
+        {/* This needs to be inside input onPaste="This needs to be a function" */}
 
         {this.state.error && <p className="error">{this.state.error}</p>}
       </>
