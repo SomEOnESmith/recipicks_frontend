@@ -1,12 +1,14 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
+import { fetchRecipes } from "../../redux/actions";
 
 class SearchBar extends Component {
   state = {
     items: [],
     value: "",
     suggestedItems: [],
-    error: null
+    error: null,
+    itemsID: []
   };
 
   componentDidMount() {
@@ -18,7 +20,7 @@ class SearchBar extends Component {
       evt.preventDefault();
 
       let value = this.state.value.trim();
-      
+
       if (value && this.isValid(value)) {
         const theItem = this.props.ingredientsReducer.ingredients.find(
           ingredient => ingredient.name === value
@@ -28,6 +30,7 @@ class SearchBar extends Component {
 
         await this.setState({
           items: newItems,
+          itemsID: newItems.map(i => i.id),
           value: ""
         });
 
@@ -39,7 +42,8 @@ class SearchBar extends Component {
   handleAdd = async item => {
     if (this.isValid(item.name)) {
       await this.setState({
-        items: this.state.items.concat(item)
+        items: this.state.items.concat(item),
+        itemsID: this.state.itemsID.concat(item.id)
       });
       if (!this.state.value) this.randomIngredients(this.filterIngredients());
       if (this.state.value) {
@@ -188,6 +192,13 @@ class SearchBar extends Component {
         ))}
 
         {this.state.error && <p className="error">{this.state.error}</p>}
+
+        <button
+          className="btn btn-info my-5"
+          onClick={() => this.props.fetch(this.state.itemsID)}
+        >
+          Search
+        </button>
       </>
     );
   }
@@ -197,4 +208,11 @@ const mapStateToProps = state => ({
   ingredientsReducer: state.rootIngredients
 });
 
-export default connect(mapStateToProps)(SearchBar);
+const mapDispatchToProps = dispatch => ({
+  fetch: items => dispatch(fetchRecipes(items))
+});
+
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(SearchBar);

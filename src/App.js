@@ -34,7 +34,7 @@ function App({ loading }) {
 
 const mapStateToProps = state => {
   return {
-    loading: state.rootRecipes.loading
+    loading: state.rootIngredients.loading
   };
 };
 
