@@ -18,7 +18,7 @@ class RecipeDetail extends Component {
       return <Loading />;
     } else {
       const recipe = this.props.recipe;
-      const Ingredients = this.props.recipe.ingredients.map(ingredient => (
+      const ingredients = this.props.recipe.ingredients.map(ingredient => (
         <Ingredient ingredient={ingredient} />
       ));
 
@@ -57,7 +57,6 @@ class RecipeDetail extends Component {
                       height: 360,
                       width: 1400
                     }}
-                    alt=""
                     src={recipe.image}
                     alt=""
                   />
@@ -121,7 +120,7 @@ class RecipeDetail extends Component {
               <div className="ingredients">
                 <h4>Ingredients</h4>
 
-                {Ingredients}
+                {ingredients}
               </div>
             </div>
           </div>
