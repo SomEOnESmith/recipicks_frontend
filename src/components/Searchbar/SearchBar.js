@@ -18,6 +18,7 @@ class SearchBar extends Component {
       evt.preventDefault();
 
       let value = this.state.value.trim();
+      
       if (value && this.isValid(value)) {
         const theItem = this.props.ingredientsReducer.ingredients.find(
           ingredient => ingredient.name === value
@@ -110,11 +111,11 @@ class SearchBar extends Component {
   // handlePaste = evt => {
   //   evt.preventDefault();
 
-  //   var paste = evt.clipboardData.getData("text");
-  //   // var ingredients = paste.match(/[\w\d\.-]+@[\w\d\.-]+\.[\w\d\.-]+/g);
+  //   let paste = evt.clipboardData.getData("text");
+  //   // let ingredients = paste.match(/[\w\d\.-]+@[\w\d\.-]+\.[\w\d\.-]+/g);
 
   //   if (ingredients) {
-  //     var toBeAdded = ingredients.filter(ingredient => !this.isInList(ingredient));
+  //     let toBeAdded = ingredients.filter(ingredient => !this.isInList(ingredient));
 
   //     this.setState({
   //       items: [...this.state.items, ...toBeAdded]
@@ -172,6 +173,7 @@ class SearchBar extends Component {
           onKeyDown={this.handleKeyDown}
           onChange={this.handleChange}
         />
+        {/* This needs to be inside input onPaste="This needs to be a function" */}
         {this.state.items.map((item, idx) => (
           <div className="tag-item" key={idx}>
             {item.name}
