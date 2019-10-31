@@ -10,29 +10,53 @@ class SearchBar extends Component {
   };
 
   componentDidMount() {
-    this.randomIngredients();
+    this.randomIngredients(this.filterIngredients());
   }
 
   handleKeyDown = async evt => {
     if (["Enter", "Tab", ","].includes(evt.key)) {
       evt.preventDefault();
 
-      var value = this.state.value.trim();
+      let value = this.state.value.trim();
       if (value && this.isValid(value)) {
-        const newItems = this.state.items.concat(this.state.value);
+        const theItem = this.props.ingredientsReducer.ingredients.find(
+          ingredient => ingredient.name === value
+        );
+        const newItems = this.state.items.concat(theItem);
+        console.log("TCL: SearchBar -> newItems", newItems);
+
         await this.setState({
           items: newItems,
           value: ""
         });
-        this.randomIngredients();
+
+        this.randomIngredients(this.filterIngredients());
       }
     }
   };
 
-  randomIngredients = () => {
-    const array = this.props.ingredientsReducer.ingredients.filter(
-      ingredient => !this.state.items.includes(ingredient.name)
+  handleAdd = async item => {
+    if (this.isValid(item.name)) {
+      await this.setState({
+        items: this.state.items.concat(item)
+      });
+      if (!this.state.value) this.randomIngredients(this.filterIngredients());
+      if (this.state.value) {
+        const newSuggestedItems = this.state.suggestedItems.filter(
+          ingredient => !this.state.items.includes(ingredient)
+        );
+        this.setState({ suggestedItems: newSuggestedItems });
+      }
+    }
+  };
+
+  filterIngredients = () => {
+    return this.props.ingredientsReducer.ingredients.filter(
+      ingredient => !this.state.items.includes(ingredient)
     );
+  };
+
+  randomIngredients = array => {
     let currentIndex = array.length,
       temporaryValue,
       randomIndex;
@@ -54,16 +78,14 @@ class SearchBar extends Component {
 
   handleChange = evt => {
     let counter = 0;
-    const suggest = this.props.ingredientsReducer.ingredients.filter(
-      ingredient => {
-        if (ingredient.name.includes(evt.target.value)) {
-          counter = counter + 1;
-          if (counter <= 10) return ingredient;
-          return false;
-        }
+    const suggest = this.filterIngredients().filter(ingredient => {
+      if (ingredient.name.includes(evt.target.value)) {
+        counter = counter + 1;
+        if (counter <= 10) return ingredient;
         return false;
       }
-    );
+      return false;
+    });
 
     this.setState({
       value: evt.target.value.toLowerCase(),
@@ -117,7 +139,9 @@ class SearchBar extends Component {
   }
 
   isInList(ingredient) {
-    return this.state.items.includes(ingredient.toLowerCase());
+    return this.state.items
+      .map(item => item.name)
+      .includes(ingredient.toLowerCase());
   }
 
   isInIngredients(ingredient) {
@@ -131,7 +155,11 @@ class SearchBar extends Component {
       <>
         {this.state.suggestedItems.map((suggestItem, idx) => (
           <div className="suggest-list" key={idx}>
-            <button type="button" className="button suggestion-item">
+            <button
+              type="button"
+              className="button suggestion-item"
+              onClick={() => this.handleAdd(suggestItem)}
+            >
               {suggestItem.name}
             </button>
           </div>
@@ -144,9 +172,9 @@ class SearchBar extends Component {
           onKeyDown={this.handleKeyDown}
           onChange={this.handleChange}
         />
-        {this.state.items.map(item => (
-          <div className="tag-item" key={item}>
-            {item}
+        {this.state.items.map((item, idx) => (
+          <div className="tag-item" key={idx}>
+            {item.name}
             <button
               type="button"
               className="button"
