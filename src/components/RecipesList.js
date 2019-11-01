@@ -11,8 +11,8 @@ class RecipesList extends Component {
     ));
 
     return (
-      <div>
-        <div id="list" className="row">
+      <div id="recipe-list" className="container">
+        <div className="row" id="card-row">
           {RecipeCards}
         </div>
       </div>

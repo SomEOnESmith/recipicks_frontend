@@ -5,23 +5,64 @@ class RecipeCard extends Component {
   render() {
     const recipe = this.props.recipe;
     return (
-      <div className="col-lg-4 col-md-6 col-12">
-        <br />
-        <Link to={`/recipes/${recipe.id}`} className="card">
-          <div className="image">
-            <img
-              className="card-img-top img-fluid"
-              src={recipe.image}
-              alt={recipe.title}
-            />
-          </div>
+      <>
+        <div
+          style={{
+            width: "25rem"
+          }}
+          className="card"
+          id="recipe-card"
+        >
+          <img
+            src={recipe.image}
+            id="card-img"
+            className="card-img-top"
+            alt="..."
+          ></img>
+          
           <div className="card-body">
-            <h5 className="card-title">
-              <span>{recipe.name}</span>
-            </h5>
+            <Link to={`/recipes/${recipe.id}`}>
+              <h5 id="title-link" className="card-title">
+                {recipe.title}
+              </h5>
+            </Link>
+            <hr />
+
+            <div className="row">
+              <div className="col">
+                <p id="card-text-orange">
+                  <img src="https://img.icons8.com/small/16/000000/halal-food.png"></img>{" "}
+                  American{" "}
+                </p>
+              </div>
+              <div className="col">
+                <p id="card-text-orange">
+                  <img src="https://img.icons8.com/small/16/000000/pizza.png"></img>{" "}
+                  Dinner{" "}
+                </p>
+              </div>
+              <div className="col">
+                <p id="card-text-orange">
+                  <img src="https://img.icons8.com/small/16/000000/alarm-clock.png"></img>{" "}
+                  15 min
+                </p>
+              </div>
+            </div>
+
+            <p id="card-text-black" className="card-text">
+              Some quick example text to build on the card title and make up the
+              bulk of the card's content.
+            </p>
+            <a
+              href={`/recipes/${recipe.id}`}
+              id="card-btn"
+              className="btn btn-block"
+            >
+              Let's Cook!
+            </a>
           </div>
-        </Link>
-      </div>
+        </div>
+      </>
     );
   }
 }
