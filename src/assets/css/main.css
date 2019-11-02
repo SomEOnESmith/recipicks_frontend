@@ -19,7 +19,7 @@
 }
 
 #text-padding {
-  padding-bottom: 30px;
+  padding-bottom: 10px;
 }
 .header-container {
   display: flex;
@@ -53,13 +53,57 @@
   white-space: nowrap; /* Keeps the content on a single line */
   margin: 0 auto; /* Gives that scrolling effect as the typing happens */
   letter-spacing: 0.15em; /* Adjust as needed */
-  animation: typing 3.5s steps(40, end), blink-caret 0.75s step-end infinite;
+  animation: typing 2.5s steps(40, end), blink-caret 0.75s step-end infinite;
+  font: bold 2.1875rem/2.875rem "Source Serif Pro", serif;
+  font-size: 4.125rem;
+  margin: 9.25rem auto 1.8125rem;
+  padding: 10px;
+  position: relative;
+  left: 400px;
+}
+
+#suggest_item {
+  background-color: orange;
+  border: 1px solid white;
+}
+
+#suggest_item:hover {
+  background-color: black;
+  color: white;
+}
+
+#suggest_btn {
+  background-color: black;
+  border-radius: 50px;
+  border: 1px solid orange;
+}
+
+#suggest_btn:hover {
+  background-color: orange;
+  color: black;
+
+}
+
+#cancel{
+  background-color: rgb(185, 30, 30);
+  color: white;
+}
+
+#cancel:hover{
+  background-color: rgb(233, 45, 45);
+  color: white;
 }
 
 #card-text-black {
   color: black;
 }
 
+.search {
+  position: relative;
+  padding: 20px;
+  top: 200px;
+  right: 200px;
+}
 #title-link {
   color: black;
 }

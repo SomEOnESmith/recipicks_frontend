@@ -4,6 +4,7 @@ import Loading from "./Loading";
 
 // Components
 import Ingredient from "./Ingredient";
+import Step from "./Step";
 
 import { fetchRecipeDetail } from "../redux/actions";
 
@@ -17,15 +18,21 @@ class RecipeDetail extends Component {
       return <Loading />;
     } else {
       const recipe = this.props.recipe;
-      const meal = this.props.recipe.meal.map(meal => {
+
+      const meal = recipe.meal.map(meal => {
         return meal.name;
       });
-      const course = this.props.recipe.course.map(course => {
+
+      const course = recipe.course.map(course => {
         return course.name;
       });
-      const ingredients = this.props.recipe.ingredients.map(ingredient => (
+
+      const ingredients = recipe.ingredients.map(ingredient => (
         <Ingredient ingredient={ingredient} />
       ));
+
+      const steps = recipe.steps.map(step => <Step step={step} />);
+
       return (
         <div>
           <div id="detail-space" className="container">
@@ -84,61 +91,7 @@ class RecipeDetail extends Component {
               <div className="col">
                 <h4>INSTRUCTIONS</h4>
                 <hr />
-                <div id="text-padding" className="row">
-                  <div className="col">
-                    <p>
-                      <span
-                        style={{
-                          fontWeight: "bold",
-                          color: "black"
-                        }}
-                      >
-                        01.
-                      </span>{" "}
-                      Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                      Vestibulum nec varius dui. Suspendisse potenti. Vestibulum
-                      ac pellentesque tortor. Aenean congue sed metus in
-                      iaculis. Cras
-                    </p>
-                  </div>
-                </div>
-                <div id="text-padding" className="row">
-                  <div className="col">
-                    <p>
-                      <span
-                        style={{
-                          fontWeight: "bold",
-                          color: "black"
-                        }}
-                      >
-                        02.
-                      </span>{" "}
-                      Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                      Vestibulum nec varius dui. Suspendisse potenti. Vestibulum
-                      ac pellentesque tortor. Aenean congue sed metus in
-                      iaculis. Cras
-                    </p>
-                  </div>
-                </div>
-
-                <div id="text-padding" className="row">
-                  <div className="col">
-                    <p>
-                      <span
-                        style={{
-                          fontWeight: "bold",
-                          color: "black"
-                        }}
-                      >
-                        03.
-                      </span>{" "}
-                      Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                      Vestibulum nec varius dui. Suspendisse potenti. Vestibulum
-                      ac pellentesque tortor. Aenean congue sed metus in
-                      iaculis. Cras
-                    </p>
-                  </div>
-                </div>
+                {steps}
               </div>
               <div className="col">
                 <h4>INGREDIENTS</h4> <hr />

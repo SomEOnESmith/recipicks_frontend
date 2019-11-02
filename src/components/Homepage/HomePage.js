@@ -7,26 +7,35 @@ const HomePage = () => {
     <div className="main">
       <section className="header">
         <div className="header-container">
-          <div class="typewriter">
-            <h1
-              style={{
-                color: "white"
-              }}
-            >
-              Find a Recipe
-            </h1>
+          <div className="row">
+            <div className="col">
+              <div className="typewriter">
+                <h1
+                  
+                  style={{
+                    color: "white"
+                  }}
+                >
+                  Find a Recipe
+                </h1>
+              </div>
+            </div>
           </div>
-          <div className="search">
-            <SearchBar />
+          <div className="row">
+            <div className="col">
+              <div className="search" >
+              <SearchBar />
+              </div>
+            </div>
           </div>
         </div>
       </section>
+
       <section className="the-list">
-      <RecipesList />
+        <RecipesList />
       </section>
     </div>
   );
 };
-
 
 export default HomePage;
