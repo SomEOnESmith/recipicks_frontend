@@ -157,11 +157,12 @@ class SearchBar extends Component {
 
   render() {
     return (
-      <>
+      <div>
         {this.state.suggestedItems.map((suggestItem, idx) => (
           <div className="suggest-list" key={idx}>
             <button
               type="button"
+              id="suggest_item"
               className="button suggestion-item"
               onClick={() => this.handleAdd(suggestItem)}
             >
@@ -182,6 +183,7 @@ class SearchBar extends Component {
           <div className="tag-item" key={idx}>
             {item.name}
             <button
+            id="cancel"
               type="button"
               className="button"
               onClick={() => this.handleDelete(item)}
@@ -192,14 +194,15 @@ class SearchBar extends Component {
         ))}
 
         {this.state.error && <p className="error">{this.state.error}</p>}
-
+        <br />
         <button
-          className="btn btn-info my-5"
+          className="btn btn-info my-3 btn-block"
+          id="suggest_btn"
           onClick={() => this.props.fetch(this.state.itemsID)}
         >
           Search
         </button>
-      </>
+      </div>
     );
   }
 }
