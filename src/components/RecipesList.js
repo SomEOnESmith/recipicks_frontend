@@ -11,8 +11,10 @@ class RecipesList extends Component {
     ));
 
     return (
+
       <div id="recipe-list" className="container">
         <div className="row" id="card-row">
+
           {RecipeCards}
         </div>
       </div>
