@@ -1,9 +1,7 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
-import { fetchRecipes } from "../../redux/actions";
+import { fetchRecipesByIngredients } from "../../redux/actions";
 import Fuse from "fuse.js";
-
-
 
 
 const fuseOptions = {
@@ -139,7 +137,8 @@ class SearchBar extends Component {
 
   handleDelete = item => {
     this.setState({
-      items: this.state.items.filter(i => i !== item)
+      items: this.state.items.filter(i => i !== item),
+      itemsID: this.state.itemsID.filter(i => i !== item.id)
     });
   };
 
@@ -251,7 +250,7 @@ const mapStateToProps = state => ({
 });
 
 const mapDispatchToProps = dispatch => ({
-  fetch: items => dispatch(fetchRecipes(items))
+  fetch: items => dispatch(fetchRecipesByIngredients(items))
 });
 
 export default connect(
