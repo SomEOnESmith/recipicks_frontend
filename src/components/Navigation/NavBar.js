@@ -7,7 +7,7 @@ import AuthButton from "./AuthButton";
 
 const NavBar = () => {
   return (
-    <nav className="navbar navbar-expand-lg bg-light " id="mainNav">
+    <nav id="navbar" className="navbar navbar-expand-lg ">
       <Link
         style={{
           textDecoration: "none"
@@ -21,7 +21,8 @@ const NavBar = () => {
             style={{
               textDecoration: "none",
               paddingLeft: "10px",
-              paddingTop: "5px"
+              paddingTop: "5px",
+              color: "red"
             }}
           >
             Recipicks

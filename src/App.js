@@ -16,7 +16,7 @@ import Loading from "./components/Loading";
 function App({ loading }) {
   if (loading) return <Loading />;
   return (
-    <div>
+    <div className="app">
       <NavBar />
       <Switch>
         <Route exact path="/recipes/:recipeID" component={RecipeDetail} />

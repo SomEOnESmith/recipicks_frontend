@@ -10,7 +10,7 @@ class RecipeCard extends Component {
           style={{
             width: "25rem"
           }}
-          className="card"
+          className="card my-3"
           id="recipe-card"
         >
           <img
