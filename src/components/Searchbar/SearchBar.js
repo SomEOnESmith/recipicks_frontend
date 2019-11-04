@@ -38,7 +38,7 @@ class SearchBar extends Component {
           ingredient => ingredient.name === value
         );
         const newItems = this.state.items.concat(theItem);
-        this.setState({
+        await this.setState({
           items: newItems,
           itemsID: newItems.map(i => i.id),
           value: ""
@@ -53,7 +53,7 @@ class SearchBar extends Component {
 
   handleAdd = async item => {
     if (this.isValid(item.name)) {
-      this.setState({
+      await this.setState({
         items: this.state.items.concat(item),
         itemsID: this.state.itemsID.concat(item.id)
       });
@@ -100,7 +100,7 @@ class SearchBar extends Component {
       ? fuse.search(evt.target.value).slice(0, 10)
       : this.randomIngredients(this.filterIngredients());
 
-    this.setState({
+    await this.setState({
       value: evt.target.value,
       suggestedItems: suggest,
       error: null
