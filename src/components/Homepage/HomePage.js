@@ -1,12 +1,38 @@
 import React from "react";
 import SearchBar from "../Searchbar/SearchBar";
-import List from "../RecipesList";
-
+import RecipesList from "../RecipesList";
 const HomePage = () => {
   return (
-    <div className="mx-5 mt-4">
-      <SearchBar />
-      <List />
+    <div className="main">
+      <section className="header">
+        <div className="header-container">
+          <div className="row">
+            <div className="col">
+              <div className="typewriter">
+                <h1
+
+                  style={{
+                    color: "white"
+                  }}
+                >
+                  Find a Recipe
+                </h1>
+              </div>
+            </div>
+          </div>
+          <div className="row">
+            <div className="col">
+              <div className="search" >
+                <SearchBar />
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section className="the-list">
+        <RecipesList />
+      </section>
     </div>
   );
 };

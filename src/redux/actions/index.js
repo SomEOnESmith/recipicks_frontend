@@ -1,4 +1,4 @@
-export { fetchRecipes } from "./recipes";
+export { fetchRecipesByIngredients } from "./recipes";
 export { fetchRecipeDetail } from "./recipe";
 export { fetchIngredients } from "./ingredients";
 export {
