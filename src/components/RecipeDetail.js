@@ -43,25 +43,37 @@ class RecipeDetail extends Component {
                   <div className="row">
                     <div className="col-3">
                       <p id="spacing">
-                        <img src="https://img.icons8.com/small/16/000000/halal-food.png"></img>{" "}
+                        <img
+                          src="https://img.icons8.com/small/16/000000/halal-food.png"
+                          alt=""
+                        ></img>
                         {recipe.cuisine.name}
                       </p>
                     </div>
                     <div className="col-3">
                       <p id="spacing">
-                        <img src="https://img.icons8.com/small/16/000000/pizza.png"></img>{" "}
+                        <img
+                          src="https://img.icons8.com/small/16/000000/pizza.png"
+                          alt=""
+                        ></img>
                         {meal}
                       </p>
                     </div>
                     <div className="col-3">
                       <p id="spacing">
-                        <img src="https://img.icons8.com/small/16/000000/pizza.png"></img>{" "}
+                        <img
+                          src="https://img.icons8.com/small/16/000000/pizza.png"
+                          alt=""
+                        ></img>
                         {course}
                       </p>
                     </div>
                     <div className="col-3">
                       <p id="spacing">
-                        <img src="https://img.icons8.com/small/16/000000/alarm-clock.png"></img>{" "}
+                        <img
+                          src="https://img.icons8.com/small/16/000000/alarm-clock.png"
+                          alt=""
+                        ></img>
                         15 min
                       </p>
                     </div>

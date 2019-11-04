@@ -19,7 +19,7 @@ class RecipeCard extends Component {
             className="card-img-top"
             alt="..."
           ></img>
-          
+
           <div className="card-body">
             <Link to={`/recipes/${recipe.id}`}>
               <h5 id="title-link" className="card-title">
@@ -31,19 +31,28 @@ class RecipeCard extends Component {
             <div className="row">
               <div className="col">
                 <p id="card-text-orange">
-                  <img src="https://img.icons8.com/small/16/000000/halal-food.png"></img>{" "}
-                  American{" "}
+                  <img
+                    src="https://img.icons8.com/small/16/000000/halal-food.png"
+                    alt=""
+                  ></img>
+                  American
                 </p>
               </div>
               <div className="col">
                 <p id="card-text-orange">
-                  <img src="https://img.icons8.com/small/16/000000/pizza.png"></img>{" "}
-                  Dinner{" "}
+                  <img
+                    src="https://img.icons8.com/small/16/000000/pizza.png"
+                    alt=""
+                  ></img>
+                  Dinner
                 </p>
               </div>
               <div className="col">
                 <p id="card-text-orange">
-                  <img src="https://img.icons8.com/small/16/000000/alarm-clock.png"></img>{" "}
+                  <img
+                    src="https://img.icons8.com/small/16/000000/alarm-clock.png"
+                    alt=""
+                  ></img>
                   15 min
                 </p>
               </div>

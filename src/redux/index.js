@@ -1,9 +1,5 @@
 import { createStore, compose, applyMiddleware } from "redux";
-import {
-  fetchIngredients,
-  fetchRecipes,
-  checkForExpiredToken
-} from "./actions";
+import { fetchIngredients, checkForExpiredToken } from "./actions";
 import reducer from "./reducers";
 import thunk from "redux-thunk";
 

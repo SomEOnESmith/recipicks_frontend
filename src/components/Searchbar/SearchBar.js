@@ -3,7 +3,6 @@ import { connect } from "react-redux";
 import { fetchRecipesByIngredients } from "../../redux/actions";
 import Fuse from "fuse.js";
 
-
 const fuseOptions = {
   shouldSort: true,
   threshold: 0.4,
@@ -15,28 +14,18 @@ const fuseOptions = {
 };
 
 class SearchBar extends Component {
-  constructor(props) {
-    super(props);
-    const ingredients = this.props.ingredientsReducer.ingredients
-    this.state = {
-      ingredients,
-      items: [],
-      value: "",
-      suggestedItems: [],
-      error: null,
-      itemsID: []
-    };
-
-    this.onChange = this.onChange.bind(this);
-  }
-
+  state = {
+    items: [],
+    value: "",
+    suggestedItems: [],
+    error: null,
+    itemsID: []
+  };
 
   componentDidMount() {
-    this.randomIngredients(this.filterIngredients());
+    const newSuggestedItems = this.randomIngredients(this.filterIngredients());
+    this.setState({ suggestedItems: newSuggestedItems });
   }
-
-
-
 
   handleKeyDown = async evt => {
     if (["Enter", "Tab", ","].includes(evt.key)) {
@@ -49,26 +38,31 @@ class SearchBar extends Component {
           ingredient => ingredient.name === value
         );
         const newItems = this.state.items.concat(theItem);
-        console.log("TCL: SearchBar -> newItems", newItems);
-
-        await this.setState({
+        this.setState({
           items: newItems,
           itemsID: newItems.map(i => i.id),
           value: ""
         });
-
-        this.randomIngredients(this.filterIngredients());
+        const newSuggestedItems = this.randomIngredients(
+          this.filterIngredients()
+        );
+        this.setState({ suggestedItems: newSuggestedItems });
       }
     }
   };
 
   handleAdd = async item => {
     if (this.isValid(item.name)) {
-      await this.setState({
+      this.setState({
         items: this.state.items.concat(item),
         itemsID: this.state.itemsID.concat(item.id)
       });
-      if (!this.state.value) this.randomIngredients(this.filterIngredients());
+      if (!this.state.value) {
+        const newSuggestedItems = this.randomIngredients(
+          this.filterIngredients()
+        );
+        this.setState({ suggestedItems: newSuggestedItems });
+      }
       if (this.state.value) {
         const newSuggestedItems = this.state.suggestedItems.filter(
           ingredient => !this.state.items.includes(ingredient)
@@ -88,52 +82,30 @@ class SearchBar extends Component {
     let currentIndex = array.length,
       temporaryValue,
       randomIndex;
-
-    // While there remain elements to shuffle...
     while (0 !== currentIndex) {
-      // Pick a remaining element...
       randomIndex = Math.floor(Math.random() * currentIndex);
       currentIndex -= 1;
-
-      // And swap it with the current element.
       temporaryValue = array[currentIndex];
       array[currentIndex] = array[randomIndex];
       array[randomIndex] = temporaryValue;
       if (currentIndex === 9) break;
     }
-    this.setState({ suggestedItems: array.slice(0, 10) });
+    return array.slice(0, 10);
   };
 
   handleChange = async evt => {
-    let counter = 0;
-    const { state = {}, onChange } = this;
-    const { ingredients = [], value = "" } = state;
+    const { ingredients } = this.props.ingredientsReducer;
     const fuse = new Fuse(ingredients, fuseOptions);
-    const data = value ? fuse.search(value) : ingredients;
+    const suggest = evt.target.value
+      ? fuse.search(evt.target.value).slice(0, 10)
+      : this.randomIngredients(this.filterIngredients());
 
-
-    const suggest = data.map(ingredient => {
-      if (ingredient) {
-        counter = counter + 1;
-        if (counter <= 10) return ingredient;
-        return false;
-      }
-      return false;
-    });
-
-    await this.setState({
+    this.setState({
       value: evt.target.value,
       suggestedItems: suggest,
       error: null
     });
   };
-
-
-  onChange(e) {
-    const { target = {} } = e;
-    const { value = "" } = target;
-    this.setState({ value: value });
-  }
 
   handleDelete = item => {
     this.setState({
@@ -141,13 +113,6 @@ class SearchBar extends Component {
       itemsID: this.state.itemsID.filter(i => i !== item.id)
     });
   };
-
-  // handleSuggestion = item => {
-  //   let suggest =
-  //   this.setState({
-  //     suggestedItems:
-  //   })
-  // }
 
   // handlePaste = evt => {
   //   evt.preventDefault();
@@ -207,7 +172,6 @@ class SearchBar extends Component {
             </button>
           </div>
         ))}
-
 
         <input
           className={"input " + (this.state.error && " has-error")}
