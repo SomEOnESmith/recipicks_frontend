@@ -1,19 +1,42 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import { fetchRecipesByIngredients } from "../../redux/actions";
+import Fuse from "fuse.js";
+
+
+const fuseOptions = {
+  shouldSort: true,
+  threshold: 0.4,
+  location: 0,
+  distance: 50,
+  maxPatternLength: 12,
+  minMatchCharLength: 3,
+  keys: ["name"]
+};
 
 class SearchBar extends Component {
-  state = {
-    items: [],
-    value: "",
-    suggestedItems: [],
-    error: null,
-    itemsID: []
-  };
+  constructor(props) {
+    super(props);
+    const ingredients = this.props.ingredientsReducer.ingredients
+    this.state = {
+      ingredients,
+      items: [],
+      value: "",
+      suggestedItems: [],
+      error: null,
+      itemsID: []
+    };
+
+    this.onChange = this.onChange.bind(this);
+  }
+
 
   componentDidMount() {
     this.randomIngredients(this.filterIngredients());
   }
+
+
+
 
   handleKeyDown = async evt => {
     if (["Enter", "Tab", ","].includes(evt.key)) {
@@ -81,10 +104,16 @@ class SearchBar extends Component {
     this.setState({ suggestedItems: array.slice(0, 10) });
   };
 
-  handleChange = evt => {
+  handleChange = async evt => {
     let counter = 0;
-    const suggest = this.filterIngredients().filter(ingredient => {
-      if (ingredient.name.includes(evt.target.value)) {
+    const { state = {}, onChange } = this;
+    const { ingredients = [], value = "" } = state;
+    const fuse = new Fuse(ingredients, fuseOptions);
+    const data = value ? fuse.search(value) : ingredients;
+
+
+    const suggest = data.map(ingredient => {
+      if (ingredient) {
         counter = counter + 1;
         if (counter <= 10) return ingredient;
         return false;
@@ -92,12 +121,19 @@ class SearchBar extends Component {
       return false;
     });
 
-    this.setState({
-      value: evt.target.value.toLowerCase(),
+    await this.setState({
+      value: evt.target.value,
       suggestedItems: suggest,
       error: null
     });
   };
+
+
+  onChange(e) {
+    const { target = {} } = e;
+    const { value = "" } = target;
+    this.setState({ value: value });
+  }
 
   handleDelete = item => {
     this.setState({
@@ -171,6 +207,7 @@ class SearchBar extends Component {
             </button>
           </div>
         ))}
+
 
         <input
           className={"input " + (this.state.error && " has-error")}

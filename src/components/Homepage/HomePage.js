@@ -1,7 +1,6 @@
 import React from "react";
 import SearchBar from "../Searchbar/SearchBar";
 import RecipesList from "../RecipesList";
-
 const HomePage = () => {
   return (
     <div className="main">
@@ -11,7 +10,7 @@ const HomePage = () => {
             <div className="col">
               <div className="typewriter">
                 <h1
-                  
+
                   style={{
                     color: "white"
                   }}
@@ -24,7 +23,7 @@ const HomePage = () => {
           <div className="row">
             <div className="col">
               <div className="search" >
-              <SearchBar />
+                <SearchBar />
               </div>
             </div>
           </div>
