@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
-import { fetchRecipes } from "../../redux/actions";
+import { fetchRecipesByIngredients } from "../../redux/actions";
 
 class SearchBar extends Component {
   state = {
@@ -101,7 +101,8 @@ class SearchBar extends Component {
 
   handleDelete = item => {
     this.setState({
-      items: this.state.items.filter(i => i !== item)
+      items: this.state.items.filter(i => i !== item),
+      itemsID: this.state.itemsID.filter(i => i !== item.id)
     });
   };
 
@@ -183,7 +184,7 @@ class SearchBar extends Component {
           <div className="tag-item" key={idx}>
             {item.name}
             <button
-            id="cancel"
+              id="cancel"
               type="button"
               className="button"
               onClick={() => this.handleDelete(item)}
@@ -212,7 +213,7 @@ const mapStateToProps = state => ({
 });
 
 const mapDispatchToProps = dispatch => ({
-  fetch: items => dispatch(fetchRecipes(items))
+  fetch: items => dispatch(fetchRecipesByIngredients(items))
 });
 
 export default connect(
