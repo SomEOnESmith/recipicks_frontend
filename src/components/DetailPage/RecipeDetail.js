@@ -1,10 +1,11 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
-import Loading from "../Loading";
 
 // Components
+import Loading from "../Loading";
 import Step from "./Step";
 
+// Actions
 import { fetchRecipe } from "../../redux/actions";
 
 class RecipeDetail extends Component {

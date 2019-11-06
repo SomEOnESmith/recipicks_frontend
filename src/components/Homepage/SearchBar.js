@@ -1,8 +1,13 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
-import { fetchRecipes } from "../../redux/actions";
 import Fuse from "fuse.js";
+
+// Components
 import FilterButton from "./FilterModal";
+
+// Actions
+import { fetchRecipes } from "../../redux/actions";
+
 const fuseOptions = {
   shouldSort: true,
   threshold: 0.4,

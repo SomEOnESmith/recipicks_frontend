@@ -1,7 +1,9 @@
 import React, { Component } from "react";
-import Modal from "react-responsive-modal";
-import filterIcon from "../../assets/filter.png";
 import { connect } from "react-redux";
+import Modal from "react-responsive-modal";
+
+// Images
+import filterIcon from "../../assets/filter.png";
 
 class FilterView extends Component {
   state = {

@@ -1,11 +1,11 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import { Link, Redirect } from "react-router-dom";
+
+// Components
 import Loading from "../Loading";
 
 class Profile extends Component {
-
-
   render() {
     const user = this.props.user;
     const profile = this.props.profile;
@@ -17,12 +17,12 @@ class Profile extends Component {
       if (loading) {
         return <Loading />;
       } else {
-
         return (
-
           <div className="card col-6 mx-auto p-0" style={{ marginTop: "10%" }}>
             <section id="overlay" className="single-section">
-              <h1 id="my-cart" className="mt-5" style={{ fontSize: "3em" }}>My Profile</h1>
+              <h1 id="my-cart" className="mt-5" style={{ fontSize: "3em" }}>
+                My Profile
+              </h1>
             </section>
             <div className="jumbotron">
               <p> Username: {profile.user.username}</p>
@@ -33,7 +33,6 @@ class Profile extends Component {
               <p> Gender: {profile.gender} </p>
               <p> Phone: {profile.phone} </p>
             </div>
-
 
             <br />
             <Link to="/edit-profile">

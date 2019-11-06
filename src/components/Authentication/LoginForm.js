@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import { Link, Redirect } from "react-router-dom";
 import { connect } from "react-redux";
 
-//Actions
+// Actions
 import { login, resetErrors } from "../../redux/actions";
 
 class LoginForm extends Component {

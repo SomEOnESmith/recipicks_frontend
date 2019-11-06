@@ -1,4 +1,6 @@
 import React from "react";
+
+// Images
 import loadingIcon from "../assets/Yx9l.gif";
 
 const Loading = () => (

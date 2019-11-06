@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import { Link, Redirect } from "react-router-dom";
 import { connect } from "react-redux";
 
-//Actions
+// Actions
 import { signup, resetErrors } from "../../redux/actions";
 
 class SignupForm extends Component {
@@ -70,7 +70,11 @@ class SignupForm extends Component {
           </form>
         </div>
         <div className="card-footer">
-          <Link id="nav-link-auth" to="/login" className="btn btn-small btn-link">
+          <Link
+            id="nav-link-auth"
+            to="/login"
+            className="btn btn-small btn-link"
+          >
             I'm already registered!
           </Link>
         </div>

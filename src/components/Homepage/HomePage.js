@@ -1,4 +1,6 @@
 import React from "react";
+
+// Components
 import SearchBar from "./SearchBar";
 import RecipesList from "../ListPage/RecipesList";
 

@@ -1,8 +1,12 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import { Redirect } from "react-router-dom";
-import * as actionCreators from "../../redux/actions";
+
+// Components
 import Loading from "../Loading";
+
+// Actions
+import { editProfile, resetErrors } from "../../redux/actions";
 
 class EditProfile extends Component {
   state = {
@@ -168,8 +172,8 @@ const mapStateToProps = state => ({
 const mapDispatchToProps = dispatch => {
   return {
     editProfile: (userDate, history) =>
-      dispatch(actionCreators.editProfile(userDate, history)),
-    resetErrors: () => dispatch(actionCreators.resetErrors())
+      dispatch(editProfile(userDate, history)),
+    resetErrors: () => dispatch(resetErrors())
   };
 };
 
