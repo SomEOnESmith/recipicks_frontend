@@ -1,7 +1,5 @@
-export { fetchRecipes } from "./recipes";
-export { fetchRecipeDetail } from "./recipe";
-export { fetchIngredients } from "./ingredients";
-export { fetchCuisines } from "./cuisines";
+export { fetchRecipes, fetchRecipe } from "./recipes";
+export { fetchCuisines, fetchIngredients } from "./filters";
 export {
   login,
   logout,
