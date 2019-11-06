@@ -9,12 +9,58 @@
   background-color: rgba(0, 0, 0, 0.75);
 }
 
+.header-detail {
+  display: flex;
+  align-content: stretch;
+  justify-content: center;
+  height: 60vh;
+  position: relative;
+  background-image: url("../img/chalkboard-texture.jpg");
+
+  background-color: rgba(0, 0, 0, 0.75);
+}
+
+#detail-row {
+  width: 400px;
+}
+
 #main {
   background-color: transparent;
 }
 
+#main-detail {
+  background-color: transparent;
+  color: white;
+}
+
+#cuisine-time {
+  padding-top: 5px;
+}
+
+.ingredients {
+  background-color: #f0eceb;
+  width: 350px;
+  padding: 20px;
+}
+
+#col-right {
+  position: relative;
+  top: 110px;
+  right: 80px;
+  
+}
+.ingredient {
+  padding-bottom: 10px;
+  padding-left: 20px;
+}
+
 #title-part {
   width: 800px;
+}
+
+.detail-header {
+  height: 400px;
+  background-color: black;
 }
 
 .navbar {
@@ -51,6 +97,11 @@
   background-color: rgba(0, 0, 0, 0.75);
 }
 
+.name-detail {
+  width: 400px;
+  font-size: 40px;
+  font-weight: bold;
+}
 .recipe-container {
   display: flex;
   align-content: center;
@@ -60,9 +111,6 @@
   box-shadow: rgba(0, 0, 0, 0.5);
 }
 
-#spacing {
-  text-align: center;
-}
 .typewriter h1 {
   /* overflow: hidden; Ensures the content is not revealed until the animation */
   /* border-right: 0.15em solid orange; The typwriter cursor */
@@ -79,14 +127,28 @@
   /* left: 400px; */
 }
 
+#spacing {
+  color: black;
+}
 #suggest_item {
   background-color: orange;
   border: 1px solid white;
 }
 
+.name-padding {
+  padding-bottom: 20px;
+}
+
+
+
 #suggest_item:hover {
   background-color: black;
   color: white;
+}
+
+#bold {
+  font-weight: bold;
+  font-size: 17px;
 }
 
 #suggest_btn {
@@ -318,4 +380,13 @@ hr {
 #recipe-detail {
   position: relative;
   right: 50px;
+}
+
+.ingredients {
+  font-size: 18px;
+  padding-left: 10px;
+}
+
+.detailBG {
+  padding-bottom: 40px;
 }

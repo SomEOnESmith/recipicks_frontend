@@ -6,46 +6,59 @@ import RecipeCard from "./RecipeCard";
 
 class RecipesList extends Component {
   render() {
-    console.log("TCL: RecipesList -> render -> recipes", this.props.recipes);
-    const exact = this.props.recipes.exact_match.map(recipe => (
-      <RecipeCard key={recipe.id} recipe={recipe} />
-    ));
-    const excess = this.props.recipes.user_has_excess_ingredients.map(
-      recipe => <RecipeCard key={recipe.id} recipe={recipe} />
-    );
-    const missing = this.props.recipes.user_has_missing_ingredients.map(
-      recipe => <RecipeCard key={recipe.id} recipe={recipe} />
-    );
-    return (
-      <div id="recipe-list" className="container">
-        <div className="row" id="card-row">
-          {exact.length !== 0 && (
-            <>
-              <h3 style={{ color: "yellow" }}>
-                I have the exact amount of ingredients:
-              </h3>
-              {exact}
-            </>
-          )}
-          {excess.length !== 0 && (
-            <>
-              <h3 style={{ color: "yellow" }}>
-                I have an excess amount of ingredients:
-              </h3>
-              {excess}
-            </>
-          )}
-          {missing.length !== 0 && (
-            <>
-              <h3 style={{ color: "yellow" }}>
-                I am missing some ingredients:{" "}
-              </h3>
-              {missing}
-            </>
-          )}
+    const { recipes } = this.props;
+    if (Array.isArray(recipes)) {
+      const list = recipes.map(recipe => (
+        <RecipeCard key={recipe.id} recipe={recipe} />
+      ));
+      return (
+        <div id="recipe-list" className="container">
+          <div className="row" id="card-row">
+            {list}
+          </div>
         </div>
-      </div>
-    );
+      );
+    } else {
+      const exact = recipes.perfect_match.map(recipe => (
+        <RecipeCard key={recipe.id} recipe={recipe} />
+      ));
+      const excess = recipes.user_excess_ings.map(recipe => (
+        <RecipeCard key={recipe.id} recipe={recipe} />
+      ));
+      const missing = recipes.user_missing_ings.map(recipe => (
+        <RecipeCard key={recipe.id} recipe={recipe} />
+      ));
+      return (
+        <div id="recipe-list" className="container">
+          <div className="row" id="card-row">
+            {exact.length !== 0 && (
+              <>
+                <h3 style={{ color: "yellow" }}>
+                  I have the exact amount of ingredients:
+                </h3>
+                {exact}
+              </>
+            )}
+            {excess.length !== 0 && (
+              <>
+                <h3 style={{ color: "yellow" }}>
+                  I have an excess amount of ingredients:
+                </h3>
+                {excess}
+              </>
+            )}
+            {missing.length !== 0 && (
+              <>
+                <h3 style={{ color: "yellow" }}>
+                  I am missing some ingredients:{" "}
+                </h3>
+                {missing}
+              </>
+            )}
+          </div>
+        </div>
+      );
+    }
   }
 }
 

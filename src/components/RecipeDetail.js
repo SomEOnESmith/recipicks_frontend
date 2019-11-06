@@ -1,9 +1,9 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
+import { Carousel } from "react-responsive-carousel";
 import Loading from "./Loading";
 
 // Components
-import Ingredient from "./Ingredient";
 import Step from "./Step";
 
 import { fetchRecipeDetail } from "../redux/actions";
@@ -20,67 +20,66 @@ class RecipeDetail extends Component {
       const recipe = this.props.recipe;
 
       const meal = recipe.meal.map(meal => {
-        return meal.name;
+        return <li> {meal.name}</li>;
       });
 
       const course = recipe.course.map(course => {
-        return course.name;
+        return <li> {course.name} </li>;
       });
 
-      const ingredients = recipe.ingredients.map(ingredient => (
-        <Ingredient ingredient={ingredient} />
-      ));
+      const ingredients = recipe.ingredients.map(ingredient => {
+        return (
+          <li
+            style={{
+              paddingLeft: 22
+            }}
+          >
+            {ingredient.name}
+          </li>
+        );
+      });
 
       const steps = recipe.steps.map(step => <Step step={step} />);
 
       return (
-        <div>
+        <div className="detailBG">
+          <div className="main-detail">
+            <section className="header-detail">
+              <div className="header-container">
+                <div className="conatiner"></div>
+              </div>
+            </section>
+          </div>
           <div id="detail-space" className="container">
             <div className="row">
               <div className="col">
-                <h2>{recipe.title}</h2>
+                <h2 className="name-padding">{recipe.title}</h2>
                 <div className="container">
-                  <div className="row">
-                    <div className="col-3">
+                  <div id="RecipeInfo" className="row">
+                    <div id="RecipeInfoLine" className="col-4">
                       <p id="spacing">
-                        <img
-                          src="https://img.icons8.com/small/16/000000/halal-food.png"
-                          alt=""
-                        ></img>
-                        {recipe.cuisine.name}
+                        <span id="bold"> Cuisine: </span>{" "}
+                        <li>{recipe.cuisine.name}</li>
+                      </p>
+                      <p id="spacing">
+                        <span id="bold"> Total: </span> <li>15 min</li>
                       </p>
                     </div>
-                    <div className="col-3">
+                    <div id="RecipeInfoLine" className="col-4">
                       <p id="spacing">
-                        <img
-                          src="https://img.icons8.com/small/16/000000/pizza.png"
-                          alt=""
-                        ></img>
-                        {meal}
+                        <span id="bold"> Meal: </span> {meal}
                       </p>
                     </div>
-                    <div className="col-3">
+                    <div className="col-4">
                       <p id="spacing">
-                        <img
-                          src="https://img.icons8.com/small/16/000000/pizza.png"
-                          alt=""
-                        ></img>
-                        {course}
-                      </p>
-                    </div>
-                    <div className="col-3">
-                      <p id="spacing">
-                        <img
-                          src="https://img.icons8.com/small/16/000000/alarm-clock.png"
-                          alt=""
-                        ></img>
-                        15 min
+                        {" "}
+                        <span id="bold"> Course: </span> {course}
                       </p>
                     </div>
                   </div>
                 </div>
                 <br />
-                <h4>WHY THIS RECIPE WORKS?</h4>
+                <h4>DESCRIPTION</h4>
 
                 <hr />
                 {recipe.description}
@@ -91,7 +90,7 @@ class RecipeDetail extends Component {
                   style={{
                     height: 300,
                     width: 500,
-                    borderRadius: 30
+                    borderRadius: 15
                   }}
                   src={recipe.image}
                   alt=""

@@ -17,7 +17,7 @@ function App({ loading }) {
   if (loading) return <Loading />;
   return (
     <div className="app">
-      <NavBar />
+      {/* <NavBar /> */}
       <Switch>
         <Route exact path="/recipes/:recipeID" component={RecipeDetail} />
         <Route path="/recipes" component={RecipesList} />

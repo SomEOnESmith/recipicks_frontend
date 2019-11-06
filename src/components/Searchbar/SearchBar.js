@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
-import { fetchRecipesByIngredients } from "../../redux/actions";
+import { fetchRecipes } from "../../redux/actions";
 import Fuse from "fuse.js";
 import FilterButton from "./FilterView"
 const fuseOptions = {
@@ -47,6 +47,7 @@ class SearchBar extends Component {
           this.filterIngredients()
         );
         this.setState({ suggestedItems: newSuggestedItems });
+        this.props.fetch(this.state.itemsID);
       }
     }
   };
@@ -57,6 +58,7 @@ class SearchBar extends Component {
         items: this.state.items.concat(item),
         itemsID: this.state.itemsID.concat(item.id)
       });
+      this.props.fetch(this.state.itemsID);
       if (!this.state.value) {
         const newSuggestedItems = this.randomIngredients(
           this.filterIngredients()
@@ -223,7 +225,7 @@ const mapStateToProps = state => ({
 });
 
 const mapDispatchToProps = dispatch => ({
-  fetch: items => dispatch(fetchRecipesByIngredients(items))
+  fetch: ingredients => dispatch(fetchRecipes("", [], [], ingredients))
 });
 
 export default connect(
