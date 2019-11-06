@@ -4,9 +4,6 @@ import { Link } from "react-router-dom";
 class RecipeCard extends Component {
   render() {
     const recipe = this.props.recipe;
-    // const msg = this.props.exactmsg;
-    console.log("recipe!!!!!!!!", recipe);
-    // console.log("msg-------", msg);
     return (
       <>
         <div
