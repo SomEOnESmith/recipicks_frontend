@@ -1,11 +1,7 @@
 import { FETCH_RECIPES } from "../actions/actionTypes";
 
 const initialState = {
-  recipes: {
-    perfectMatch: [],
-    userExcess: [],
-    userMissing: []
-  },
+  recipes: [],
   loading: true
 };
 

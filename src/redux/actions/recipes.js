@@ -1,16 +1,22 @@
 import { FETCH_RECIPES } from "./actionTypes";
 import instance from "./instance";
 
-export const fetchRecipes = ingredients => async dispatch => {
+export const fetchRecipes = (
+  cuisine,
+  meal,
+  course,
+  ingredients
+) => async dispatch => {
   try {
-    const res = await instance.get("recipes/ingredients/", {
-      params: { ingredients: ingredients }
+    const res = await instance.get("recipes/", {
+      params: {
+        ingredients: ingredients,
+        cuisine: cuisine,
+        meal: meal,
+        course: course
+      }
     });
-    const recipes = {
-      perfectMatch: res.data.perfect_match,
-      userExcess: res.data.user_excess_ings,
-      userMissing: res.data.user_missing_ings
-    };
+    const recipes = res.data;
     dispatch({ type: FETCH_RECIPES, payload: recipes });
   } catch (error) {
     console.error(error);
