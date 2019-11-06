@@ -38,7 +38,11 @@ class FilterView extends Component {
     let cuisineOptions;
     if (this.props.loadingCuisines === false) {
       cuisineOptions = cuisines.map(cuisine => {
-        return <option value={cuisine.id}>{cuisine.name}</option>;
+        return (
+          <option value={cuisine.id} key={cuisine.id}>
+            {cuisine.name}
+          </option>
+        );
       });
     }
 
@@ -50,6 +54,7 @@ class FilterView extends Component {
         >
           <img
             src={filterIcon}
+            alt=""
             style={{
               backgroundColor: "transparent",
               height: "30px",
@@ -138,8 +143,8 @@ class FilterView extends Component {
 
 const mapStateToProps = state => {
   return {
-    loadingCuisines: state.rootCuisines.loading,
-    cuisines: state.rootCuisines.cuisines
+    loadingCuisines: state.rootFilters.loading,
+    cuisines: state.rootFilters.cuisines
   };
 };
 

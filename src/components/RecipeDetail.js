@@ -1,16 +1,15 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
-import { Carousel } from "react-responsive-carousel";
 import Loading from "./Loading";
 
 // Components
 import Step from "./Step";
 
-import { fetchRecipeDetail } from "../redux/actions";
+import { fetchRecipe } from "../redux/actions";
 
 class RecipeDetail extends Component {
   componentDidMount() {
-    this.props.fetchRecipeDetail(this.props.match.params.recipeID);
+    this.props.fetchRecipe(this.props.match.params.recipeID);
   }
 
   render() {
@@ -58,7 +57,7 @@ class RecipeDetail extends Component {
                   <div id="RecipeInfo" className="row">
                     <div id="RecipeInfoLine" className="col-4">
                       <p id="spacing">
-                        <span id="bold"> Cuisine: </span>{" "}
+                        <span id="bold"> Cuisine: </span>
                         <li>{recipe.cuisine.name}</li>
                       </p>
                       <p id="spacing">
@@ -72,7 +71,6 @@ class RecipeDetail extends Component {
                     </div>
                     <div className="col-4">
                       <p id="spacing">
-                        {" "}
                         <span id="bold"> Course: </span> {course}
                       </p>
                     </div>
@@ -118,14 +116,14 @@ class RecipeDetail extends Component {
 
 const mapStateToProps = state => {
   return {
-    recipe: state.rootRecipe.recipe,
-    loading: state.rootRecipe.loading
+    recipe: state.rootRecipes.recipe,
+    loading: state.rootRecipes.loading
   };
 };
 
 const mapDispatchToProps = dispatch => {
   return {
-    fetchRecipeDetail: recipeID => dispatch(fetchRecipeDetail(recipeID))
+    fetchRecipe: recipeID => dispatch(fetchRecipe(recipeID))
   };
 };
 

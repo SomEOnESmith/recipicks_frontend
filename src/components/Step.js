@@ -9,7 +9,7 @@ class Step extends Component {
           <p>
             <span style={{ fontWeight: "bold", color: "black" }}>
               0{step.order}.
-            </span>{" "}
+            </span>
             {step.instruction}
           </p>
         </div>

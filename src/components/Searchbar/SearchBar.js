@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 import { fetchRecipes } from "../../redux/actions";
 import Fuse from "fuse.js";
-import FilterButton from "./FilterView"
+import FilterButton from "./FilterView";
 const fuseOptions = {
   shouldSort: true,
   threshold: 0.4,
@@ -34,7 +34,7 @@ class SearchBar extends Component {
       let value = this.state.value.trim();
 
       if (value && this.isValid(value)) {
-        const theItem = this.props.ingredientsReducer.ingredients.find(
+        const theItem = this.props.ingredients.ingredients.find(
           ingredient => ingredient.name === value
         );
         const newItems = this.state.items.concat(theItem);
@@ -75,7 +75,7 @@ class SearchBar extends Component {
   };
 
   filterIngredients = () => {
-    return this.props.ingredientsReducer.ingredients.filter(
+    return this.props.ingredients.ingredients.filter(
       ingredient => !this.state.items.includes(ingredient)
     );
   };
@@ -96,7 +96,7 @@ class SearchBar extends Component {
   };
 
   handleChange = async evt => {
-    const { ingredients } = this.props.ingredientsReducer;
+    const { ingredients } = this.props.ingredients;
     const fuse = new Fuse(ingredients, fuseOptions);
     const suggest = evt.target.value
       ? fuse.search(evt.target.value).slice(0, 10)
@@ -154,7 +154,7 @@ class SearchBar extends Component {
   }
 
   isInIngredients(ingredient) {
-    return this.props.ingredientsReducer.ingredients
+    return this.props.ingredients.ingredients
       .map(ing => ing.name.toLowerCase())
       .includes(ingredient.toLowerCase());
   }
@@ -174,9 +174,19 @@ class SearchBar extends Component {
             </button>
           </div>
         ))}
-        <div className="row" style={{ backgroundColor: "#D00635", borderRadius: "35px", height: "70px", paddingBottom: "5px" }}>
-
-          <div className="col-1" style={{ paddingTop: "20px", paddingLeft: "15px", height: "50px", }}>
+        <div
+          className="row"
+          style={{
+            backgroundColor: "#D00635",
+            borderRadius: "35px",
+            height: "70px",
+            paddingBottom: "5px"
+          }}
+        >
+          <div
+            className="col-1"
+            style={{ paddingTop: "20px", paddingLeft: "15px", height: "50px" }}
+          >
             <FilterButton />
           </div>
           <div className="col-11">
@@ -188,7 +198,6 @@ class SearchBar extends Component {
               onChange={this.handleChange}
               style={{ borderRadius: "25px" }}
             />
-
           </div>
         </div>
         {/* This needs to be inside input onPaste="This needs to be a function" */}
@@ -221,7 +230,7 @@ class SearchBar extends Component {
 }
 
 const mapStateToProps = state => ({
-  ingredientsReducer: state.rootIngredients
+  ingredients: state.rootFilters
 });
 
 const mapDispatchToProps = dispatch => ({

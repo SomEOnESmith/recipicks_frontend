@@ -50,7 +50,7 @@ class RecipesList extends Component {
             {missing.length !== 0 && (
               <>
                 <h3 style={{ color: "yellow" }}>
-                  I am missing some ingredients:{" "}
+                  I am missing some ingredients:
                 </h3>
                 {missing}
               </>
