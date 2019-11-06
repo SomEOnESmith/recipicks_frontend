@@ -10,39 +10,20 @@ class RecipesList extends Component {
     const exact = this.props.recipes.exact_match.map(recipe => (
       <RecipeCard key={recipe.id} recipe={recipe} />
     ));
+    console.log("exact!!!!!", exact);
     const excess = this.props.recipes.user_has_excess_ingredients.map(
       recipe => <RecipeCard key={recipe.id} recipe={recipe} />
     );
     const missing = this.props.recipes.user_has_missing_ingredients.map(
       recipe => <RecipeCard key={recipe.id} recipe={recipe} />
     );
+    console.log("missing!!!!!", missing);
     return (
       <div id="recipe-list" className="container">
         <div className="row" id="card-row">
-          {exact.length !== 0 && (
-            <>
-              <h3 style={{ color: "yellow" }}>
-                I have the exact amount of ingredients:
-              </h3>
-              {exact}
-            </>
-          )}
-          {excess.length !== 0 && (
-            <>
-              <h3 style={{ color: "yellow" }}>
-                I have an excess amount of ingredients:
-              </h3>
-              {excess}
-            </>
-          )}
-          {missing.length !== 0 && (
-            <>
-              <h3 style={{ color: "yellow" }}>
-                I am missing some ingredients:{" "}
-              </h3>
-              {missing}
-            </>
-          )}
+          {exact.length !== 0 && <>{exact}</>}
+          {excess.length !== 0 && <>{excess}</>}
+          {missing.length !== 0 && <>{missing}</>}
         </div>
       </div>
     );

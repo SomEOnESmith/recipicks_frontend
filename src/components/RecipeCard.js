@@ -4,6 +4,9 @@ import { Link } from "react-router-dom";
 class RecipeCard extends Component {
   render() {
     const recipe = this.props.recipe;
+    // const msg = this.props.exactmsg;
+    console.log("recipe!!!!!!!!", recipe);
+    // console.log("msg-------", msg);
     return (
       <>
         <div
@@ -13,8 +16,9 @@ class RecipeCard extends Component {
           className="card my-3"
           id="recipe-card"
         >
+          <span class="badge badge-success">Success</span>
           <img
-            src={recipe.image}
+            src={`http://127.0.0.1:8000${recipe.image}`}
             id="card-img"
             className="card-img-top"
             alt="..."
