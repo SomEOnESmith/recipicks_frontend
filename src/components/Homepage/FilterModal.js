@@ -3,7 +3,7 @@ import { connect } from "react-redux";
 import Modal from "react-responsive-modal";
 
 // Images
-import filterIcon from "../../assets/filter.png";
+import filterIcon from "../../assets/modernFilter.png";
 
 class FilterView extends Component {
   state = {
@@ -59,8 +59,7 @@ class FilterView extends Component {
             alt=""
             style={{
               backgroundColor: "transparent",
-              height: "30px",
-              width: "27px"
+              height: "35px"
             }}
           />
         </button>
@@ -68,7 +67,10 @@ class FilterView extends Component {
         <Modal
           open={open}
           onClose={this.onCloseModal}
-          styles={{ modal: {}, overlay: { background: "transparent" } }}
+          styles={{
+            modal: {},
+            overlay: { background: "rgba(15, 15, 15, 0.88)" }
+          }}
         >
           <div
             style={{
