@@ -14,8 +14,10 @@ class RecipeCard extends Component {
       span = (
         <span class="badge badge-warning">excess amount of ingredients</span>
       );
-    } else {
+    } else if (icon === "missing") {
       span = <span class="badge badge-danger">missing some ingredients</span>;
+    } else {
+      span = <></>;
     }
 
     return (

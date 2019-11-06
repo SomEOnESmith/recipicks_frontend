@@ -14,7 +14,7 @@ class RecipesList extends Component {
       ));
       return (
         <div id="recipe-list" className="container">
-          <div className="row" id="card-row">
+          <div type={"all"} className="row" id="card-row">
             {list}
           </div>
         </div>
