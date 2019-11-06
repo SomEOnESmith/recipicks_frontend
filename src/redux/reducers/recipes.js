@@ -1,13 +1,8 @@
 import { FETCH_RECIPES } from "../actions/actionTypes";
 
 const initialState = {
-  recipes: {
-    perfectMatch: [],
-    userExcess: [],
-    userMissing: []
-  },
-  loading: true,
-
+  recipes: [],
+  loading: true
 };
 
 const reducer = (state = initialState, action) => {

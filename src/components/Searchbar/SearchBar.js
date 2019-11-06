@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 import { fetchRecipes } from "../../redux/actions";
 import Fuse from "fuse.js";
-
+import FilterButton from "./FilterView"
 const fuseOptions = {
   shouldSort: true,
   threshold: 0.4,
@@ -47,6 +47,7 @@ class SearchBar extends Component {
           this.filterIngredients()
         );
         this.setState({ suggestedItems: newSuggestedItems });
+        this.props.fetch(this.state.itemsID);
       }
     }
   };
@@ -57,6 +58,7 @@ class SearchBar extends Component {
         items: this.state.items.concat(item),
         itemsID: this.state.itemsID.concat(item.id)
       });
+      this.props.fetch(this.state.itemsID);
       if (!this.state.value) {
         const newSuggestedItems = this.randomIngredients(
           this.filterIngredients()
@@ -172,14 +174,23 @@ class SearchBar extends Component {
             </button>
           </div>
         ))}
+        <div className="row" style={{ backgroundColor: "#D00635", borderRadius: "35px", height: "70px", paddingBottom: "5px" }}>
 
-        <input
-          className={"input " + (this.state.error && " has-error")}
-          value={this.state.value}
-          placeholder="Type or paste ingredients and press 'Enter'..."
-          onKeyDown={this.handleKeyDown}
-          onChange={this.handleChange}
-        />
+          <div className="col-1" style={{ paddingTop: "20px", paddingLeft: "15px", height: "50px", }}>
+            <FilterButton />
+          </div>
+          <div className="col-11">
+            <input
+              className={"input " + (this.state.error && " has-error")}
+              value={this.state.value}
+              placeholder="Type or paste ingredients and press 'Enter'..."
+              onKeyDown={this.handleKeyDown}
+              onChange={this.handleChange}
+              style={{ borderRadius: "25px" }}
+            />
+
+          </div>
+        </div>
         {/* This needs to be inside input onPaste="This needs to be a function" */}
         {this.state.items.map((item, idx) => (
           <div className="tag-item" key={idx}>
@@ -214,7 +225,7 @@ const mapStateToProps = state => ({
 });
 
 const mapDispatchToProps = dispatch => ({
-  fetch: ingredients => dispatch(fetchRecipes(ingredients))
+  fetch: ingredients => dispatch(fetchRecipes("", [], [], ingredients))
 });
 
 export default connect(
