@@ -214,7 +214,7 @@ const mapStateToProps = state => ({
 });
 
 const mapDispatchToProps = dispatch => ({
-  fetch: ingredients => dispatch(fetchRecipes(ingredients))
+  fetch: ingredients => dispatch(fetchRecipes("", [], [], ingredients))
 });
 
 export default connect(
