@@ -6,18 +6,15 @@ import RecipeCard from "./RecipeCard";
 
 class RecipesList extends Component {
   render() {
-    console.log("TCL: RecipesList -> render -> recipes", this.props.recipes);
-    const exact = this.props.recipes.exact_match.map(recipe => (
+    const exact = this.props.recipes.perfectMatch.map(recipe => (
       <RecipeCard key={recipe.id} recipe={recipe} />
     ));
-    console.log("exact!!!!!", exact);
-    const excess = this.props.recipes.user_has_excess_ingredients.map(
-      recipe => <RecipeCard key={recipe.id} recipe={recipe} />
-    );
-    const missing = this.props.recipes.user_has_missing_ingredients.map(
-      recipe => <RecipeCard key={recipe.id} recipe={recipe} />
-    );
-    console.log("missing!!!!!", missing);
+    const excess = this.props.recipes.userExcess.map(recipe => (
+      <RecipeCard key={recipe.id} recipe={recipe} />
+    ));
+    const missing = this.props.recipes.userMissing.map(recipe => (
+      <RecipeCard key={recipe.id} recipe={recipe} />
+    ));
     return (
       <div id="recipe-list" className="container">
         <div className="row" id="card-row">

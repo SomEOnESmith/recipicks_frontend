@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
-import { fetchRecipesByIngredients } from "../../redux/actions";
+import { fetchRecipes } from "../../redux/actions";
 import Fuse from "fuse.js";
 
 const fuseOptions = {
@@ -214,7 +214,7 @@ const mapStateToProps = state => ({
 });
 
 const mapDispatchToProps = dispatch => ({
-  fetch: items => dispatch(fetchRecipesByIngredients(items))
+  fetch: ingredients => dispatch(fetchRecipes(ingredients))
 });
 
 export default connect(
