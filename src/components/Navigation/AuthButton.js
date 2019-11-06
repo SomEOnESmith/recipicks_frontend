@@ -1,7 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import { connect } from "react-redux";
-import Logout from "../Logout/Logout";
+import Logout from "../Authentication/Logout";
 
 const AuthButton = ({ user, profile }) => {
   let buttons = [

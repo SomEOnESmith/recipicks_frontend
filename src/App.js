@@ -3,9 +3,9 @@ import { Switch, Route, Redirect, withRouter } from "react-router-dom";
 import { connect } from "react-redux";
 
 // Components
-import RecipeDetail from "./components/RecipeDetail";
-import LoginForm from "./components/Login/LoginForm";
-import SignupForm from "./components/Signup/SignupForm";
+import RecipeDetail from "./components/DetailPage/RecipeDetail";
+import LoginForm from "./components/Authentication/LoginForm";
+import SignupForm from "./components/Authentication/SignupForm";
 import NavBar from "./components/Navigation/NavBar";
 import Home from "./components/Homepage/HomePage";
 import Profile from "./components/Profile/Profile";

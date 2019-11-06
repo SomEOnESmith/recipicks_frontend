@@ -35,7 +35,7 @@ class RecipeCard extends Component {
             id="card-img"
             className="card-img-top"
             alt="..."
-          ></img>
+          />
 
           <div className="card-body">
             <Link to={`/recipes/${recipe.id}`}>
@@ -51,7 +51,7 @@ class RecipeCard extends Component {
                   <img
                     src="https://img.icons8.com/small/16/000000/halal-food.png"
                     alt=""
-                  ></img>
+                  />
                   American
                 </p>
               </div>
@@ -60,7 +60,7 @@ class RecipeCard extends Component {
                   <img
                     src="https://img.icons8.com/small/16/000000/pizza.png"
                     alt=""
-                  ></img>
+                  />
                   Dinner
                 </p>
               </div>
@@ -69,7 +69,7 @@ class RecipeCard extends Component {
                   <img
                     src="https://img.icons8.com/small/16/000000/alarm-clock.png"
                     alt=""
-                  ></img>
+                  />
                   15 min
                 </p>
               </div>
