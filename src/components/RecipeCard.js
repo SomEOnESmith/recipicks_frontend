@@ -18,7 +18,7 @@ class RecipeCard extends Component {
         >
           <span class="badge badge-success">Success</span>
           <img
-            src={`http://127.0.0.1:8000${recipe.image}`}
+            src={recipe.image}
             id="card-img"
             className="card-img-top"
             alt="..."
