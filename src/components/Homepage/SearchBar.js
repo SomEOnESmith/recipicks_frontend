@@ -5,6 +5,9 @@ import Fuse from "fuse.js";
 // Components
 import FilterButton from "./FilterModal";
 
+//Assets
+import searchIcon from "../../assets/search.png";
+
 // Actions
 import { fetchRecipes } from "../../redux/actions";
 
@@ -189,20 +192,55 @@ class SearchBar extends Component {
           }}
         >
           <div
-            className="col-1"
-            style={{ paddingTop: "20px", paddingLeft: "15px", height: "50px" }}
+            className="col-2"
+            style={{ paddingTop: "18px", paddingLeft: "30px", height: "50px" }}
           >
             <FilterButton />
           </div>
-          <div className="col-11">
+          <div className="col-8">
             <input
               className={"input " + (this.state.error && " has-error")}
               value={this.state.value}
               placeholder="Type or paste ingredients and press 'Enter'..."
               onKeyDown={this.handleKeyDown}
               onChange={this.handleChange}
-              style={{ borderRadius: "25px" }}
+              style={{
+                borderRadius: "25px",
+                backgroundColor: "white",
+                borderColor: "transparent",
+                width: "840px",
+                position: "relative",
+                left: "-100px"
+              }}
             />
+          </div>
+
+          <div
+            className="col-2"
+            style={{
+              paddingTop: "17px",
+              height: "50px",
+              width: "50px",
+              position: "relative",
+              left: "80px"
+            }}
+          >
+            <button
+              id="suggest_btn"
+              style={{
+                backgroundColor: "transparent",
+                borderColor: "transparent"
+              }}
+              onClick={() => this.props.fetch(this.state.itemsID)}
+            >
+              <img
+                src={searchIcon}
+                style={{
+                  backgroundColor: "transparent",
+                  height: "30px"
+                }}
+              />{" "}
+            </button>
           </div>
         </div>
         {/* This needs to be inside input onPaste="This needs to be a function" */}
@@ -222,13 +260,6 @@ class SearchBar extends Component {
 
         {this.state.error && <p className="error">{this.state.error}</p>}
         <br />
-        <button
-          className="btn btn-info my-3 btn-block"
-          id="suggest_btn"
-          onClick={() => this.props.fetch(this.state.itemsID)}
-        >
-          Search
-        </button>
       </div>
     );
   }
