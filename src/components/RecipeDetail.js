@@ -34,7 +34,6 @@ class RecipeDetail extends Component {
               paddingLeft: 22
             }}
           >
-            {" "}
             {ingredient.name}
           </li>
         );
