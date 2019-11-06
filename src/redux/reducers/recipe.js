@@ -1,4 +1,4 @@
-import { FETCH_RECIPE_DETAIL } from "../actions/actionTypes";
+import { FETCH_RECIPE } from "../actions/actionTypes";
 
 const initialState = {
   recipe: null,
@@ -7,7 +7,7 @@ const initialState = {
 
 const reducer = (state = initialState, action) => {
   switch (action.type) {
-    case FETCH_RECIPE_DETAIL:
+    case FETCH_RECIPE:
       const recipe = action.payload;
       return {
         ...state,
