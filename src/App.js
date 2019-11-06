@@ -3,7 +3,6 @@ import { Switch, Route, Redirect, withRouter } from "react-router-dom";
 import { connect } from "react-redux";
 
 // Components
-import RecipesList from "./components/RecipesList";
 import RecipeDetail from "./components/RecipeDetail";
 import LoginForm from "./components/Login/LoginForm";
 import SignupForm from "./components/Signup/SignupForm";
@@ -20,7 +19,6 @@ function App({ loading }) {
       {/* <NavBar /> */}
       <Switch>
         <Route exact path="/recipes/:recipeID" component={RecipeDetail} />
-        <Route path="/recipes" component={RecipesList} />
         <Route path="/login" component={LoginForm} />
         <Route path="/signup" component={SignupForm} />
         <Route path="/profile" component={Profile} />
