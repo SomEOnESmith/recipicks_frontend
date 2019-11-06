@@ -47,7 +47,6 @@
   position: relative;
   top: 110px;
   right: 80px;
-  
 }
 .ingredient {
   padding-bottom: 10px;
@@ -105,7 +104,7 @@
 .recipe-container {
   display: flex;
   align-content: center;
-  justify-content: start;
+  justify-content: flex-start;
   padding-top: 100%;
   position: relative;
   box-shadow: rgba(0, 0, 0, 0.5);
@@ -138,8 +137,6 @@
 .name-padding {
   padding-bottom: 20px;
 }
-
-
 
 #suggest_item:hover {
   background-color: black;
@@ -183,8 +180,8 @@
   position: relative;
   padding: 20px;
   right: 20px;
-  margin-left: 250px;
-  margin-right: 250px;
+  margin-left: 80px;
+  margin-right: 80px;
 }
 
 #title-link {
@@ -201,11 +198,20 @@ hr {
 }
 
 #detail-space {
-  padding-top: 100px;
+  position: relative;
+  bottom: 200px;
+  left: 100px;
 }
 #recipe-list {
   position: relative;
   bottom: 150px;
+}
+
+#ingredients-box {
+  background-color: red;
+  padding-bottom: 30px;
+  padding-top: 30px;
+  width: 380px;
 }
 
 .image-container:hover .image-overlay {
@@ -299,7 +305,7 @@ hr {
 .recipe-wrapper {
   display: flex;
   align-content: center;
-  justify-content: start;
+  justify-content: flex-start;
   width: 100%;
   height: 100%;
   position: absolute;
@@ -385,8 +391,4 @@ hr {
 .ingredients {
   font-size: 18px;
   padding-left: 10px;
-}
-
-.detailBG {
-  padding-bottom: 40px;
 }

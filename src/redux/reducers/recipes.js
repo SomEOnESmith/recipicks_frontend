@@ -6,7 +6,8 @@ const initialState = {
     userExcess: [],
     userMissing: []
   },
-  loading: true
+  loading: true,
+
 };
 
 const reducer = (state = initialState, action) => {

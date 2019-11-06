@@ -1,6 +1,5 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
-import { Carousel } from "react-responsive-carousel";
 import Loading from "./Loading";
 
 // Components
