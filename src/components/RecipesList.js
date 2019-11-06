@@ -46,7 +46,6 @@ class RecipesList extends Component {
             )}
             {missing.length !== 0 && (
               <>
- 
                 {missing}
               </>
             )}

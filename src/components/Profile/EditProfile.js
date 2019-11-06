@@ -35,8 +35,6 @@ class EditProfile extends Component {
     }
   }
 
-
-
   submitHandler = e => {
     e.preventDefault();
 
@@ -46,7 +44,6 @@ class EditProfile extends Component {
   changeHandler = e => {
     this.setState({ [e.target.name]: e.target.value });
   };
-
 
   render() {
     const profile = this.props.profile;
@@ -75,7 +72,6 @@ class EditProfile extends Component {
             )}
 
             <p>
-              {" "}
               <b>First Name: </b> {profile.user.first_name}
             </p>
             <input
@@ -87,7 +83,6 @@ class EditProfile extends Component {
             />
             <br />
             <p>
-              {" "}
               <b>Last Name: </b>
               {profile.user.last_name}
             </p>
@@ -100,7 +95,6 @@ class EditProfile extends Component {
             />
             <br />
             <p>
-              {" "}
               <b>Email: </b> {profile.user.email}
             </p>
             <input
@@ -113,7 +107,6 @@ class EditProfile extends Component {
             />
             <br />
             <p>
-              {" "}
               <b>Phone: </b> {profile.user.phone}
             </p>
             <input
@@ -127,7 +120,12 @@ class EditProfile extends Component {
             <br />
             <div class="form-group rounded-pill">
               <label for="exampleFormControlSelect1">Gender:</label>
-              <select name="gender" onChange={this.changeHandler} class="form-control" id="exampleFormControlSelect1">
+              <select
+                name="gender"
+                onChange={this.changeHandler}
+                class="form-control"
+                id="exampleFormControlSelect1"
+              >
                 <option>choose gender</option>
                 <option>Male</option>
                 <option>Female</option>
@@ -135,7 +133,6 @@ class EditProfile extends Component {
             </div>
             <br />
             <p>
-              {" "}
               <b>Date of Birth: </b>
               {profile.date_of_birth}
             </p>
