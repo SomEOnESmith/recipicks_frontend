@@ -47,6 +47,7 @@ class SearchBar extends Component {
           this.filterIngredients()
         );
         this.setState({ suggestedItems: newSuggestedItems });
+        this.props.fetch(this.state.itemsID);
       }
     }
   };
@@ -57,6 +58,7 @@ class SearchBar extends Component {
         items: this.state.items.concat(item),
         itemsID: this.state.itemsID.concat(item.id)
       });
+      this.props.fetch(this.state.itemsID);
       if (!this.state.value) {
         const newSuggestedItems = this.randomIngredients(
           this.filterIngredients()
