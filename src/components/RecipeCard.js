@@ -4,6 +4,22 @@ import { Link } from "react-router-dom";
 class RecipeCard extends Component {
   render() {
     const recipe = this.props.recipe;
+    const icon = this.props.type;
+    let span;
+    if (icon === "exact") {
+      span = (
+        <span class="badge badge-success">exact amount of ingredients</span>
+      );
+    } else if (icon === "excess") {
+      span = (
+        <span class="badge badge-warning">excess amount of ingredients</span>
+      );
+    } else if (icon === "missing") {
+      span = <span class="badge badge-danger">missing some ingredients</span>;
+    } else {
+      span = <></>;
+    }
+
     return (
       <>
         <div
@@ -13,7 +29,7 @@ class RecipeCard extends Component {
           className="card my-3"
           id="recipe-card"
         >
-          <span class="badge badge-success">Success</span>
+          {span}
           <img
             src={recipe.image}
             id="card-img"
