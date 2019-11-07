@@ -3,17 +3,17 @@ import instance from "./instance";
 
 export const fetchRecipes = (
   cuisine,
-  meal,
-  course,
+  meals,
+  courses,
   ingredients
 ) => async dispatch => {
   try {
     const res = await instance.get("recipes/", {
       params: {
-        ingredients: ingredients,
+        ingredients: JSON.stringify(ingredients),
         cuisine: cuisine,
-        meal: meal,
-        course: course
+        meals: JSON.stringify(meals),
+        courses: JSON.stringify(courses)
       }
     });
     const recipes = res.data;
