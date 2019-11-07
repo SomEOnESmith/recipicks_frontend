@@ -36,9 +36,9 @@ class FilterView extends Component {
 
   render() {
     const { open } = this.state;
-    const { cuisines } = this.props;
+    const { cuisines } = this.props.filters;
     let cuisineOptions;
-    if (this.props.loadingCuisines === false) {
+    if (this.props.loading === false) {
       cuisineOptions = cuisines.map(cuisine => {
         return (
           <option value={cuisine.id} key={cuisine.id}>
@@ -147,8 +147,8 @@ class FilterView extends Component {
 
 const mapStateToProps = state => {
   return {
-    loadingCuisines: state.rootFilters.loading,
-    cuisines: state.rootFilters.cuisines
+    filters: state.rootFilters,
+    loading: state.rootFilters.loading
   };
 };
 

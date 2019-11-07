@@ -1,27 +1,13 @@
-import { FETCH_CUISINES, FETCH_INGREDIENTS } from "./actionTypes";
-
+import { FETCH_FILTERS } from "./actionTypes";
 import instance from "./instance";
 
-export const fetchCuisines = () => async dispatch => {
+export const fetchFilters = () => async dispatch => {
   try {
-    const res = await instance.get("cuisines/");
-    const cuisines = res.data;
+    const res = await instance.get("filters/");
+    const filters = res.data;
     dispatch({
-      type: FETCH_CUISINES,
-      payload: cuisines
-    });
-  } catch (error) {
-    console.error(error);
-  }
-};
-
-export const fetchIngredients = () => async dispatch => {
-  try {
-    const res = await instance.get("ingredients/");
-    const ingredients = res.data;
-    dispatch({
-      type: FETCH_INGREDIENTS,
-      payload: ingredients
+      type: FETCH_FILTERS,
+      payload: filters
     });
   } catch (error) {
     console.error(error);
