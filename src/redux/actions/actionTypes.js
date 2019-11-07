@@ -5,4 +5,5 @@ export const FETCH_RECIPE = "FETCH_RECIPE";
 export const SET_PROFILE = "SET_PROFILE";
 export const EDIT_PROFILE = "EDIT_PROFILE";
 export const RESET_PROFILE = "RESET_PROFILE";
+export const HANDLE_DELETE = "HANDLE_DELETE";
 export const FETCH_FILTERS = "FETCH_FILTERS";
