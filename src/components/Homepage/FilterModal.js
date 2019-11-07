@@ -79,11 +79,11 @@ class FilterView extends Component {
               backgroundColor: "black"
             }}
           >
-            <h3 style={{ color: "gray", paddingLeft: "160px" }}>
+            <h3 style={{ color: "white", paddingLeft: "190px" }}>
               Filter Options
             </h3>
 
-            <hr />
+            <hr id="line-color" />
 
             <form onSubmit={this.handleSubmit}>
               <div className="row" style={{ paddingLeft: "20px" }}>
@@ -96,8 +96,19 @@ class FilterView extends Component {
                 >
                   Meal
                 </h5>
-                <div style={{ paddingLeft: "40px" }}>
-                  <select name="meal" onChange={this.handleChange} multiple>
+                <div style={{ paddingLeft: "60px", paddingBottom: "20px" }}>
+                  <select
+                    style={{
+                      backgroundColor: "rgb(196, 196, 196)",
+                      color: "black"
+                    }}
+                    class="form-control"
+                    id="exampleFormControlSelect1"
+                    id="mealBox"
+                    name="meal"
+                    onChange={this.handleChange}
+                    multiple
+                  >
                     {cuisineOptions}
                   </select>
                 </div>
@@ -113,8 +124,19 @@ class FilterView extends Component {
                 >
                   Course
                 </h5>
-                <div style={{ paddingLeft: "40px" }}>
-                  <select name="course" onChange={this.handleChange} multiple>
+                <div style={{ paddingLeft: "42px", paddingBottom: "20px" }}>
+                  <select
+                    style={{
+                      backgroundColor: "rgb(196, 196, 196)",
+                      color: "black"
+                    }}
+                    class="form-control"
+                    id="exampleFormControlSelect1"
+                    id="courseBox"
+                    name="course"
+                    onChange={this.handleChange}
+                    multiple
+                  >
                     {cuisineOptions}
                   </select>
                 </div>
@@ -124,15 +146,27 @@ class FilterView extends Component {
                 <h5 style={{ color: "white", paddingBottom: "15px" }}>
                   Cuisine
                 </h5>
-                <div style={{ paddingLeft: "40px" }}>
-                  <select name="cuisine" onChange={this.handleChange}>
+                <div style={{ paddingLeft: "42px" }}>
+                  <select
+                    style={{
+                      backgroundColor: "rgb(196, 196, 196)",
+                      color: "black"
+                    }}
+                    className="form-control"
+                    id="cuisineBox"
+                    name="cuisine"
+                    onChange={this.handleChange}
+                  >
                     <option>Select a value</option>
                     {cuisineOptions}
                   </select>
+                  <br />
+
                   <input
-                    className="btn btn-primary"
+                    className="btn btn-block"
                     type="submit"
                     value="submit"
+                    id="btn-fliter"
                     onClick={this.handleSubmit}
                   />
                 </div>

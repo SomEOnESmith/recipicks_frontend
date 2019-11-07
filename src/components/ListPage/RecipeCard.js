@@ -5,6 +5,11 @@ class RecipeCard extends Component {
   render() {
     const recipe = this.props.recipe;
     const icon = this.props.type;
+
+    const meal = recipe.meal.map(meal => {
+      return <li> {meal.name}</li>;
+    });
+
     let span;
     if (icon === "exact") {
       span = (
@@ -52,7 +57,7 @@ class RecipeCard extends Component {
                     src="https://img.icons8.com/small/16/000000/halal-food.png"
                     alt=""
                   />
-                  American
+                  {recipe.cuisine.name}
                 </p>
               </div>
               <div className="col">
@@ -61,7 +66,7 @@ class RecipeCard extends Component {
                     src="https://img.icons8.com/small/16/000000/pizza.png"
                     alt=""
                   />
-                  Dinner
+                  {meal}
                 </p>
               </div>
               <div className="col">
@@ -70,22 +75,10 @@ class RecipeCard extends Component {
                     src="https://img.icons8.com/small/16/000000/alarm-clock.png"
                     alt=""
                   />
-                  15 min
+                  {recipe.total_time}
                 </p>
               </div>
             </div>
-
-            <p id="card-text-black" className="card-text">
-              Some quick example text to build on the card title and make up the
-              bulk of the card's content.
-            </p>
-            <a
-              href={`/recipes/${recipe.id}`}
-              id="card-btn"
-              className="btn btn-block"
-            >
-              Let's Cook!
-            </a>
           </div>
         </div>
       </>
