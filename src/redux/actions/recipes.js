@@ -1,4 +1,4 @@
-import { FETCH_RECIPES, FETCH_RECIPE } from "./actionTypes";
+import { FETCH_RECIPES, FETCH_RECIPE, HANDLE_DELETE } from "./actionTypes";
 import instance from "./instance";
 
 export const fetchRecipes = (
@@ -31,4 +31,11 @@ export const fetchRecipe = recipeID => async dispatch => {
   } catch (error) {
     console.error(error);
   }
+};
+
+export const handleDeleteIngredients = ingredient => {
+  return {
+    type: HANDLE_DELETE,
+    payload: ingredient
+  };
 };

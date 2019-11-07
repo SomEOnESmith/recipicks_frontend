@@ -1,4 +1,4 @@
-export { fetchRecipes, fetchRecipe } from "./recipes";
+export { fetchRecipes, fetchRecipe, handleDeleteIngredients } from "./recipes";
 export { fetchCuisines, fetchIngredients } from "./filters";
 export {
   login,

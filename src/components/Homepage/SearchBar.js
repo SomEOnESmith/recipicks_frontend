@@ -10,6 +10,7 @@ import searchIcon from "../../assets/search.png";
 
 // Actions
 import { fetchRecipes } from "../../redux/actions";
+import { handleDeleteIngredients } from "../../redux/actions";
 
 const fuseOptions = {
   shouldSort: true,
@@ -122,6 +123,7 @@ class SearchBar extends Component {
       items: this.state.items.filter(i => i !== item),
       itemsID: this.state.itemsID.filter(i => i !== item.id)
     });
+    this.props.handleDeleteIngredients(item);
   };
 
   // handlePaste = evt => {
@@ -239,7 +241,8 @@ class SearchBar extends Component {
                   backgroundColor: "transparent",
                   height: "30px"
                 }}
-              />{" "}
+                alt=""
+              />
             </button>
           </div>
         </div>
@@ -270,7 +273,9 @@ const mapStateToProps = state => ({
 });
 
 const mapDispatchToProps = dispatch => ({
-  fetch: ingredients => dispatch(fetchRecipes("", [], [], ingredients))
+  fetch: ingredients => dispatch(fetchRecipes("", [], [], ingredients)),
+  handleDeleteIngredients: ingredient =>
+    dispatch(handleDeleteIngredients(ingredient))
 });
 
 export default connect(
