@@ -6,10 +6,8 @@ class RecipeCard extends Component {
     const recipe = this.props.recipe;
     const icon = this.props.type;
     let span;
-    if (icon === "exact") {
-      span = (
-        <span class="badge badge-success">exact amount of ingredients</span>
-      );
+    if (icon === "perfect") {
+      span = <span class="badge badge-success">perfect match</span>;
     } else if (icon === "excess") {
       span = (
         <span class="badge badge-warning">excess amount of ingredients</span>

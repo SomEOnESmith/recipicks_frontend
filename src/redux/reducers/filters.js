@@ -11,12 +11,13 @@ const initialState = {
 export default (state = initialState, { type, payload }) => {
   switch (type) {
     case FETCH_FILTERS:
+      const { ingredients, cuisines, courses, meals } = payload;
       return {
         ...state,
-        ingredients: payload.ingredients,
-        cuisines: payload.cuisines,
-        courses: payload.courses,
-        meals: payload.meals,
+        ingredients,
+        cuisines,
+        courses,
+        meals,
         loading: false
       };
     default:
