@@ -239,7 +239,8 @@ class SearchBar extends Component {
                   backgroundColor: "transparent",
                   height: "30px"
                 }}
-              />{" "}
+                alt=""
+              />
             </button>
           </div>
         </div>
