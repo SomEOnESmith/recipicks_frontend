@@ -42,7 +42,7 @@ class SearchBar extends Component {
       let value = this.state.value.trim();
 
       if (value && this.isValid(value)) {
-        const theItem = this.props.ingredients.ingredients.find(
+        const theItem = this.props.filters.ingredients.find(
           ingredient => ingredient.name === value
         );
         const newItems = this.state.items.concat(theItem);
@@ -83,7 +83,7 @@ class SearchBar extends Component {
   };
 
   filterIngredients = () => {
-    return this.props.ingredients.ingredients.filter(
+    return this.props.filters.ingredients.filter(
       ingredient => !this.state.items.includes(ingredient)
     );
   };
@@ -104,7 +104,7 @@ class SearchBar extends Component {
   };
 
   handleChange = async evt => {
-    const { ingredients } = this.props.ingredients;
+    const { ingredients } = this.props.filters;
     const fuse = new Fuse(ingredients, fuseOptions);
     const suggest = evt.target.value
       ? fuse.search(evt.target.value).slice(0, 10)
@@ -162,7 +162,7 @@ class SearchBar extends Component {
   }
 
   isInIngredients(ingredient) {
-    return this.props.ingredients.ingredients
+    return this.props.filters.ingredients
       .map(ing => ing.name.toLowerCase())
       .includes(ingredient.toLowerCase());
   }
@@ -267,7 +267,7 @@ class SearchBar extends Component {
 }
 
 const mapStateToProps = state => ({
-  ingredients: state.rootFilters
+  filters: state.rootFilters
 });
 
 const mapDispatchToProps = dispatch => ({
