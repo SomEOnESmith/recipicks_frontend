@@ -62,7 +62,7 @@ class RecipeDetail extends Component {
                         <li>{recipe.cuisine.name}</li>
                       </p>
                       <p id="spacing">
-                        <span id="bold"> Total: </span>{" "}
+                        <span id="bold"> Total: </span>
                         <li> {recipe.total_time}</li>
                       </p>
                     </div>
