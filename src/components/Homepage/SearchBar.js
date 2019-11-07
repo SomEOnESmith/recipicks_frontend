@@ -1,7 +1,15 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
-import { fetchRecipesByIngredients } from "../../redux/actions";
 import Fuse from "fuse.js";
+
+// Components
+import FilterButton from "./FilterModal";
+
+//Assets
+import searchIcon from "../../assets/search.png";
+
+// Actions
+import { fetchRecipes } from "../../redux/actions";
 
 const fuseOptions = {
   shouldSort: true,
@@ -34,7 +42,7 @@ class SearchBar extends Component {
       let value = this.state.value.trim();
 
       if (value && this.isValid(value)) {
-        const theItem = this.props.ingredientsReducer.ingredients.find(
+        const theItem = this.props.ingredients.ingredients.find(
           ingredient => ingredient.name === value
         );
         const newItems = this.state.items.concat(theItem);
@@ -47,6 +55,7 @@ class SearchBar extends Component {
           this.filterIngredients()
         );
         this.setState({ suggestedItems: newSuggestedItems });
+        this.props.fetch(this.state.itemsID);
       }
     }
   };
@@ -57,6 +66,7 @@ class SearchBar extends Component {
         items: this.state.items.concat(item),
         itemsID: this.state.itemsID.concat(item.id)
       });
+      this.props.fetch(this.state.itemsID);
       if (!this.state.value) {
         const newSuggestedItems = this.randomIngredients(
           this.filterIngredients()
@@ -73,7 +83,7 @@ class SearchBar extends Component {
   };
 
   filterIngredients = () => {
-    return this.props.ingredientsReducer.ingredients.filter(
+    return this.props.ingredients.ingredients.filter(
       ingredient => !this.state.items.includes(ingredient)
     );
   };
@@ -94,7 +104,7 @@ class SearchBar extends Component {
   };
 
   handleChange = async evt => {
-    const { ingredients } = this.props.ingredientsReducer;
+    const { ingredients } = this.props.ingredients;
     const fuse = new Fuse(ingredients, fuseOptions);
     const suggest = evt.target.value
       ? fuse.search(evt.target.value).slice(0, 10)
@@ -152,7 +162,7 @@ class SearchBar extends Component {
   }
 
   isInIngredients(ingredient) {
-    return this.props.ingredientsReducer.ingredients
+    return this.props.ingredients.ingredients
       .map(ing => ing.name.toLowerCase())
       .includes(ingredient.toLowerCase());
   }
@@ -172,14 +182,68 @@ class SearchBar extends Component {
             </button>
           </div>
         ))}
+        <div
+          className="row"
+          style={{
+            backgroundColor: "#D00635",
+            borderRadius: "35px",
+            height: "70px",
+            paddingBottom: "5px"
+          }}
+        >
+          <div
+            className="col-2"
+            style={{ paddingTop: "18px", paddingLeft: "30px", height: "50px" }}
+          >
+            <FilterButton />
+          </div>
+          <div className="col-8">
+            <input
+              className={"input " + (this.state.error && " has-error")}
+              value={this.state.value}
+              placeholder="Type or paste ingredients and press 'Enter'..."
+              onKeyDown={this.handleKeyDown}
+              onChange={this.handleChange}
+              style={{
+                borderRadius: "25px",
+                backgroundColor: "white",
+                borderColor: "transparent",
+                width: "840px",
+                position: "relative",
+                left: "-100px"
+              }}
+            />
+          </div>
 
-        <input
-          className={"input " + (this.state.error && " has-error")}
-          value={this.state.value}
-          placeholder="Type or paste ingredients and press 'Enter'..."
-          onKeyDown={this.handleKeyDown}
-          onChange={this.handleChange}
-        />
+          <div
+            className="col-2"
+            style={{
+              paddingTop: "17px",
+              height: "50px",
+              width: "50px",
+              position: "relative",
+              left: "80px"
+            }}
+          >
+            <button
+              id="suggest_btn"
+              style={{
+                backgroundColor: "transparent",
+                borderColor: "transparent"
+              }}
+              onClick={() => this.props.fetch(this.state.itemsID)}
+            >
+              <img
+                src={searchIcon}
+                style={{
+                  backgroundColor: "transparent",
+                  height: "30px"
+                }}
+                alt=""
+              />
+            </button>
+          </div>
+        </div>
         {/* This needs to be inside input onPaste="This needs to be a function" */}
         {this.state.items.map((item, idx) => (
           <div className="tag-item" key={idx}>
@@ -197,24 +261,17 @@ class SearchBar extends Component {
 
         {this.state.error && <p className="error">{this.state.error}</p>}
         <br />
-        <button
-          className="btn btn-info my-3 btn-block"
-          id="suggest_btn"
-          onClick={() => this.props.fetch(this.state.itemsID)}
-        >
-          Search
-        </button>
       </div>
     );
   }
 }
 
 const mapStateToProps = state => ({
-  ingredientsReducer: state.rootIngredients
+  ingredients: state.rootFilters
 });
 
 const mapDispatchToProps = dispatch => ({
-  fetch: items => dispatch(fetchRecipesByIngredients(items))
+  fetch: ingredients => dispatch(fetchRecipes("", [], [], ingredients))
 });
 
 export default connect(

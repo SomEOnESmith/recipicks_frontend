@@ -1,10 +1,8 @@
 import React from "react";
+
+// Images
 import loadingIcon from "../assets/Yx9l.gif";
 
-// const Loading = () => (
-//   <div id="loading" className="spinner mx-automt-5 text-center">
-//     <img src="https://cdn.dribbble.com/users/1515327/screenshots/4328124/cooking_loader_2.gif"></img>
-// </div>
 const Loading = () => (
   <div id="loading" className="spinner mx-automt-5 text-center">
     <img
@@ -16,7 +14,7 @@ const Loading = () => (
       }}
       alt="Loading"
       src={loadingIcon}
-    ></img>
+    />
   </div>
 );
 

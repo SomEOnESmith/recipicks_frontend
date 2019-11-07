@@ -46,12 +46,7 @@ a:focus {
   font-size: 14px;
   color: #474747; }
 
-ul,
-ol {
-  margin: 0; }
-  ul li,
-  ol li {
-    list-style: none; }
+
 
 img {
   height: auto;
@@ -388,7 +383,7 @@ textarea:focus {
       top: 15px;
       border: none;
       right: 10%;
-      cursor: pointer;
+      
       outline: none; }
       @media only screen and (max-width: 767px) {
         .search-wrapper form button {
@@ -401,7 +396,7 @@ textarea:focus {
     line-height: 50px;
     color: #ffffff;
     text-align: center;
-    cursor: pointer;
+   
     line-height: 70px;
     font-size: 12px;
     right: 0;
@@ -431,18 +426,18 @@ textarea:focus {
         text-align: left;
         position: relative;
         overflow: hidden; }
-        .header-area .top-header-area .breaking-news .ticker ul {
+        .header-area .top-header-area .breaking-news .ticker {
           width: 100%;
           position: relative;
           z-index: 1; }
-          .header-area .top-header-area .breaking-news .ticker ul li {
+          .header-area .top-header-area .breaking-news .ticker  {
             display: none;
             width: 100%; }
-            .header-area .top-header-area .breaking-news .ticker ul li a {
+            .header-area .top-header-area .breaking-news .ticker  a {
               font-size: 14px;
               color: #b6b6b6;
               font-style: italic; }
-              .header-area .top-header-area .breaking-news .ticker ul li a:hover, .header-area .top-header-area .breaking-news .ticker ul li a:focus {
+              .header-area .top-header-area .breaking-news .ticker a:hover, .header-area .top-header-area .breaking-news .ticker  a:focus {
                 color: #40ba37; }
     .header-area .top-header-area .top-social-info a {
       display: inline-block;
@@ -469,11 +464,11 @@ textarea:focus {
       @media only screen and (max-width: 767px) {
         .header-area .delicious-main-menu .classy-navbar {
           height: 80px; } }
-      .header-area .delicious-main-menu .classy-navbar .classynav ul li a {
+      .header-area .delicious-main-menu .classy-navbar .classynav a {
         font-weight: 600; }
-        .header-area .delicious-main-menu .classy-navbar .classynav ul li a:hover, .header-area .delicious-main-menu .classy-navbar .classynav ul li a:focus {
+        .header-area .delicious-main-menu .classy-navbar .classynav  a:hover, .header-area .delicious-main-menu .classy-navbar .classynav a:focus {
           font-weight: 600; }
-      .header-area .delicious-main-menu .classy-navbar .classynav > ul > li > a {
+      .header-area .delicious-main-menu .classy-navbar .classynav > a {
         text-transform: uppercase;
         padding: 12px 18px 11px;
         background-color: transparent;
@@ -481,23 +476,23 @@ textarea:focus {
         line-height: 1;
         color: #474747;
         font-weight: 600; }
-        .header-area .delicious-main-menu .classy-navbar .classynav > ul > li > a:hover, .header-area .delicious-main-menu .classy-navbar .classynav > ul > li > a:focus {
+        .header-area .delicious-main-menu .classy-navbar .classynav > a:hover, .header-area .delicious-main-menu .classy-navbar .classynav > a:focus {
           font-size: 14px;
           color: #ffffff;
           background-color: #40ba37;
           border-bottom: 3px solid #1c8314; }
-          .header-area .delicious-main-menu .classy-navbar .classynav > ul > li > a:hover::after, .header-area .delicious-main-menu .classy-navbar .classynav > ul > li > a:focus::after {
+          .header-area .delicious-main-menu .classy-navbar .classynav > a:hover::after, .header-area .delicious-main-menu .classy-navbar .classynav > ul > li > a:focus::after {
             color: #ffffff; }
-      .header-area .delicious-main-menu .classy-navbar .classynav > ul > li.active > a {
+      .header-area .delicious-main-menu .classy-navbar .classynav >  a {
         color: #ffffff;
         background-color: #40ba37;
         border-bottom: 3px solid #1c8314; }
-        .header-area .delicious-main-menu .classy-navbar .classynav > ul > li.active > a::after {
+        .header-area .delicious-main-menu .classy-navbar .classynav >  a::after {
           color: #ffffff; }
     .header-area .delicious-main-menu .classynav .search-btn {
       color: #b6b6b6;
       margin-left: 150px;
-      cursor: pointer;
+ 
       -webkit-transition-duration: 500ms;
       transition-duration: 500ms; }
       .header-area .delicious-main-menu .classynav .search-btn i {
@@ -1071,19 +1066,16 @@ textarea:focus {
   position: relative;
   padding-left: 35px;
   margin-bottom: 12px;
-  cursor: pointer;
+
   font-size: 22px;
-  -webkit-user-select: none;
-  -moz-user-select: none;
-  -ms-user-select: none;
-  user-select: none;
+
 }
 
 /* Hide the browser's default checkbox */
 .container input {
   position: absolute;
   opacity: 0;
-  cursor: pointer;
+
   height: 0;
   width: 0;
 }
@@ -1229,7 +1221,7 @@ textarea:focus {
         top: 0;
         left: 0;
         z-index: 10;
-        cursor: pointer;
+      
         opacity: 0;
         visibility: hidden;
         display: -webkit-box;

@@ -1,6 +1,5 @@
-export { fetchRecipesByIngredients } from "./recipes";
-export { fetchRecipeDetail } from "./recipe";
-export { fetchIngredients } from "./ingredients";
+export { fetchRecipes, fetchRecipe } from "./recipes";
+export { fetchFilters } from "./filters";
 export {
   login,
   logout,
@@ -10,5 +9,4 @@ export {
   editProfile,
   resetProfile
 } from "./authentication";
-
 export { setErrors, resetErrors } from "./errors";

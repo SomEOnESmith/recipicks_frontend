@@ -3,10 +3,9 @@ import { Switch, Route, Redirect, withRouter } from "react-router-dom";
 import { connect } from "react-redux";
 
 // Components
-import RecipesList from "./components/RecipesList";
-import RecipeDetail from "./components/RecipeDetail";
-import LoginForm from "./components/Login/LoginForm";
-import SignupForm from "./components/Signup/SignupForm";
+import RecipeDetail from "./components/DetailPage/RecipeDetail";
+import LoginForm from "./components/Authentication/LoginForm";
+import SignupForm from "./components/Authentication/SignupForm";
 import NavBar from "./components/Navigation/NavBar";
 import Home from "./components/Homepage/HomePage";
 import Profile from "./components/Profile/Profile";
@@ -16,11 +15,10 @@ import Loading from "./components/Loading";
 function App({ loading }) {
   if (loading) return <Loading />;
   return (
-    <div>
+    <div className="app">
       <NavBar />
       <Switch>
         <Route exact path="/recipes/:recipeID" component={RecipeDetail} />
-        <Route path="/recipes" component={RecipesList} />
         <Route path="/login" component={LoginForm} />
         <Route path="/signup" component={SignupForm} />
         <Route path="/profile" component={Profile} />
@@ -34,7 +32,7 @@ function App({ loading }) {
 
 const mapStateToProps = state => {
   return {
-    loading: state.rootIngredients.loading
+    loading: state.rootFilters.loading
   };
 };
 

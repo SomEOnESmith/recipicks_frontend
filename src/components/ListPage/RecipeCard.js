@@ -4,21 +4,38 @@ import { Link } from "react-router-dom";
 class RecipeCard extends Component {
   render() {
     const recipe = this.props.recipe;
+    const icon = this.props.type;
+    let span;
+    if (icon === "exact") {
+      span = (
+        <span class="badge badge-success">exact amount of ingredients</span>
+      );
+    } else if (icon === "excess") {
+      span = (
+        <span class="badge badge-warning">excess amount of ingredients</span>
+      );
+    } else if (icon === "missing") {
+      span = <span class="badge badge-danger">missing some ingredients</span>;
+    } else {
+      span = <></>;
+    }
+
     return (
       <>
         <div
           style={{
             width: "25rem"
           }}
-          className="card"
+          className="card my-3"
           id="recipe-card"
         >
+          {span}
           <img
             src={recipe.image}
             id="card-img"
             className="card-img-top"
             alt="..."
-          ></img>
+          />
 
           <div className="card-body">
             <Link to={`/recipes/${recipe.id}`}>
@@ -34,7 +51,7 @@ class RecipeCard extends Component {
                   <img
                     src="https://img.icons8.com/small/16/000000/halal-food.png"
                     alt=""
-                  ></img>
+                  />
                   American
                 </p>
               </div>
@@ -43,7 +60,7 @@ class RecipeCard extends Component {
                   <img
                     src="https://img.icons8.com/small/16/000000/pizza.png"
                     alt=""
-                  ></img>
+                  />
                   Dinner
                 </p>
               </div>
@@ -52,7 +69,7 @@ class RecipeCard extends Component {
                   <img
                     src="https://img.icons8.com/small/16/000000/alarm-clock.png"
                     alt=""
-                  ></img>
+                  />
                   15 min
                 </p>
               </div>

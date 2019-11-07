@@ -1,8 +1,8 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
-
 import { Link } from "react-router-dom";
 
+// Actions
 import { logout } from "../../redux/actions/authentication";
 
 class Logout extends Component {

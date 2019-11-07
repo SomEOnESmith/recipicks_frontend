@@ -1,17 +1,33 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import { connect } from "react-redux";
-import Logout from "../Logout/Logout";
+
+// Components
+import Logout from "../Authentication/Logout";
 
 const AuthButton = ({ user, profile }) => {
   let buttons = [
     <li key="loginButton" className="nav-item">
-      <Link id="nav-link" to="/login" className="nav-link nav">
+      <Link
+        style={{
+          color: "white"
+        }}
+        id="nav-link"
+        to="/login"
+        className="nav-link nav"
+      >
         Login
       </Link>
     </li>,
     <li key="signupButton" className="nav-item">
-      <Link id="nav-link" to="/signup" className="nav-link nav">
+      <Link
+        style={{
+          color: "white"
+        }}
+        id="nav-link"
+        to="/signup"
+        className="nav-link nav"
+      >
         Signup
       </Link>
     </li>
@@ -36,7 +52,6 @@ const AuthButton = ({ user, profile }) => {
 const mapStateToProps = state => ({
   user: state.authReducer.user,
   profile: state.authReducer.profile
-
 });
 
 export default connect(mapStateToProps)(AuthButton);

@@ -1,11 +1,8 @@
-import { FETCH_RECIPES } from "../actions/actionTypes";
+import { FETCH_RECIPES, FETCH_RECIPE } from "../actions/actionTypes";
 
 const initialState = {
-  recipes: {
-    exact_match: [],
-    user_has_excess_ingredients: [],
-    user_has_missing_ingredients: []
-  },
+  recipes: [],
+  recipe: null,
   loading: true
 };
 
@@ -16,6 +13,13 @@ const reducer = (state = initialState, action) => {
       return {
         ...state,
         recipes: recipes,
+        loading: false
+      };
+    case FETCH_RECIPE:
+      const recipe = action.payload;
+      return {
+        ...state,
+        recipe: recipe,
         loading: false
       };
     default:

@@ -1,6 +1,9 @@
 import React from "react";
-import SearchBar from "../Searchbar/SearchBar";
-import RecipesList from "../RecipesList";
+
+// Components
+import SearchBar from "./SearchBar";
+import RecipesList from "../ListPage/RecipesList";
+
 const HomePage = () => {
   return (
     <div className="main">
@@ -10,7 +13,6 @@ const HomePage = () => {
             <div className="col">
               <div className="typewriter">
                 <h1
-
                   style={{
                     color: "white"
                   }}
@@ -22,7 +24,7 @@ const HomePage = () => {
           </div>
           <div className="row">
             <div className="col">
-              <div className="search" >
+              <div className="search">
                 <SearchBar />
               </div>
             </div>

@@ -2,7 +2,6 @@
   display: flex;
   align-content: stretch;
   justify-content: center;
-
   height: 100vh;
   position: relative;
   background-image: url("../img/chalkboard-texture.jpg");
@@ -10,19 +9,81 @@
   background-color: rgba(0, 0, 0, 0.75);
 }
 
+.header-detail {
+  display: flex;
+  align-content: stretch;
+  justify-content: center;
+  height: 60vh;
+  position: relative;
+  background-image: url("../img/chalkboard-texture.jpg");
+
+  background-color: rgba(0, 0, 0, 0.75);
+}
+
+#detail-row {
+  width: 400px;
+}
+
+#main {
+  background-color: transparent;
+}
+
+#main-detail {
+  background-color: transparent;
+  color: white;
+}
+
+#cuisine-time {
+  padding-top: 5px;
+}
+
+.ingredients {
+  background-color: #f0eceb;
+  width: 350px;
+  padding: 20px;
+}
+
+#col-right {
+  position: relative;
+  top: 110px;
+  right: 80px;
+}
+.ingredient {
+  padding-bottom: 10px;
+  padding-left: 20px;
+}
+
 #title-part {
   width: 800px;
 }
 
+.detail-header {
+  height: 400px;
+  background-color: black;
+}
+
+.navbar {
+  background-color: transparent;
+  border: 1 solid red;
+}
+.navbar-expand-lg {
+  background-color: transparent;
+}
+#navbar {
+  background-color: transparent;
+}
 #padding {
   padding-top: 100px;
+}
+
+.app {
+  background-color: transparent;
 }
 
 #text-padding {
   padding-bottom: 10px;
 }
 .header-container {
-  display: flex;
   align-content: center;
   justify-content: center;
   padding-right: 50px;
@@ -35,41 +96,56 @@
   background-color: rgba(0, 0, 0, 0.75);
 }
 
+.name-detail {
+  width: 400px;
+  font-size: 40px;
+  font-weight: bold;
+}
 .recipe-container {
   display: flex;
   align-content: center;
-  justify-content: start;
+  justify-content: flex-start;
   padding-top: 100%;
   position: relative;
   box-shadow: rgba(0, 0, 0, 0.5);
 }
 
-#spacing {
-  text-align: center;
-}
 .typewriter h1 {
-  overflow: hidden; /* Ensures the content is not revealed until the animation */
-  border-right: 0.15em solid orange; /* The typwriter cursor */
-  white-space: nowrap; /* Keeps the content on a single line */
-  margin: 0 auto; /* Gives that scrolling effect as the typing happens */
+  /* overflow: hidden; Ensures the content is not revealed until the animation */
+  /* border-right: 0.15em solid orange; The typwriter cursor */
+  /* white-space: nowrap; Keeps the content on a single line */
+  /* margin: 0 auto; Gives that scrolling effect as the typing happens */
   letter-spacing: 0.15em; /* Adjust as needed */
-  animation: typing 2.5s steps(40, end), blink-caret 0.75s step-end infinite;
+  /* animation: typing 2.5s steps(40, end), blink-caret 0.75s step-end infinite; */
   font: bold 2.1875rem/2.875rem "Source Serif Pro", serif;
   font-size: 4.125rem;
   margin: 9.25rem auto 1.8125rem;
   padding: 10px;
   position: relative;
-  left: 400px;
+  text-align: center;
+  /* left: 400px; */
 }
 
+#spacing {
+  color: black;
+}
 #suggest_item {
   background-color: orange;
   border: 1px solid white;
 }
 
+.name-padding {
+  padding-bottom: 20px;
+}
+
 #suggest_item:hover {
   background-color: black;
   color: white;
+}
+
+#bold {
+  font-weight: bold;
+  font-size: 17px;
 }
 
 #suggest_btn {
@@ -81,15 +157,14 @@
 #suggest_btn:hover {
   background-color: orange;
   color: black;
-
 }
 
-#cancel{
+#cancel {
   background-color: rgb(185, 30, 30);
   color: white;
 }
 
-#cancel:hover{
+#cancel:hover {
   background-color: rgb(233, 45, 45);
   color: white;
 }
@@ -98,12 +173,17 @@
   color: black;
 }
 
+.navbar {
+  background-color: transparent;
+}
 .search {
   position: relative;
   padding: 20px;
-  top: 200px;
-  right: 200px;
+  right: 20px;
+  margin-left: 80px;
+  margin-right: 80px;
 }
+
 #title-link {
   color: black;
 }
@@ -118,11 +198,20 @@ hr {
 }
 
 #detail-space {
-  padding-top: 100px;
+  position: relative;
+  bottom: 200px;
+  left: 100px;
 }
 #recipe-list {
   position: relative;
   bottom: 150px;
+}
+
+#ingredients-box {
+  background-color: red;
+  padding-bottom: 30px;
+  padding-top: 30px;
+  width: 380px;
 }
 
 .image-container:hover .image-overlay {
@@ -216,7 +305,7 @@ hr {
 .recipe-wrapper {
   display: flex;
   align-content: center;
-  justify-content: start;
+  justify-content: flex-start;
   width: 100%;
   height: 100%;
   position: absolute;
@@ -297,4 +386,9 @@ hr {
 #recipe-detail {
   position: relative;
   right: 50px;
+}
+
+.ingredients {
+  font-size: 18px;
+  padding-left: 10px;
 }
