@@ -56,7 +56,8 @@ class SearchBar extends Component {
           this.filterIngredients()
         );
         this.setState({ suggestedItems: newSuggestedItems });
-        this.props.fetchRecipes(this.state.itemsID);
+        const { cuisine, meals, courses } = this.props;
+        this.props.fetchRecipes(cuisine, meals, courses, this.state.itemsID);
       }
     }
   };
@@ -67,7 +68,8 @@ class SearchBar extends Component {
         items: this.state.items.concat(item),
         itemsID: this.state.itemsID.concat(item.id)
       });
-      this.props.fetchRecipes(this.state.itemsID);
+      const { cuisine, meals, courses } = this.props;
+      this.props.fetchRecipes(cuisine, meals, courses, this.state.itemsID);
       if (!this.state.value) {
         const newSuggestedItems = this.randomIngredients(
           this.filterIngredients()
@@ -233,7 +235,15 @@ class SearchBar extends Component {
                 backgroundColor: "transparent",
                 borderColor: "transparent"
               }}
-              onClick={() => this.props.fetchRecipes(this.state.itemsID)}
+              onClick={() => {
+                const { cuisine, meals, courses } = this.props;
+                this.props.fetchRecipes(
+                  cuisine,
+                  meals,
+                  courses,
+                  this.state.itemsID
+                );
+              }}
             >
               <img
                 src={searchIcon}
@@ -270,12 +280,13 @@ class SearchBar extends Component {
 
 const mapStateToProps = state => ({
   ingredients: state.rootFilters.ingredients,
-  selectedFilters: state.rootFilters.selectedFilters
+  cuisine: state.rootFilters.selectedFilters.cuisine,
+  meals: state.rootFilters.selectedFilters.meals,
+  courses: state.rootFilters.selectedFilters.courses
 });
 
 const mapDispatchToProps = dispatch => ({
-  fetchRecipes: ingredients => {
-    const { cuisine, meals, courses } = this.props.selectedFilters;
+  fetchRecipes: (cuisine, meals, courses, ingredients) => {
     dispatch(fetchRecipes(cuisine, meals, courses, ingredients));
   },
   handleDeleteIngredients: ingredient =>
