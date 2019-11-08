@@ -184,7 +184,7 @@ class FilterModal extends Component {
                     Clear Filters
                   </button>
                   <input
-                    className="btn btn-block"
+                    className="btn btn-primary"
                     type="submit"
                     value="Save"
                     onClick={this.handleSubmit}
