@@ -30,16 +30,11 @@ const reducer = (state = initialState, action) => {
       // let newPerfect = [];
       let newExcess = [];
       let newMissing = state.recipes.perfect_match.map(recipe => recipe);
-      console.log("TCL: reducer -> newMissing", newMissing);
-
       newExcess = state.recipes.user_excess_ingrs.filter(recipe => {
         if (recipe.ingredients.includes(action.payload.id))
           newMissing.push(action.payload);
         else return recipe;
       });
-
-      console.log("TCL: reducer -> newExcess", newExcess);
-
       return {
         ...state,
         recipes: {
