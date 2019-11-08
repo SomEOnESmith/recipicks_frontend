@@ -1,7 +1,7 @@
 import React from "react";
 
 // Images
-import loadingIcon from "../assets/Yx9l.gif";
+import loadingIcon from "../assets/img/loading-img/loading.gif";
 
 const Loading = () => (
   <div id="loading" className="spinner mx-automt-5 text-center">

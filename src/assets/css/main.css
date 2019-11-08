@@ -19,6 +19,30 @@
 
   background-color: rgba(0, 0, 0, 0.75);
 }
+.header-profile {
+  display: flex;
+  align-content: stretch;
+  justify-content: center;
+  height: 120vh;
+  position: relative;
+  background-image: url("../img/chalkboard-texture.jpg");
+
+  background-color: rgba(0, 0, 0, 0.75);
+}
+
+.header-edit-profile {
+  display: flex;
+  align-content: stretch;
+  justify-content: center;
+  height: 160vh;
+  position: relative;
+  background-image: url("../img/chalkboard-texture.jpg");
+
+  background-color: rgba(0, 0, 0, 0.75);
+}
+#edit {
+  text-decoration: none;
+}
 
 #detail-row {
   width: 400px;
@@ -127,6 +151,10 @@
     left: 130px;
     top: 14px;
   }
+
+  .profile-head {
+    font-size: 3vw;
+  }
 }
 
 /* If the screen size is 600px wide or less, set the font-size of <div> to 30px */
@@ -148,8 +176,15 @@
     left: 30px;
     top: 14px;
   }
+  .profile-head {
+    font-size: 7vw;
+    padding-bottom: 10px;
+  }
 }
 
+.profile {
+  height: auto;
+}
 #spacing {
   color: black;
 }
@@ -208,11 +243,27 @@
   font-size: 17px;
 }
 
+.create-account {
+  color: black;
+}
+.create-account:hover {
+  color: rgb(208, 6, 53);
+  text-decoration: none;
+}
 #btn-fliter {
   background-color: rgb(129, 3, 32);
   color: white;
 }
 
+link {
+  text-decoration: none;
+}
+
+.navbar-light .navbar-toggler,
+.navbar-toggler-icon {
+  border-color: white !important;
+  color: white !important;
+}
 #btn-fliter:hover {
   background-color: rgb(208, 6, 53);
 }
@@ -332,7 +383,7 @@ hr {
   transform: scale(1);
 }
 .card {
-  border-color: orange;
+  border-color: rgb(208, 6, 53);
   border-radius: 0;
   background-color: 0.3em 0.3em 1em rgba(0, 0, 0, 0.3);
   box-shadow: 0.3em 0.3em 1em rgba(0, 0, 0, 0.3);
@@ -345,6 +396,12 @@ hr {
   border-radius: 30px;
 }
 
+.custom-toggler .navbar-toggler-icon {
+  background-image: url("data:image/svg+xml;charset=utf8,%3Csvg viewBox='0 0 32 32' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath stroke='rgba(255,255,255,1)' stroke-width='2' stroke-linecap='round' stroke-miterlimit='10' d='M4 8h24M4 16h24M4 24h24'/%3E%3C/svg%3E");
+}
+.custom-toggler.navbar-toggler {
+  border-color: white;
+}
 #card-btn:hover {
   background-color: black;
   border-color: black;
