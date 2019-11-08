@@ -1,24 +1,26 @@
-import { FETCH_FILTERS } from "../actions/actionTypes";
+import { FETCH_FILTERS, SELECT_FILTERS } from "../actions/actionTypes";
 
 const initialState = {
   ingredients: [],
   cuisines: [],
   courses: [],
   meals: [],
+  selectedFilters: { cuisine: "", courses: [], meals: [] },
   loading: true
 };
 
 export default (state = initialState, { type, payload }) => {
   switch (type) {
     case FETCH_FILTERS:
-      const { ingredients, cuisines, courses, meals } = payload;
       return {
         ...state,
-        ingredients,
-        cuisines,
-        courses,
-        meals,
+        ...payload,
         loading: false
+      };
+    case SELECT_FILTERS:
+      return {
+        ...state,
+        selectedFilters: payload
       };
     default:
       return state;

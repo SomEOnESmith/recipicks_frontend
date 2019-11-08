@@ -1,4 +1,4 @@
-import { FETCH_FILTERS } from "./actionTypes";
+import { FETCH_FILTERS, SELECT_FILTERS } from "./actionTypes";
 import instance from "./instance";
 
 export const fetchFilters = () => async dispatch => {
@@ -12,4 +12,11 @@ export const fetchFilters = () => async dispatch => {
   } catch (error) {
     console.error(error);
   }
+};
+
+export const selectFilters = filters => {
+  return {
+    type: SELECT_FILTERS,
+    payload: filters
+  };
 };

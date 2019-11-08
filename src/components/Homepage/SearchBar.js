@@ -56,7 +56,7 @@ class SearchBar extends Component {
           this.filterIngredients()
         );
         this.setState({ suggestedItems: newSuggestedItems });
-        this.props.fetch(this.state.itemsID);
+        this.props.fetchRecipes(this.state.itemsID);
       }
     }
   };
@@ -67,7 +67,7 @@ class SearchBar extends Component {
         items: this.state.items.concat(item),
         itemsID: this.state.itemsID.concat(item.id)
       });
-      this.props.fetch(this.state.itemsID);
+      this.props.fetchRecipes(this.state.itemsID);
       if (!this.state.value) {
         const newSuggestedItems = this.randomIngredients(
           this.filterIngredients()
@@ -233,7 +233,7 @@ class SearchBar extends Component {
                 backgroundColor: "transparent",
                 borderColor: "transparent"
               }}
-              onClick={() => this.props.fetch(this.state.itemsID)}
+              onClick={() => this.props.fetchRecipes(this.state.itemsID)}
             >
               <img
                 src={searchIcon}
@@ -246,7 +246,7 @@ class SearchBar extends Component {
             </button>
           </div>
         </div>
-        {/* This needs to be inside input onPaste="This needs to be a function" */}
+        {/* This needs to be inside input onPaste={This needs to be a function} */}
         {this.state.items.map((item, idx) => (
           <div className="tag-item" key={idx}>
             {item.name}
@@ -269,11 +269,15 @@ class SearchBar extends Component {
 }
 
 const mapStateToProps = state => ({
-  ingredients: state.rootFilters.ingredients
+  ingredients: state.rootFilters.ingredients,
+  selectedFilters: state.rootFilters.selectedFilters
 });
 
 const mapDispatchToProps = dispatch => ({
-  fetch: ingredients => dispatch(fetchRecipes("", [], [], ingredients)),
+  fetchRecipes: ingredients => {
+    const { cuisine, meals, courses } = this.props.selectedFilters;
+    dispatch(fetchRecipes(cuisine, meals, courses, ingredients));
+  },
   handleDeleteIngredients: ingredient =>
     dispatch(handleDeleteIngredients(ingredient))
 });

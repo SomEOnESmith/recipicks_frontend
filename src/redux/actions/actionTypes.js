@@ -7,3 +7,4 @@ export const EDIT_PROFILE = "EDIT_PROFILE";
 export const RESET_PROFILE = "RESET_PROFILE";
 export const HANDLE_DELETE = "HANDLE_DELETE";
 export const FETCH_FILTERS = "FETCH_FILTERS";
+export const SELECT_FILTERS = "SELECT_FILTERS";
