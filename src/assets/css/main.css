@@ -129,9 +129,31 @@
 #spacing {
   color: black;
 }
+
+#mealBox,
+#courseBox {
+  width: 400px;
+  height: 70px;
+}
+
+.styles_modal__gNwvD {
+  background-color: black;
+}
+
+#cuisineBox {
+  width: 400px;
+  margin-bottom: 20px;
+}
+#btn-fliter {
+  margin-bottom: 50px;
+}
 #suggest_item {
-  background-color: orange;
-  border: 1px solid white;
+  background: rgb(196, 196, 196);
+  border: 1px solid transparent;
+  margin-bottom: 10px;
+  position: relative;
+  left: 130px;
+  color: black;
 }
 
 .name-padding {
@@ -139,7 +161,7 @@
 }
 
 #suggest_item:hover {
-  background-color: black;
+  background-color: rgb(129, 3, 32);
   color: white;
 }
 
@@ -148,6 +170,14 @@
   font-size: 17px;
 }
 
+#btn-fliter {
+  background-color: rgb(129, 3, 32);
+  color: white;
+}
+
+#btn-fliter:hover {
+  background-color: rgb(208, 6, 53);
+}
 #suggest_btn {
   background-color: black;
   border-radius: 50px;
@@ -160,12 +190,12 @@
 }
 
 #cancel {
-  background-color: rgb(185, 30, 30);
+  background-color: rgb(208, 6, 53);
   color: white;
 }
 
 #cancel:hover {
-  background-color: rgb(233, 45, 45);
+  background-color: rgb(129, 3, 32);
   color: white;
 }
 
@@ -191,7 +221,7 @@
   color: orange;
 }
 hr {
-  border-color: orange;
+  border-color: rgb(208, 6, 53);
 }
 #card-text-orange {
   color: orange;
