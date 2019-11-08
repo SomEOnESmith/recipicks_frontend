@@ -48,7 +48,8 @@
 }
 
 .tag-item {
-  background-color: #d4d5d6;
+  background-color: white;
+  color: black;
   display: inline-block;
   font-size: 14px;
   border-radius: 30px;
@@ -64,6 +65,7 @@
 }
 .suggestion-item {
   background-color: #d4d5d6;
+
   display: inline-block;
   font-size: 14px;
   border-radius: 30px;
