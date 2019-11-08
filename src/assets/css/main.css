@@ -62,16 +62,6 @@
   background-color: black;
 }
 
-.navbar {
-  background-color: transparent;
-  border: 1 solid red;
-}
-.navbar-expand-lg {
-  background-color: transparent;
-}
-#navbar {
-  background-color: transparent;
-}
 #padding {
   padding-top: 100px;
 }
@@ -111,19 +101,53 @@
 }
 
 .typewriter h1 {
-  /* overflow: hidden; Ensures the content is not revealed until the animation */
-  /* border-right: 0.15em solid orange; The typwriter cursor */
-  /* white-space: nowrap; Keeps the content on a single line */
-  /* margin: 0 auto; Gives that scrolling effect as the typing happens */
-  letter-spacing: 0.15em; /* Adjust as needed */
-  /* animation: typing 2.5s steps(40, end), blink-caret 0.75s step-end infinite; */
+  letter-spacing: 0.15em;
   font: bold 2.1875rem/2.875rem "Source Serif Pro", serif;
-  font-size: 4.125rem;
   margin: 9.25rem auto 1.8125rem;
-  padding: 10px;
   position: relative;
   text-align: center;
-  /* left: 400px; */
+}
+
+@media screen and (min-width: 601px) {
+  .typewriter h1 {
+    font-size: 5vw;
+  }
+  #serach-input {
+    width: 65%;
+    position: relative;
+    left: 130px;
+  }
+  #suggest_btn {
+    position: relative;
+    bottom: 5px;
+    left: 100px;
+  }
+  #model-btn {
+    position: relative;
+    left: 130px;
+    top: 14px;
+  }
+}
+
+/* If the screen size is 600px wide or less, set the font-size of <div> to 30px */
+@media screen and (max-width: 600px) {
+  div.example {
+    font-size: 13vw;
+  }
+  .suggest-list {
+    position: relative;
+    right: 120px;
+  }
+  #suggest_btn {
+    position: relative;
+    bottom: 5px;
+    left: 20px;
+  }
+  #model-btn {
+    position: relative;
+    left: 30px;
+    top: 14px;
+  }
 }
 
 #spacing {
@@ -148,12 +172,26 @@
   margin-bottom: 50px;
 }
 #suggest_item {
-  background: rgb(196, 196, 196);
+  background: rgb(208, 6, 53);
   border: 1px solid transparent;
   margin-bottom: 10px;
   position: relative;
   left: 130px;
-  color: black;
+  color: white;
+}
+
+.bg-light {
+  background-color: rgb(119, 3, 30) !important;
+}
+
+.navbar-brand,
+.nav-item,
+.nav-link {
+  color: white !important;
+}
+
+#mainNav.navbar--home {
+  background-color: transparent;
 }
 
 .name-padding {
@@ -203,9 +241,6 @@
   color: black;
 }
 
-.navbar {
-  background-color: transparent;
-}
 .search {
   position: relative;
   padding: 20px;
@@ -225,6 +260,14 @@ hr {
 }
 #card-text-orange {
   color: orange;
+}
+
+#model-btn {
+  border-radius: 50px 0px 0px 50px;
+}
+
+#serach-input {
+  border-radius: 0px 50px 50px 0px;
 }
 
 #detail-space {

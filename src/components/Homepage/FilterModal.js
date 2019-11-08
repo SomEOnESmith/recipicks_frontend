@@ -79,14 +79,19 @@ class FilterModal extends Component {
       <div>
         <button
           onClick={this.toggleModal}
-          style={{ backgroundColor: "transparent", borderColor: "transparent" }}
+          id="model-btn"
+          style={{
+            backgroundColor: "#D00635",
+            borderColor: "transparent",
+            padding: 7
+          }}
         >
           <img
             src={filterIcon}
             alt=""
             style={{
               backgroundColor: "transparent",
-              height: "35px"
+              height: "28px"
             }}
           />
         </button>
