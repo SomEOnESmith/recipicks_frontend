@@ -10,7 +10,7 @@ import { selectFilters } from "../../redux/actions";
 
 class FilterModal extends Component {
   state = {
-    open: true,
+    open: false,
     cuisine: "",
     meals: [],
     courses: []
