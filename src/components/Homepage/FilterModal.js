@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 import Modal from "react-responsive-modal";
 
-// Assests
+// Assets
 import filterIcon from "../../assets/modernFilter.png";
 
 // Actions
