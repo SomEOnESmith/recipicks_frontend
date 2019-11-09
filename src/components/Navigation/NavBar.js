@@ -29,7 +29,6 @@ const NavBar = () => {
           </h3>
         </div>
       </Link>
-
       <button
         className="navbar-toggler navbar-toggler-right"
         type="button"
@@ -41,7 +40,6 @@ const NavBar = () => {
       >
         <span className="navbar-toggler-icon" />
       </button>
-
       {/* add if user  */}
       <Link
         style={{
