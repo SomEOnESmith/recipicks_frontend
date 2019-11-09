@@ -29,7 +29,6 @@ const NavBar = () => {
           </h3>
         </div>
       </Link>
-
       <button
         className="navbar-toggler navbar-toggler-right"
         type="button"
@@ -41,6 +40,17 @@ const NavBar = () => {
       >
         <span className="navbar-toggler-icon" />
       </button>
+      {/* add if user  */}
+      <Link
+        style={{
+          color: "black"
+        }}
+        id="nav-link"
+        to="/recipe/create/"
+        className="nav-link nav"
+      >
+        Add Recipe
+      </Link>
       <AuthButton />
     </nav>
   );
