@@ -154,15 +154,7 @@ class AddRecipe extends Component {
               <b>Image: </b>
             </p>
             <div style={{ paddingLeft: "67px" }}>
-              <select
-                className="form-control"
-                name="meal"
-                defaultValue={this.state.meal}
-                onChange={this.handleChange}
-                multiple
-              >
-                {mealOptions}
-              </select>
+            ADD AN INPUT FIELD LATER FOR AN IMAGE FIELD
             </div>
             <br /> */}
 
