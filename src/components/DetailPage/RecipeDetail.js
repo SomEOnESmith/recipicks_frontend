@@ -20,11 +20,11 @@ class RecipeDetail extends Component {
       const recipe = this.props.recipe;
 
       const meal = recipe.meal.map(meal => {
-        return <li> {meal.name}</li>;
+        return <li key={meal.id}> {meal.name}</li>;
       });
 
       const course = recipe.course.map(course => {
-        return <li> {course.name} </li>;
+        return <li key={course.id}> {course.name} </li>;
       });
 
       const ingredients = recipe.ingredients.map(ingredient => {
@@ -33,13 +33,16 @@ class RecipeDetail extends Component {
             style={{
               paddingLeft: 22
             }}
+            key={ingredient.id}
           >
             {ingredient.name}
           </li>
         );
       });
 
-      const steps = recipe.steps.map(step => <Step step={step} />);
+      const steps = recipe.steps.map(step => (
+        <Step key={step.id} step={step} />
+      ));
 
       return (
         <div className="detailBG">
@@ -59,7 +62,10 @@ class RecipeDetail extends Component {
                     <div id="RecipeInfoLine" className="col-4">
                       <p id="spacing">
                         <span id="bold"> Cuisine: </span>
-                        <li>{recipe.cuisine.name}</li>
+
+                        <li>
+                          {recipe.cuisine ? recipe.cuisine.name : "Others"}
+                        </li>
                       </p>
                       <p id="spacing">
                         <span id="bold"> Total: </span>
