@@ -62,7 +62,6 @@ class RecipeDetail extends Component {
                     <div id="RecipeInfoLine" className="col-4">
                       <p id="spacing">
                         <span id="bold"> Cuisine: </span>
-
                         <li>
                           {recipe.cuisine ? recipe.cuisine.name : "Others"}
                         </li>
@@ -86,11 +85,9 @@ class RecipeDetail extends Component {
                 </div>
                 <br />
                 <h4>DESCRIPTION</h4>
-
                 <hr />
                 {recipe.description}
               </div>
-
               <div className="col">
                 <img
                   style={{
@@ -103,7 +100,6 @@ class RecipeDetail extends Component {
                 />
               </div>
             </div>
-
             <div id="padding" className="row">
               <div className="col">
                 <h4>INSTRUCTIONS</h4>
