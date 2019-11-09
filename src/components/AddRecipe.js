@@ -13,8 +13,8 @@ class AddRecipe extends Component {
     cuisine: ""
   };
 
-  submitHandler = e => {
-    e.preventDefault();
+  submitHandler = event => {
+    event.preventDefault();
     this.props.addRecipe(this.state, this.props.history);
   };
 
