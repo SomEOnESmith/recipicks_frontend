@@ -8,6 +8,40 @@
 
   background-color: rgba(0, 0, 0, 0.75);
 }
+.meal-style {
+  list-style: url("../../assets/icons8-meal-16.png");
+  position: relative;
+
+  top: 2px;
+  color: black;
+  font-weight: 500;
+  padding-left: 14px;
+}
+
+.name-style {
+  color: black;
+  font-weight: 500;
+}
+
+.row-details {
+  background-color: rgb(119, 3, 30);
+  padding: 18px;
+
+  opacity: 0.9;
+}
+.time-style {
+  padding-left: 20px;
+}
+
+.meal-name {
+  position: relative;
+  bottom: 3px;
+  right: 6px;
+}
+
+.list-style {
+  padding-left: 20px;
+}
 
 .header-detail {
   display: flex;
@@ -157,19 +191,39 @@
   }
 }
 
+.badge {
+  width: 80px;
+  position: absolute;
+  right: 15px;
+  top: 10px;
+  padding: 5px 10px;
+}
+
+.the-list {
+  background-color: rgb(209, 208, 208);
+}
 /* If the screen size is 600px wide or less, set the font-size of <div> to 30px */
 @media screen and (max-width: 600px) {
   div.example {
     font-size: 13vw;
   }
+  #img-mobile {
+    max-width: 100%;
+    height: auto;
+    position: relative;
+    left: 15px;
+  }
+
   .suggest-list {
     position: relative;
-    right: 120px;
+    right: 160px;
   }
   #suggest_btn {
-    position: relative;
-    bottom: 5px;
-    left: 20px;
+    display: block;
+    margin: 0 auto;
+    top: 50%;
+    left: 50%;
+    position: absolute;
   }
   #model-btn {
     position: relative;
@@ -196,7 +250,11 @@
 }
 
 .styles_modal__gNwvD {
-  background-color: black;
+  background-color: rgb(209, 208, 208);
+}
+.form-control {
+  width: 350px;
+  background-color: rgb(209, 208, 208);
 }
 
 #cuisineBox {
@@ -211,10 +269,23 @@
   border: 1px solid transparent;
   margin-bottom: 10px;
   position: relative;
-  left: 130px;
+  left: 180px;
   color: white;
+  margin-top: 10px;
 }
 
+.name-detail {
+  font-size: 4vw;
+  color: white;
+  font-weight: 500;
+  position: relative;
+  left: 50px;
+  top: 50px;
+}
+
+.detailBG {
+  background-color: rgb(209, 208, 208);
+}
 .bg-light {
   background-color: rgb(119, 3, 30) !important;
 }
@@ -231,6 +302,13 @@
 
 .name-padding {
   padding-bottom: 20px;
+  color: white;
+}
+.red {
+  color: rgb(208, 6, 53);
+}
+.white {
+  color: white;
 }
 
 #suggest_item:hover {
@@ -238,6 +316,9 @@
   color: white;
 }
 
+#red {
+  color: rgb(208, 6, 53);
+}
 #bold {
   font-weight: bold;
   font-size: 17px;
@@ -255,8 +336,10 @@
   color: white;
 }
 
-link {
-  text-decoration: none;
+link,
+link:hover,
+#link {
+  text-decoration: none !important;
 }
 
 .navbar-light .navbar-toggler,
@@ -304,7 +387,7 @@ link {
   color: black;
 }
 #title-link:hover {
-  color: orange;
+  color: rgb(208, 6, 53);
 }
 hr {
   border-color: rgb(208, 6, 53);
@@ -323,8 +406,7 @@ hr {
 
 #detail-space {
   position: relative;
-  bottom: 200px;
-  left: 100px;
+  bottom: 300px;
 }
 #recipe-list {
   position: relative;
@@ -370,6 +452,7 @@ hr {
 #recipe-card {
   margin-right: 20px;
   margin-bottom: 60px;
+  background-color: rgb(224, 224, 224);
 }
 
 #card-img {

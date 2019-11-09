@@ -7,10 +7,12 @@ class Step extends Component {
       <div id="text-padding" className="row">
         <div className="col">
           <p>
-            <span style={{ fontWeight: "bold", color: "black" }}>
+            <span style={{ fontSize: 25, fontWeight: "bold", color: "black" }}>
               0{step.order}.
             </span>
-            {step.instruction}
+            <span style={{ paddingLeft: 5, color: "black" }}>
+              {step.instruction}
+            </span>
           </p>
         </div>
       </div>

@@ -126,7 +126,7 @@ class FilterModal extends Component {
                 >
                   Meals
                 </h5>
-                <div style={{ paddingLeft: "67px" }}>
+                <div style={{ paddingLeft: "55px" }}>
                   <select
                     className="form-control"
                     name="meals"
@@ -173,7 +173,7 @@ class FilterModal extends Component {
                       name="cuisine"
                       defaultValue={this.state.cuisine}
                       onChange={this.handleChange}
-                      style={{ width: "60%" }}
+                      style={{ width: "60%", position:"relative", left:30 }}
                     >
                       <option>Select a cuisine</option>
                       {cuisineOptions}
@@ -189,7 +189,7 @@ class FilterModal extends Component {
                     Clear Filters
                   </button>
                   <input
-                    className="btn btn-primary"
+                    className="btn btn-danger"
                     type="submit"
                     value="Save"
                     onClick={this.handleSubmit}
