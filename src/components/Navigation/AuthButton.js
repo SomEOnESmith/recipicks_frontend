@@ -10,7 +10,7 @@ const AuthButton = ({ user, profile }) => {
     <li key="loginButton" className="nav-item">
       <Link
         style={{
-          color: "white"
+          color: "black"
         }}
         id="nav-link"
         to="/login"
@@ -22,7 +22,7 @@ const AuthButton = ({ user, profile }) => {
     <li key="signupButton" className="nav-item">
       <Link
         style={{
-          color: "white"
+          color: "black"
         }}
         id="nav-link"
         to="/signup"
@@ -36,12 +36,21 @@ const AuthButton = ({ user, profile }) => {
   if ((user, profile)) {
     buttons = (
       <>
-        <li id="nav-link" key="profileButton" className="nav-item">
-          <Link id="nav-link" to="/profile" className="nav-link nav">
-            {profile.user.username}'s Profile
-          </Link>
-          <Logout />
-        </li>
+        <Link
+          style={{
+            color: "black"
+          }}
+          id="nav-link"
+          to="/recipe/create/"
+          className="nav-link nav"
+        >
+          Add Recipe
+        </Link>
+
+        <Link id="nav-link" to="/profile" className="nav-link nav">
+          {profile.user.username}'s Profile
+        </Link>
+        <Logout />
       </>
     );
   }
