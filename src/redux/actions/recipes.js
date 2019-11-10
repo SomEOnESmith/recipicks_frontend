@@ -1,7 +1,7 @@
 import {
   FETCH_RECIPES,
   FETCH_RECIPE,
-  HANDLE_DELETE,
+  DELETE_INGREDIENT,
   ADD_RECIPE,
   SET_ERRORS
 } from "./actionTypes";
@@ -16,8 +16,13 @@ export const fetchRecipes = (
   ingredients
 ) => async dispatch => {
   try {
-    if (!cuisine && meals.length === 0 && courses.length === 0) {
-      let exists = null;
+    let exists = null;
+    if (
+      !cuisine &&
+      meals.length === 0 &&
+      courses.length === 0 &&
+      cache.length > 0
+    ) {
       cache.forEach(attempt => {
         if (attempt.ingredients.length === ingredients.length) {
           if (
@@ -29,9 +34,9 @@ export const fetchRecipes = (
           }
         }
       });
-      if (exists) {
-        dispatch({ type: FETCH_RECIPES, payload: exists.recipes });
-      }
+    }
+    if (exists) {
+      dispatch({ type: FETCH_RECIPES, payload: exists.recipes });
     } else {
       const res = await instance.get("recipes/", {
         params: {
@@ -61,9 +66,9 @@ export const fetchRecipe = recipeID => async dispatch => {
   }
 };
 
-export const handleDeleteIngredients = ingredient => {
+export const deleteIngredient = ingredient => {
   return {
-    type: HANDLE_DELETE,
+    type: DELETE_INGREDIENT,
     payload: ingredient
   };
 };
