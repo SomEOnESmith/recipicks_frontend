@@ -6,6 +6,6 @@ export const ADD_RECIPE = "ADD_RECIPE";
 export const SET_PROFILE = "SET_PROFILE";
 export const EDIT_PROFILE = "EDIT_PROFILE";
 export const RESET_PROFILE = "RESET_PROFILE";
-export const HANDLE_DELETE = "HANDLE_DELETE";
+export const DELETE_INGREDIENT = "DELETE_INGREDIENT";
 export const FETCH_FILTERS = "FETCH_FILTERS";
 export const SELECT_FILTERS = "SELECT_FILTERS";

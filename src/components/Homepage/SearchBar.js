@@ -10,7 +10,7 @@ import searchIcon from "../../assets/search.png";
 
 // Actions
 import { fetchRecipes } from "../../redux/actions";
-import { handleDeleteIngredients } from "../../redux/actions";
+import { deleteIngredient } from "../../redux/actions";
 
 const fuseOptions = {
   shouldSort: true,
@@ -125,7 +125,7 @@ class SearchBar extends Component {
       items: this.state.items.filter(i => i !== item),
       itemsID: this.state.itemsID.filter(i => i !== item.id)
     });
-    this.props.handleDeleteIngredients(item);
+    this.props.deleteIngredient(item);
   };
 
   // handlePaste = evt => {
@@ -212,8 +212,7 @@ class SearchBar extends Component {
               style={{
                 backgroundColor: "#D00635",
                 borderColor: "transparent",
-                padding: 10,
-               
+                padding: 10
               }}
               onClick={() => {
                 const { cuisine, meals, courses } = this.props;
@@ -269,8 +268,7 @@ const mapDispatchToProps = dispatch => ({
   fetchRecipes: (cuisine, meals, courses, ingredients) => {
     dispatch(fetchRecipes(cuisine, meals, courses, ingredients));
   },
-  handleDeleteIngredients: ingredient =>
-    dispatch(handleDeleteIngredients(ingredient))
+  deleteIngredient: ingredient => dispatch(deleteIngredient(ingredient))
 });
 
 export default connect(

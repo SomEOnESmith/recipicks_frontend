@@ -1,7 +1,7 @@
 export {
   fetchRecipes,
   fetchRecipe,
-  handleDeleteIngredients,
+  deleteIngredient,
   addRecipe
 } from "./recipes";
 export { fetchFilters, selectFilters } from "./filters";
