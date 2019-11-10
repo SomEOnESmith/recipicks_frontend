@@ -173,7 +173,7 @@ class SearchBar extends Component {
 
   render() {
     return (
-      <div>
+      <>
         {this.state.suggestedItems.map((suggestItem, idx) => (
           <div className="suggest-list" key={idx}>
             <button
@@ -186,54 +186,34 @@ class SearchBar extends Component {
             </button>
           </div>
         ))}
-        <div
-          className="row"
-          style={{
-            backgroundColor: "#D00635",
-            borderRadius: "35px",
-            height: "70px",
-            paddingBottom: "5px"
-          }}
-        >
-          <div
-            className="col-2"
-            style={{ paddingTop: "18px", paddingLeft: "30px", height: "50px" }}
-          >
-            <FilterButton />
-          </div>
-          <div className="col-8">
-            <input
-              className={"input " + (this.state.error && " has-error")}
-              value={this.state.value}
-              placeholder="Type or paste ingredients and press 'Enter'..."
-              onKeyDown={this.handleKeyDown}
-              onChange={this.handleChange}
-              style={{
-                borderRadius: "25px",
-                backgroundColor: "white",
-                borderColor: "transparent",
-                width: "840px",
-                position: "relative",
-                left: "-100px"
-              }}
-            />
-          </div>
+        <div className="row">
+          <FilterButton />
+
+          <input
+            className={"input " + (this.state.error && " has-error")}
+            value={this.state.value}
+            placeholder="Type or paste ingredients and press 'Enter'..."
+            onKeyDown={this.handleKeyDown}
+            onChange={this.handleChange}
+            id="serach-input"
+            style={{
+              backgroundColor: "white",
+              borderColor: "transparent"
+            }}
+          />
 
           <div
-            className="col-2"
             style={{
-              paddingTop: "17px",
-              height: "50px",
-              width: "50px",
-              position: "relative",
-              left: "80px"
+              paddingTop: "17px"
             }}
           >
             <button
               id="suggest_btn"
               style={{
-                backgroundColor: "transparent",
-                borderColor: "transparent"
+                backgroundColor: "#D00635",
+                borderColor: "transparent",
+                padding: 10,
+               
               }}
               onClick={() => {
                 const { cuisine, meals, courses } = this.props;
@@ -249,7 +229,7 @@ class SearchBar extends Component {
                 src={searchIcon}
                 style={{
                   backgroundColor: "transparent",
-                  height: "30px"
+                  height: "23px"
                 }}
                 alt=""
               />
@@ -273,7 +253,7 @@ class SearchBar extends Component {
 
         {this.state.error && <p className="error">{this.state.error}</p>}
         <br />
-      </div>
+      </>
     );
   }
 }

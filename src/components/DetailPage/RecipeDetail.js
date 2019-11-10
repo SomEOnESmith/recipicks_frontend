@@ -14,33 +14,47 @@ class RecipeDetail extends Component {
   }
 
   render() {
-    if (this.props.loading) {
+    if (this.props.recipe === null) {
       return <Loading />;
     } else {
       const recipe = this.props.recipe;
-
       const meal = recipe.meal.map(meal => {
-        return <li> {meal.name}</li>;
-      });
-
-      const course = recipe.course.map(course => {
-        return <li> {course.name} </li>;
-      });
-
-      const ingredients = recipe.ingredients.map(ingredient => {
         return (
-          <li
-            style={{
-              paddingLeft: 22
-            }}
-          >
-            {ingredient.name}
+          <li id="meal-style" key={meal.id} className="white">
+            {meal.name}
           </li>
         );
       });
-
-      const steps = recipe.steps.map(step => <Step step={step} />);
-
+      const course = recipe.course.map(course => {
+        return (
+          <li key={course.id} className="white">
+            {course.name}
+          </li>
+        );
+      });
+      const ingredients = recipe.ingredients.map(ingredient => {
+        return (
+          <li
+            className="red"
+            style={{
+              paddingLeft: 5,
+              fontSize: 20
+            }}
+            key={ingredient.id}
+          >
+            <span
+              style={{
+                color: "black"
+              }}
+            >
+              {ingredient.name}
+            </span>
+          </li>
+        );
+      });
+      const steps = recipe.steps.map(step => (
+        <Step key={step.id} step={step} />
+      ));
       return (
         <div className="detailBG">
           <div className="main-detail">
@@ -55,57 +69,66 @@ class RecipeDetail extends Component {
               <div className="col">
                 <h2 className="name-padding">{recipe.title}</h2>
                 <div className="container">
-                  <div id="RecipeInfo" className="row">
-                    <div id="RecipeInfoLine" className="col-4">
-                      <p id="spacing">
-                        <span id="bold"> Cuisine: </span>
-                        <li>{recipe.cuisine.name}</li>
-                      </p>
-                      <p id="spacing">
-                        <span id="bold"> Total: </span>
-                        <li> {recipe.total_time}</li>
-                      </p>
+                  <div className="row row-details">
+                    <div className="col">
+                      <span className="white" id="bold">
+                        Cuisine:
+                      </span>
+                      <li
+                        style={{ paddingBottom: 10 }}
+                        className="white cuisine-style"
+                      >
+                        {recipe.cuisine ? recipe.cuisine.name : "Others"}
+                      </li>
+                      <span className="white" id="bold">
+                        Total:
+                      </span>
+                      <li className="white clock-style">{recipe.total_time}</li>
                     </div>
-                    <div id="RecipeInfoLine" className="col-4">
-                      <p id="spacing">
-                        <span id="bold"> Meal: </span> {meal}
-                      </p>
+                    <div className="col">
+                      <span className="white" id="bold">
+                        Meal:
+                      </span>
+                      {meal}
                     </div>
-                    <div className="col-4">
-                      <p id="spacing">
-                        <span id="bold"> Course: </span> {course}
-                      </p>
+                    <div className="col">
+                      <span className="white" id="bold">
+                        Course:
+                      </span>
+                      {course}
                     </div>
                   </div>
                 </div>
-                <br />
-                <h4>DESCRIPTION</h4>
-
-                <hr />
-                {recipe.description}
               </div>
-
+              <img
+                style={{
+                  height: 350,
+                  width: 350,
+                  borderRadius: 10
+                }}
+                id="img-mobile"
+                src={recipe.image}
+                alt="recipe"
+              />
+            </div>
+            <div className="row">
               <div className="col">
-                <img
-                  style={{
-                    height: 300,
-                    width: 500,
-                    borderRadius: 15
-                  }}
-                  src={recipe.image}
-                  alt=""
-                />
+                <h4 id="red">DESCRIPTION</h4>
+                <hr />
+                <span>{recipe.description}</span>
               </div>
             </div>
-
-            <div id="padding" className="row">
+            <br />
+            <br />
+            <br />
+            <div className="row">
               <div className="col">
-                <h4>INSTRUCTIONS</h4>
+                <h4 id="red">INSTRUCTIONS</h4>
                 <hr />
                 {steps}
               </div>
               <div className="col">
-                <h4>INGREDIENTS</h4> <hr />
+                <h4 id="red">INGREDIENTS</h4> <hr />
                 {ingredients}
               </div>
             </div>

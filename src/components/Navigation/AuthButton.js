@@ -6,46 +6,37 @@ import { connect } from "react-redux";
 import Logout from "../Authentication/Logout";
 
 const AuthButton = ({ user, profile }) => {
-  let buttons = [
-    <li key="loginButton" className="nav-item">
-      <Link
-        style={{
-          color: "white"
-        }}
-        id="nav-link"
-        to="/login"
-        className="nav-link nav"
-      >
-        Login
-      </Link>
-    </li>,
-    <li key="signupButton" className="nav-item">
-      <Link
-        style={{
-          color: "white"
-        }}
-        id="nav-link"
-        to="/signup"
-        className="nav-link nav"
-      >
-        Signup
-      </Link>
-    </li>
-  ];
-
+  let buttons = (
+    <>
+      <li className="nav-item">
+        <Link className="nav-link" to="/login">
+          Login
+        </Link>
+      </li>
+      <li className="nav-item">
+        <Link className="nav-link" to="/signup">
+          Register
+        </Link>
+      </li>
+    </>
+  );
   if ((user, profile)) {
     buttons = (
       <>
-        <li id="nav-link" key="profileButton" className="nav-item">
-          <Link id="nav-link" to="/profile" className="nav-link nav">
+        <li className="nav-item">
+          <Link className="nav-link" to="/profile">
             {profile.user.username}'s Profile
           </Link>
-          <Logout />
         </li>
+        <li className="nav-item">
+          <Link className="nav-link" to="/recipe/create">
+            Add a Recipe
+          </Link>
+        </li>
+        <Logout />
       </>
     );
   }
-
   return <ul className="navbar-nav ml-auto">{buttons}</ul>;
 };
 

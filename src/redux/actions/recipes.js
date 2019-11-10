@@ -1,4 +1,10 @@
-import { FETCH_RECIPES, FETCH_RECIPE, HANDLE_DELETE } from "./actionTypes";
+import {
+  FETCH_RECIPES,
+  FETCH_RECIPE,
+  HANDLE_DELETE,
+  ADD_RECIPE,
+  SET_ERRORS
+} from "./actionTypes";
 import instance from "./instance";
 
 let cache = [];
@@ -45,6 +51,7 @@ export const fetchRecipes = (
 };
 
 export const fetchRecipe = recipeID => async dispatch => {
+  dispatch({ type: FETCH_RECIPE, payload: null });
   try {
     const res = await instance.get(`recipes/${recipeID}/`);
     const recipe = res.data;
@@ -58,5 +65,21 @@ export const handleDeleteIngredients = ingredient => {
   return {
     type: HANDLE_DELETE,
     payload: ingredient
+  };
+};
+
+export const addRecipe = (recipeData, history) => {
+  return async dispatch => {
+    try {
+      const response = await instance.post("recipe/create/", recipeData);
+      dispatch({ type: ADD_RECIPE, payload: response.data });
+      history.replace(`/recipes/${response.data.id}`);
+    } catch (error) {
+      console.error(error.response.data);
+      dispatch({
+        type: SET_ERRORS,
+        payload: error.response.data
+      });
+    }
   };
 };
