@@ -29,9 +29,8 @@ const reducer = (state = initialState, { type, payload }) => {
       };
     case HANDLE_DELETE:
       // let newPerfect = [];
-      // let newExcess = [];
-      let newMissing = state.recipes.perfect_match;
-      let newExcess = state.recipes.user_excess_ingrs.filter(recipe => {
+      const newMissing = state.recipes.perfect_match;
+      const newExcess = state.recipes.user_excess_ingrs.filter(recipe => {
         if (recipe.ingredients.includes(payload.id)) {
           newMissing.push(payload);
           return false;
