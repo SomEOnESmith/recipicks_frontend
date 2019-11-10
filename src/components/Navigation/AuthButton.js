@@ -20,7 +20,6 @@ const AuthButton = ({ user, profile }) => {
       </li>
     </>
   );
-
   if ((user, profile)) {
     buttons = (
       <>
@@ -38,7 +37,6 @@ const AuthButton = ({ user, profile }) => {
       </>
     );
   }
-
   return <ul className="navbar-nav ml-auto">{buttons}</ul>;
 };
 
