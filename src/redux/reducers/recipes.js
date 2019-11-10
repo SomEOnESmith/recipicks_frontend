@@ -1,7 +1,7 @@
 import {
   FETCH_RECIPES,
   FETCH_RECIPE,
-  HANDLE_DELETE,
+  DELETE_INGREDIENT,
   ADD_RECIPE
 } from "../actions/actionTypes";
 
@@ -27,12 +27,12 @@ const reducer = (state = initialState, { type, payload }) => {
         recipe: recipe,
         loading: false
       };
-    case HANDLE_DELETE:
+    case DELETE_INGREDIENT:
       // let newPerfect = [];
-      const newMissing = state.recipes.perfect_match;
-      const newExcess = state.recipes.user_excess_ingrs.filter(recipe => {
+      let newMissing = state.recipes.perfect_match;
+      let newExcess = state.recipes.user_excess_ingrs.filter(recipe => {
         if (recipe.ingredients.includes(payload.id)) {
-          newMissing.push(payload);
+          newMissing.push(recipe);
           return false;
         } else {
           return recipe;
