@@ -11,11 +11,9 @@ class RecipeCard extends Component {
     const icon = this.props.type;
     const meal = recipe.meal.map(meal => {
       return (
-        <>
-          <li className="meal-style">
-            <span className="meal-name"> {meal.name}</span>
-          </li>
-        </>
+        <li key={meal.id} className="meal-style">
+          <span className="meal-name">{meal.name}</span>
+        </li>
       );
     });
     let span;
@@ -26,7 +24,7 @@ class RecipeCard extends Component {
     } else if (icon === "missing") {
       span = <span className="badge badge-pill badge-danger">Missing</span>;
     } else {
-      span = <></>;
+      span = null;
     }
     return (
       <>
