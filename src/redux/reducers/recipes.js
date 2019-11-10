@@ -32,8 +32,7 @@ const reducer = (state = initialState, { type, payload }) => {
       let newExcess = [];
       let newMissing = state.recipes.perfect_match.map(recipe => recipe);
       newExcess = state.recipes.user_excess_ingrs.filter(recipe => {
-        if (recipe.ingredients.includes(action.payload.id))
-          newMissing.push(action.payload);
+        if (recipe.ingredients.includes(payload.id)) newMissing.push(payload);
         else return recipe;
       });
       return {
