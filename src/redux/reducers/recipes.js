@@ -28,18 +28,15 @@ const reducer = (state = initialState, action) => {
       };
     case HANDLE_DELETE:
       // let newPerfect = [];
-      let newExcess = [];
-      let newMissing = state.recipes.perfect_match.map(recipe => recipe);
-      console.log("TCL: reducer -> newMissing", newMissing);
-
-      newExcess = state.recipes.user_excess_ingrs.filter(recipe => {
+      let newMissing = [];
+      let newExcess = state.recipes.user_excess_ingrs.filter(recipe => {
         if (recipe.ingredients.includes(action.payload.id))
           newMissing.push(action.payload);
         else return recipe;
       });
-
-      console.log("TCL: reducer -> newExcess", newExcess);
-
+      newMissing = state.recipes.perfect_match
+        .map(recipe => recipe)
+        .concat(state.recipes.user_missing_ingrs);
       return {
         ...state,
         recipes: {
