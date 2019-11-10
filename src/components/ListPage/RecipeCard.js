@@ -9,7 +9,6 @@ class RecipeCard extends Component {
   render() {
     const recipe = this.props.recipe;
     const icon = this.props.type;
-
     const meal = recipe.meal.map(meal => {
       return (
         <>
@@ -19,7 +18,6 @@ class RecipeCard extends Component {
         </>
       );
     });
-
     let span;
     if (icon === "perfect") {
       span = <span className="badge badge-pill badge-success">Perfect</span>;
@@ -30,7 +28,6 @@ class RecipeCard extends Component {
     } else {
       span = <></>;
     }
-
     return (
       <>
         <div
@@ -48,14 +45,11 @@ class RecipeCard extends Component {
               className="card-img-top"
               alt="..."
             />
-
             <div className="card-body">
               <h5 id="title-link" className="card-title">
                 {recipe.title}
               </h5>
-
               <hr />
-
               <div className="row list-style">
                 <div className="cuisine-style">
                   <img src={cuisineIcon} alt="cuisine" />
