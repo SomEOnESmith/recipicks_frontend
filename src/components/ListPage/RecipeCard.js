@@ -40,7 +40,6 @@ class RecipeCard extends Component {
           className="card"
           id="recipe-card"
         >
-          {" "}
           {span}
           <Link id="link" to={`/recipes/${recipe.id}`}>
             <img
