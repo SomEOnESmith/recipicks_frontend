@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
 
-// Images
+// Assets
 import cuisineIcon from "../../assets/icons8-globe-16.png";
 import alarmIcon from "../../assets/icons8-alarm-clock-16.png";
 
