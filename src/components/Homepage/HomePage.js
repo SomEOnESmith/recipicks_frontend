@@ -22,12 +22,8 @@ const HomePage = () => {
               </div>
             </div>
           </div>
-          <div className="row">
-            <div className="col">
-              <div className="search">
-                <SearchBar />
-              </div>
-            </div>
+          <div className="container">
+            <SearchBar />
           </div>
         </div>
       </section>
