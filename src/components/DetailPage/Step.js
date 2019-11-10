@@ -8,7 +8,7 @@ class Step extends Component {
         <div className="col">
           <p>
             <span style={{ fontSize: 25, fontWeight: "bold", color: "black" }}>
-              0{step.order}.
+              {step.order}.
             </span>
             <span style={{ paddingLeft: 5, color: "black" }}>
               {step.instruction}
