@@ -14,7 +14,7 @@ class RecipeDetail extends Component {
   }
 
   render() {
-    if (this.props.loading) {
+    if (this.props.recipe === null) {
       return <Loading />;
     } else {
       const recipe = this.props.recipe;
@@ -26,7 +26,11 @@ class RecipeDetail extends Component {
         );
       });
       const course = recipe.course.map(course => {
-        return <li key={course.id} className="white"> {course.name} </li>;
+        return (
+          <li key={course.id} className="white">
+            {course.name}
+          </li>
+        );
       });
       const ingredients = recipe.ingredients.map(ingredient => {
         return (
@@ -74,7 +78,7 @@ class RecipeDetail extends Component {
                         style={{ paddingBottom: 10 }}
                         className="white cuisine-style"
                       >
-                        {recipe.cuisine? recipe.cuisine.name : "Others"}
+                        {recipe.cuisine ? recipe.cuisine.name : "Others"}
                       </li>
                       <span className="white" id="bold">
                         Total:

@@ -29,11 +29,15 @@ const reducer = (state = initialState, { type, payload }) => {
       };
     case HANDLE_DELETE:
       // let newPerfect = [];
-      let newExcess = [];
-      let newMissing = state.recipes.perfect_match.map(recipe => recipe);
-      newExcess = state.recipes.user_excess_ingrs.filter(recipe => {
-        if (recipe.ingredients.includes(payload.id)) newMissing.push(payload);
-        else return recipe;
+      // let newExcess = [];
+      let newMissing = state.recipes.perfect_match;
+      let newExcess = state.recipes.user_excess_ingrs.filter(recipe => {
+        if (recipe.ingredients.includes(payload.id)) {
+          newMissing.push(payload);
+          return false;
+        } else {
+          return recipe;
+        }
       });
       return {
         ...state,

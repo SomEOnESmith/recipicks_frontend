@@ -30,6 +30,7 @@ export const fetchRecipes = (
 };
 
 export const fetchRecipe = recipeID => async dispatch => {
+  dispatch({ type: FETCH_RECIPE, payload: null });
   try {
     const res = await instance.get(`recipes/${recipeID}/`);
     const recipe = res.data;
