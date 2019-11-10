@@ -6,7 +6,7 @@ import { connect } from "react-redux";
 import Logout from "../Authentication/Logout";
 
 const AuthButton = ({ user, profile }) => {
-  let buttons = [
+  let buttons = (
     <>
       <li className="nav-item">
         <Link className="nav-link" to="/login">
@@ -19,7 +19,7 @@ const AuthButton = ({ user, profile }) => {
         </Link>
       </li>
     </>
-  ];
+  );
 
   if ((user, profile)) {
     buttons = (
@@ -27,6 +27,11 @@ const AuthButton = ({ user, profile }) => {
         <li className="nav-item">
           <Link className="nav-link" to="/profile">
             {profile.user.username}'s Profile
+          </Link>
+        </li>
+        <li className="nav-item">
+          <Link className="nav-link" to="/recipe/create">
+            Add a Recipe
           </Link>
         </li>
         <Logout />

@@ -1,7 +1,8 @@
 import {
   FETCH_RECIPES,
   FETCH_RECIPE,
-  HANDLE_DELETE
+  HANDLE_DELETE,
+  ADD_RECIPE
 } from "../actions/actionTypes";
 
 const initialState = {
@@ -10,17 +11,17 @@ const initialState = {
   loading: true
 };
 
-const reducer = (state = initialState, action) => {
-  switch (action.type) {
+const reducer = (state = initialState, { type, payload }) => {
+  switch (type) {
     case FETCH_RECIPES:
-      const recipes = action.payload;
+      const recipes = payload;
       return {
         ...state,
         recipes: recipes,
         loading: false
       };
     case FETCH_RECIPE:
-      const recipe = action.payload;
+      const recipe = payload;
       return {
         ...state,
         recipe: recipe,
@@ -28,19 +29,25 @@ const reducer = (state = initialState, action) => {
       };
     case HANDLE_DELETE:
       // let newPerfect = [];
-      // let newExcess = [];
+      let newExcess = [];
       let newMissing = state.recipes.perfect_match.map(recipe => recipe);
-      state.recipes.user_excess_ings.forEach(recipe => {
-        if (recipe.ingredients.includes(action.payload.id))
-          newMissing.push(action.payload);
+      newExcess = state.recipes.user_excess_ingrs.filter(recipe => {
+        if (recipe.ingredients.includes(payload.id)) newMissing.push(payload);
+        else return recipe;
       });
       return {
         ...state,
         recipes: {
-          perfect_match: state.recipes.perfect_match,
-          user_excess_ings: state.recipes.user_excess_ings,
-          user_missing_ings: newMissing
+          perfect_match: [],
+          user_excess_ingrs: newExcess,
+          user_missing_ingrs: newMissing
         }
+      };
+    case ADD_RECIPE:
+      const newRecipe = payload;
+      return {
+        ...state,
+        recipes: state.recipes.concat(newRecipe)
       };
     default:
       return state;

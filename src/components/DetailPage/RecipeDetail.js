@@ -18,19 +18,16 @@ class RecipeDetail extends Component {
       return <Loading />;
     } else {
       const recipe = this.props.recipe;
-
       const meal = recipe.meal.map(meal => {
         return (
-          <li id="meal-style" className="white">
+          <li id="meal-style" key={meal.id} className="white">
             {meal.name}
           </li>
         );
       });
-
       const course = recipe.course.map(course => {
-        return <li className="white"> {course.name} </li>;
+        return <li key={course.id} className="white"> {course.name} </li>;
       });
-
       const ingredients = recipe.ingredients.map(ingredient => {
         return (
           <li
@@ -39,6 +36,7 @@ class RecipeDetail extends Component {
               paddingLeft: 5,
               fontSize: 20
             }}
+            key={ingredient.id}
           >
             <span
               style={{
@@ -50,9 +48,9 @@ class RecipeDetail extends Component {
           </li>
         );
       });
-
-      const steps = recipe.steps.map(step => <Step step={step} />);
-
+      const steps = recipe.steps.map(step => (
+        <Step key={step.id} step={step} />
+      ));
       return (
         <div className="detailBG">
           <div className="main-detail">
@@ -76,9 +74,8 @@ class RecipeDetail extends Component {
                         style={{ paddingBottom: 10 }}
                         className="white cuisine-style"
                       >
-                        {recipe.cuisine.name}
+                        {recipe.cuisine? recipe.cuisine.name : "Others"}
                       </li>
-
                       <span className="white" id="bold">
                         Total:
                       </span>
@@ -99,7 +96,6 @@ class RecipeDetail extends Component {
                   </div>
                 </div>
               </div>
-
               <img
                 style={{
                   height: 350,
@@ -111,12 +107,10 @@ class RecipeDetail extends Component {
                 alt="recipe"
               />
             </div>
-
             <div className="row">
               <div className="col">
                 <h4 id="red">DESCRIPTION</h4>
                 <hr />
-
                 <span>{recipe.description}</span>
               </div>
             </div>
