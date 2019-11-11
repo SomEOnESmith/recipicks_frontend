@@ -8,11 +8,19 @@ import alarmIcon from "../../assets/icons8-alarm-clock-16.png";
 
 class RecipeCard extends Component {
   render() {
-    const { recipe } = this.props;
+    const { recipe, ingredients } = this.props;
     const icon = this.props.type;
-    const ingredientsName = recipe.ingredients.map(ingredient =>
-      this.props.ingredients.find(ingr => ingredient === ingr.id)
-    );
+    const ingredientList = recipe.ingredients.map(ingredient => {
+      let ingredientObject = ingredients.find(
+        rootIngredient => ingredient === rootIngredient.id
+      );
+      return (
+        <li key={ingredient}>
+          {ingredientObject.name[0].toUpperCase() +
+            ingredientObject.name.slice(1)}
+        </li>
+      );
+    });
     const meal = recipe.meals.map(meal => {
       return (
         <li key={meal.id} className="meal-style">
@@ -48,12 +56,8 @@ class RecipeCard extends Component {
               alt="..."
             />
             <div className="card-img-overlay img-text-container">
-              <h5 className="card-title img-text">Ingredients</h5>
-              <p className="card-text img-text">
-                {ingredientsName.map(ingredient => (
-                  <p key={ingredient.id}>{ingredient.name}</p>
-                ))}
-              </p>
+              <h5 className="card-title img-text">Ingredients:</h5>
+              <p className="card-text img-text">{ingredientList}</p>
             </div>
             <div className="card-body">
               <h5 id="title-link" className="card-title">
