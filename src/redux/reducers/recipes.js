@@ -38,10 +38,15 @@ const reducer = (state = initialState, { type, payload }) => {
         ) {
           if (recipe.ingredients.length === payload.length) {
             newPerfect.unshift(recipe);
+            return false;
           } else if (recipe.ingredients.length > payload.length) {
             newMissing.unshift(recipe);
+            return false;
           } else return recipe;
-        } else newMissing.unshift(recipe);
+        } else {
+          newMissing.unshift(recipe);
+          return false;
+        }
       });
       if (payload.length === 0) newMissing = [];
       return {
