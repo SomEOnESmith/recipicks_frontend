@@ -26,12 +26,6 @@ class Steps extends Component {
 
   handlePaste = event => {
     event.preventDefault();
-    // let paste = event.clipboardData.getData("text");
-    // let ingredients = paste.match(regex)
-    // paste
-    //   .split("")
-    //   .filter(element => element !== "-" && element !== "+" && element !== "e")
-    //   .join("");
   };
 
   render() {

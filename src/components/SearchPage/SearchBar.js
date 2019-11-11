@@ -144,7 +144,6 @@ class SearchBar extends Component {
 
   isValid(ingredient) {
     let error = null;
-
     if (this.isInList(ingredient)) {
       error = `${ingredient} has already been added.`;
     }
