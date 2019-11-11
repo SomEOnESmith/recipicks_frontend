@@ -120,12 +120,12 @@ class SearchBar extends Component {
     });
   };
 
-  handleDelete = item => {
-    this.setState({
+  handleDelete = async item => {
+    await this.setState({
       items: this.state.items.filter(i => i !== item),
       itemsID: this.state.itemsID.filter(i => i !== item.id)
     });
-    this.props.deleteIngredient(item);
+    this.props.deleteIngredient(this.state.itemsID);
   };
 
   // handlePaste = evt => {
@@ -172,6 +172,11 @@ class SearchBar extends Component {
   }
 
   render() {
+    // console.log(
+    //   "TCL: SearchBar -> render -> this.state.suggestedItems.slice(0, 3)",
+    //   this.state.suggestedItems.slice(0, 3)
+    // );
+    // this.props.fetchRecipes("", [], [], this.state.suggestedItems.slice(0, 3));
     return (
       <>
         {this.state.suggestedItems.map((suggestItem, idx) => (
@@ -268,7 +273,7 @@ const mapDispatchToProps = dispatch => ({
   fetchRecipes: (cuisine, meals, courses, ingredients) => {
     dispatch(fetchRecipes(cuisine, meals, courses, ingredients));
   },
-  deleteIngredient: ingredient => dispatch(deleteIngredient(ingredient))
+  deleteIngredient: ingredients => dispatch(deleteIngredient(ingredients))
 });
 
 export default connect(
