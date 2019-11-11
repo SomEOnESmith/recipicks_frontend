@@ -106,7 +106,7 @@ class AddRecipe extends Component {
                       </div>
                     )}
                     <p>
-                      <b style={{ color: "rgb(208, 6, 53)" }}>Title: </b>
+                      <b className="addRecipeTitles">Title: </b>
                     </p>
                     <input
                       className="form-control rounded-pill"
@@ -118,7 +118,7 @@ class AddRecipe extends Component {
                     />
                     <br />
                     <p>
-                      <b style={{ color: "rgb(208, 6, 53)" }}>Description: </b>
+                      <b className="addRecipeTitles">Description: </b>
                     </p>
                     <input
                       className="form-control rounded-pill"
@@ -150,14 +150,18 @@ class AddRecipe extends Component {
                       filter={meals}
                     />
                     <p>
-                      <b style={{ color: "rgb(208, 6, 53)" }}>Instructions:</b>
+                      <b
+                        className="addRecipeTitles"
+                        style={{ fontWeight: "bold", fontSize: "15px" }}
+                      >
+                        Instructions:
+                      </b>
                     </p>
                     {steps}
                     <p>
-                      +
                       <span
+                        className="btn btn-dark rounded-pill"
                         style={{
-                          textDecoration: "underline",
                           cursor: "pointer"
                         }}
                         onClick={() =>
@@ -166,13 +170,13 @@ class AddRecipe extends Component {
                           })
                         }
                       >
-                        Add another step
+                        + Add another step
                       </span>
                     </p>
                     <br />
                     <input
                       id="registerbtn"
-                      className="btn btn-danger btn-block"
+                      className="btn btn-danger btn-block rounded-pill"
                       type="submit"
                       value="Save"
                     />

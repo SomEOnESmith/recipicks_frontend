@@ -12,7 +12,7 @@ const FilterSelect = ({ name, filter, handleChange }) => {
     return (
       <>
         <p>
-          <b style={{ color: "rgb(208, 6, 53)" }}>
+          <b className="addRecipeTitles">
             {name[0].toUpperCase() + name.slice(1)}:
           </b>
         </p>
@@ -27,7 +27,7 @@ const FilterSelect = ({ name, filter, handleChange }) => {
     return (
       <>
         <p>
-          <b style={{ color: "rgb(208, 6, 53)" }}>
+          <b className="addRecipeTitles">
             {name[0].toUpperCase() + name.slice(1)}:
           </b>
         </p>
