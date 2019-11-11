@@ -41,6 +41,7 @@ class Steps extends Component {
           <div className="col">Step {this.props.order}:</div>
           <div className="col">
             <input
+              className="form-control rounded-pill"
               onChange={this.handleChange}
               name="instruction"
               type="text"
@@ -48,6 +49,7 @@ class Steps extends Component {
           </div>
           <div className="col">
             <input
+              className="form-control rounded-pill"
               onChange={this.handleChange}
               onKeyDown={this.handleKeyDown}
               onPaste={this.handlePaste}
@@ -60,6 +62,7 @@ class Steps extends Component {
           </div>
           <div className="col">
             <input
+              className="form-control rounded-pill"
               onChange={this.handleChange}
               onKeyDown={this.handleKeyDown}
               onPaste={this.handlePaste}
@@ -72,6 +75,7 @@ class Steps extends Component {
           </div>
           <div className="col">
             <input
+              className="form-control rounded-pill"
               onChange={this.handleChange}
               onKeyDown={this.handleKeyDown}
               onPaste={this.handlePaste}
