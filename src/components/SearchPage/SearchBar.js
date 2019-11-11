@@ -34,8 +34,8 @@ class SearchBar extends Component {
   componentDidMount() {
     const newSuggestedItems = this.randomIngredients(this.filterIngredients());
     this.setState({ suggestedItems: newSuggestedItems });
+    this.props.fetchRecipes("", [], [], []);
   }
-
 
   handleKeyDown = async event => {
     if (["Enter", "Tab", ","].includes(event.key)) {
@@ -105,7 +105,6 @@ class SearchBar extends Component {
     return array.slice(0, 10);
   };
 
-
   handleChange = async event => {
     const { ingredients } = this.props;
     const fuse = new Fuse(ingredients, fuseOptions);
@@ -119,7 +118,6 @@ class SearchBar extends Component {
     });
   };
 
-
   handleDelete = async item => {
     await this.setState({
       items: this.state.items.filter(i => i !== item),
@@ -127,7 +125,6 @@ class SearchBar extends Component {
     });
     this.props.deleteIngredient(this.state.itemsID);
   };
-
 
   // handlePaste = evt => {
   //   evt.preventDefault();
@@ -143,7 +140,6 @@ class SearchBar extends Component {
   //     });
   //   }
   // };
-
 
   isValid(ingredient) {
     let error = null;
@@ -161,20 +157,17 @@ class SearchBar extends Component {
     return true;
   }
 
-
   isInList(ingredient) {
     return this.state.items
       .map(item => item.name)
       .includes(ingredient.toLowerCase());
   }
 
-
   isInIngredients(ingredient) {
     return this.props.ingredients
       .map(ing => ing.name.toLowerCase())
       .includes(ingredient.toLowerCase());
   }
-
 
   render() {
     return (
@@ -219,13 +212,8 @@ class SearchBar extends Component {
                 padding: 10
               }}
               onClick={() => {
-                const { cuisine, meals, courses } = this.props;
-                this.props.fetchRecipes(
-                  cuisine,
-                  meals,
-                  courses,
-                  this.state.itemsID
-                );
+                const { cuisine, meals, courses, fetchRecipes } = this.props;
+                fetchRecipes(cuisine, meals, courses, this.state.itemsID);
               }}
             >
               <img
