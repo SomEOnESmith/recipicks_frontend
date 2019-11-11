@@ -57,100 +57,119 @@ class AddRecipe extends Component {
     if (!user) return <Redirect to="/" />;
     else {
       return (
-        <div>
-          <form onSubmit={this.submitHandler} style={{ margin: "30px" }}>
-            {!!errors.length && (
-              <div className="alert alert-danger" role="alert">
-                {errors.map(error => (
-                  <p key={error}>{error}</p>
-                ))}
-              </div>
-            )}
-
-            <p>
-              <b>Title: </b>
-            </p>
-            <input
-              className="form-control rounded-pill"
-              placeholder="Title"
-              type="text"
-              onChange={this.handleChange}
-              name="title"
-              value={this.state.title}
-            />
-            <br />
-            <p>
-              <b>Description: </b>
-            </p>
-            <input
-              className="form-control rounded-pill"
-              placeholder="description"
-              onChange={this.handleChange}
-              type="text"
-              name="description"
-              value={this.state.description}
-            />
-            <br />
-            <p>
-              <b>Ingredients: </b>
-            </p>
-            <select
-              className="form-control"
-              name="ingredients"
-              onChange={this.handleChange}
-              multiple
-            >
-              {ingredientsOptions}
-            </select>
-            <br />
-            <p>
-              <b>Course: </b>
-            </p>
-            <div style={{ paddingLeft: "40px" }}>
-              <select
-                className="form-control"
-                name="course"
-                onChange={this.handleChange}
-                multiple
+        <div className="main">
+          <section className="header-recipe">
+            <div className="header-container">
+              <div
+                style={{ postion: "relative", top: 100 }}
+                className="card col-lg-7 col-md-7 col-sm-12 col-xs-12 mx-auto p-3  jumbotron  "
               >
-                {courseOptions}
-              </select>
-            </div>
+                <div className="card-body">
+                  <h1
+                    style={{ textAlign: "center", color: "rgb(208, 6, 53)" }}
+                    className="card-title"
+                  >
+                    Add A Recipe
+                  </h1>
+                  <form
+                    onSubmit={this.submitHandler}
+                    style={{ margin: "30px" }}
+                  >
+                    {!!errors.length && (
+                      <div role="alert">
+                        {errors.map(error => (
+                          <p id="error" key={error}>
+                            {error}
+                          </p>
+                        ))}
+                      </div>
+                    )}
 
-            <br />
+                    <p>
+                      <b style={{ color: "rgb(208, 6, 53)" }}>Title: </b>
+                    </p>
+                    <input
+                      className="form-control rounded-pill"
+                      placeholder="title"
+                      type="text"
+                      onChange={this.handleChange}
+                      name="title"
+                      value={this.state.title}
+                    />
+                    <br />
+                    <p>
+                      <b style={{ color: "rgb(208, 6, 53)" }}>Description: </b>
+                    </p>
+                    <input
+                      className="form-control rounded-pill"
+                      placeholder="description"
+                      onChange={this.handleChange}
+                      type="text"
+                      name="description"
+                      value={this.state.description}
+                    />
+                    <br />
+                    <p>
+                      <b style={{ color: "rgb(208, 6, 53)" }}>Ingredients: </b>
+                    </p>
+                    <select
+                      className="form-control"
+                      name="ingredients"
+                      onChange={this.handleChange}
+                      multiple
+                    >
+                      {ingredientsOptions}
+                    </select>
+                    <br />
+                    <p>
+                      <b style={{ color: "rgb(208, 6, 53)" }}>Course: </b>
+                    </p>
+                    <div>
+                      <select
+                        className="form-control"
+                        name="course"
+                        onChange={this.handleChange}
+                        multiple
+                      >
+                        {courseOptions}
+                      </select>
+                    </div>
 
-            <p>
-              <b>Cuisine: </b>
-            </p>
-            <div style={{ paddingLeft: "67px" }}>
-              <select
-                className="ml-4 form-control"
-                name="cuisine"
-                onChange={this.handleChange}
-                style={{ width: "60%" }}
-              >
-                <option>Select a cuisine</option>
-                {cuisineOptions}
-              </select>
-            </div>
-            <br />
+                    <br />
 
-            <p>
-              <b>Meal: </b>
-            </p>
-            <div style={{ paddingLeft: "67px" }}>
-              <select
-                className="form-control"
-                name="meal"
-                onChange={this.handleChange}
-                multiple
-              >
-                {mealOptions}
-              </select>
-            </div>
-            <br />
+                    <p>
+                      <b style={{ color: "rgb(208, 6, 53)" }}>Cuisine: </b>
+                    </p>
+                    <div>
+                      <select
+                        className="form-control"
+                        name="cuisine"
+                        onChange={this.handleChange}
+                      >
+                        <option style={{ color: "rgb(208, 6, 53)" }}>
+                          Select a cuisine
+                        </option>
+                        {cuisineOptions}
+                      </select>
+                    </div>
+                    <br />
 
-            {/* <p>
+                    <p>
+                      <b style={{ color: "rgb(208, 6, 53)" }}>Meal: </b>
+                    </p>
+                    <div>
+                      <select
+                        className="form-control"
+                        name="meal"
+                        onChange={this.handleChange}
+                        multiple
+                      >
+                        {mealOptions}
+                      </select>
+                    </div>
+                    <br />
+
+                    {/* <p>
               <b>Image: </b>
             </p>
             <div style={{ paddingLeft: "67px" }}>
@@ -158,13 +177,17 @@ class AddRecipe extends Component {
             </div>
             <br /> */}
 
-            <input
-              id="registerbtn"
-              className="btn btn-primary btn-block"
-              type="submit"
-              value="Add Recipe"
-            />
-          </form>
+                    <input
+                      id="registerbtn"
+                      className="btn btn-danger btn-block"
+                      type="submit"
+                      value="Add Recipe"
+                    />
+                  </form>
+                </div>
+              </div>
+            </div>
+          </section>
         </div>
       );
     }

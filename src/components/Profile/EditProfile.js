@@ -82,9 +82,11 @@ class EditProfile extends Component {
 
                 <form id="update-profile" onSubmit={this.submitHandler}>
                   {!!errors.length && (
-                    <div className="alert alert-danger" role="alert">
+                    <div role="alert">
                       {errors.map(error => (
-                        <p key={error}>{error}</p>
+                        <p id="error" key={error}>
+                          {error}
+                        </p>
                       ))}
                     </div>
                   )}
@@ -92,7 +94,6 @@ class EditProfile extends Component {
                   <p>
                     <b style={{ color: "rgb(208, 6, 53)" }}> First Name: </b>
                     <span style={{ color: "black" }}>
-                      {" "}
                       {profile.user.first_name}
                     </span>
                   </p>
@@ -133,8 +134,7 @@ class EditProfile extends Component {
                   <br />
                   <p>
                     <b style={{ color: "rgb(208, 6, 53)" }}>Phone: </b>
-                    <span
-                      style={{ color: "black" }}>{profile.user.phone}</span>
+                    <span style={{ color: "black" }}>{profile.user.phone}</span>
                   </p>
                   <input
                     className="form-control rounded-pill"
@@ -163,11 +163,12 @@ class EditProfile extends Component {
                       <option>Female</option>
                     </select>
                   </div>
-                
+
                   <p>
                     <b style={{ color: "rgb(208, 6, 53)" }}>Date of Birth: </b>
-                    <span
-                      style={{ color: "black" }}>{profile.date_of_birth}</span>
+                    <span style={{ color: "black" }}>
+                      {profile.date_of_birth}
+                    </span>
                   </p>
                   <input
                     className="form-control rounded-pill"
