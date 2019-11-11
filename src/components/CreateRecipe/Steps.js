@@ -24,6 +24,16 @@ class Steps extends Component {
     this.props.addStep(step);
   };
 
+  handlePaste = event => {
+    event.preventDefault();
+    // let paste = event.clipboardData.getData("text");
+    // let ingredients = paste.match(regex)
+    // paste
+    //   .split("")
+    //   .filter(element => element !== "-" && element !== "+" && element !== "e")
+    //   .join("");
+  };
+
   render() {
     return (
       <div className="my-2">
@@ -40,6 +50,7 @@ class Steps extends Component {
             <input
               onChange={this.handleChange}
               onKeyDown={this.handleKeyDown}
+              onPaste={this.handlePaste}
               name="hours"
               type="number"
               style={{ width: "50px" }}
@@ -51,6 +62,7 @@ class Steps extends Component {
             <input
               onChange={this.handleChange}
               onKeyDown={this.handleKeyDown}
+              onPaste={this.handlePaste}
               name="minutes"
               type="number"
               style={{ width: "50px" }}
@@ -62,6 +74,7 @@ class Steps extends Component {
             <input
               onChange={this.handleChange}
               onKeyDown={this.handleKeyDown}
+              onPaste={this.handlePaste}
               name="seconds"
               type="number"
               style={{ width: "50px" }}
