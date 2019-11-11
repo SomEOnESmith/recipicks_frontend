@@ -50,8 +50,8 @@ class RecipeCard extends Component {
             <div className="card-img-overlay img-text-container">
               <h5 className="card-title img-text">Ingredients</h5>
               <p className="card-text img-text">
-                {ingredientsName.map(ingr => (
-                  <p> {ingr.name} </p>
+                {ingredientsName.map(ingredient => (
+                  <p key={ingredient.id}>{ingredient.name}</p>
                 ))}
               </p>
             </div>
