@@ -29,22 +29,21 @@ const reducer = (state = initialState, { type, payload }) => {
       };
     case DELETE_INGREDIENT:
       let newPerfect = [];
-      let newMissing = state.recipes.perfect_match;
+      let newMissing = state.recipes.perfect_match.concat(
+        state.recipes.user_missing_ingrs
+      );
       let newExcess = state.recipes.user_excess_ingrs.filter(recipe => {
         if (
           recipe.ingredients.every(ingredient => payload.includes(ingredient))
         ) {
           if (recipe.ingredients.length === payload.length) {
-            newPerfect.push(recipe);
-            console.log("TCL: reducer -> newPerfect", newPerfect);
+            newPerfect.unshift(recipe);
           } else if (recipe.ingredients.length > payload.length) {
-            newMissing.push(recipe);
-            console.log("TCL: reducer -> newMissing", newMissing);
+            newMissing.unshift(recipe);
           } else return recipe;
-        } else {
-          newMissing.push(recipe);
-        }
+        } else newMissing.unshift(recipe);
       });
+      if (payload.length === 0) newMissing = [];
       return {
         ...state,
         recipes: {
