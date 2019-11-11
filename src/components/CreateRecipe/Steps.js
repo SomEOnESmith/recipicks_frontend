@@ -37,56 +37,70 @@ class Steps extends Component {
   render() {
     return (
       <div className="my-2">
-        <div className="row">
-          <div className="col">Step {this.props.order}:</div>
-          <div className="col">
-            <input
-              className="form-control rounded-pill"
-              onChange={this.handleChange}
-              name="instruction"
-              type="text"
-            />
-          </div>
-          <div className="col">
-            <input
-              className="form-control rounded-pill"
-              onChange={this.handleChange}
-              onKeyDown={this.handleKeyDown}
-              onPaste={this.handlePaste}
-              name="hours"
-              type="number"
-              style={{ width: "50px" }}
-              min="0"
-              max="72"
-            />
-          </div>
-          <div className="col">
-            <input
-              className="form-control rounded-pill"
-              onChange={this.handleChange}
-              onKeyDown={this.handleKeyDown}
-              onPaste={this.handlePaste}
-              name="minutes"
-              type="number"
-              style={{ width: "50px" }}
-              min="0"
-              max="60"
-            />
-          </div>
-          <div className="col">
-            <input
-              className="form-control rounded-pill"
-              onChange={this.handleChange}
-              onKeyDown={this.handleKeyDown}
-              onPaste={this.handlePaste}
-              name="seconds"
-              type="number"
-              style={{ width: "50px" }}
-              min="0"
-              max="60"
-            />
+        <div className="col stepTitle mb-2">Step {this.props.order}:</div>
+        <div className="col">
+          <input
+            className="form-control rounded-pill"
+            onChange={this.handleChange}
+            name="instruction"
+            placeholder="Write the instructions of the step here..."
+            type="text"
+          />
+        </div>
+        <div className="row m-2">
+          <div className="col pl-2 stepTitle">
+            Step Total Time:
+            <div className="row">
+              <div className="col-3 stepTime">
+                Hours
+                <input
+                  className="form-control rounded-pill"
+                  onChange={this.handleChange}
+                  onKeyDown={this.handleKeyDown}
+                  onPaste={this.handlePaste}
+                  name="hours"
+                  type="number"
+                  placeholder="00"
+                  style={{ width: "60px" }}
+                  min="00"
+                  max="72"
+                />
+              </div>
+
+              <div className="col-3 stepTime center ">
+                Minutes
+                <input
+                  className="form-control rounded-pill"
+                  onChange={this.handleChange}
+                  onKeyDown={this.handleKeyDown}
+                  onPaste={this.handlePaste}
+                  name="minutes"
+                  type="number"
+                  placeholder="00"
+                  style={{ width: "60px" }}
+                  min="0"
+                  max="60"
+                />
+              </div>
+              <div className="col-3 stepTime">
+                Seconds
+                <input
+                  className="form-control rounded-pill"
+                  onChange={this.handleChange}
+                  onKeyDown={this.handleKeyDown}
+                  onPaste={this.handlePaste}
+                  name="seconds"
+                  type="number"
+                  placeholder="00"
+                  style={{ width: "60px" }}
+                  min="0"
+                  max="60"
+                />
+              </div>
+            </div>
           </div>
         </div>
+        <hr />
       </div>
     );
   }

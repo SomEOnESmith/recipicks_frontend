@@ -641,3 +641,18 @@ hr {
   font-size: 18px;
   padding-left: 10px;
 }
+
+.stepTitle {
+  font-weight: bold;
+  font-family: "futura";
+}
+
+.stepTime {
+  font-weight: normal;
+  color: dimgrey;
+}
+
+.addRecipeTitles {
+  font-family: "futura";
+  color: rgb(208, 6, 53);
+}
