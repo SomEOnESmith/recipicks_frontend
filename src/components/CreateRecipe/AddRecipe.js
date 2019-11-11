@@ -80,19 +80,16 @@ class AddRecipe extends Component {
 
   render() {
     const { meals, courses, cuisines, ingredients } = this.props.filters;
-
     const ingredientsOptions = this.handleOption(ingredients);
     const mealOptions = this.handleOption(meals);
     const courseOptions = this.handleOption(courses);
     const cuisineOptions = this.handleOption(cuisines);
     const errors = this.props.errors;
     const user = this.props.user;
-
     const steps = [];
     for (let i = 0; i < this.state.currentSteps; i++) {
       steps.push(<Steps order={i + 1} key={i + 1} addStep={this.addStep} />);
     }
-
     if (!user) return <Redirect to="/" />;
     else {
       return (
