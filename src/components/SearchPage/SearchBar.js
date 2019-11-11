@@ -36,6 +36,7 @@ class SearchBar extends Component {
     this.setState({ suggestedItems: newSuggestedItems });
   }
 
+
   handleKeyDown = async event => {
     if (["Enter", "Tab", ","].includes(event.key)) {
       event.preventDefault();
@@ -104,27 +105,45 @@ class SearchBar extends Component {
     return array.slice(0, 10);
   };
 
+
   handleChange = async event => {
     const { ingredients } = this.props;
     const fuse = new Fuse(ingredients, fuseOptions);
     const suggest = event.target.value
       ? fuse.search(event.target.value).slice(0, 10)
       : this.randomIngredients(this.filterIngredients());
-
     await this.setState({
-      value: event.target.value.toLowerCase(),
+      value: event.target.value,
       suggestedItems: suggest,
       error: null
     });
   };
 
-  handleDelete = item => {
-    this.setState({
+
+  handleDelete = async item => {
+    await this.setState({
       items: this.state.items.filter(i => i !== item),
       itemsID: this.state.itemsID.filter(i => i !== item.id)
     });
-    this.props.deleteIngredient(item);
+    this.props.deleteIngredient(this.state.itemsID);
   };
+
+
+  // handlePaste = evt => {
+  //   evt.preventDefault();
+
+  //   let paste = evt.clipboardData.getData("text");
+  //   // let ingredients = paste.match(/[\w\d\.-]+@[\w\d\.-]+\.[\w\d\.-]+/g);
+
+  //   if (ingredients) {
+  //     let toBeAdded = ingredients.filter(ingredient => !this.isInList(ingredient));
+
+  //     this.setState({
+  //       items: [...this.state.items, ...toBeAdded]
+  //     });
+  //   }
+  // };
+
 
   isValid(ingredient) {
     let error = null;
@@ -142,17 +161,20 @@ class SearchBar extends Component {
     return true;
   }
 
+
   isInList(ingredient) {
     return this.state.items
       .map(item => item.name)
       .includes(ingredient.toLowerCase());
   }
 
+
   isInIngredients(ingredient) {
     return this.props.ingredients
       .map(ing => ing.name.toLowerCase())
       .includes(ingredient.toLowerCase());
   }
+
 
   render() {
     return (
@@ -249,7 +271,7 @@ const mapDispatchToProps = dispatch => ({
   fetchRecipes: (cuisine, meals, courses, ingredients) => {
     dispatch(fetchRecipes(cuisine, meals, courses, ingredients));
   },
-  deleteIngredient: ingredient => dispatch(deleteIngredient(ingredient))
+  deleteIngredient: ingredients => dispatch(deleteIngredient(ingredients))
 });
 
 export default connect(

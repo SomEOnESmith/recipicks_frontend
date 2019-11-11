@@ -28,20 +28,26 @@ const reducer = (state = initialState, { type, payload }) => {
         loading: false
       };
     case DELETE_INGREDIENT:
-      // let newPerfect = [];
-      let newMissing = state.recipes.perfect_match;
+      let newPerfect = [];
+      let newMissing = state.recipes.perfect_match.concat(
+        state.recipes.user_missing_ingrs
+      );
       let newExcess = state.recipes.user_excess_ingrs.filter(recipe => {
-        if (recipe.ingredients.includes(payload.id)) {
-          newMissing.push(recipe);
-          return false;
-        } else {
-          return recipe;
-        }
+        if (
+          recipe.ingredients.every(ingredient => payload.includes(ingredient))
+        ) {
+          if (recipe.ingredients.length === payload.length) {
+            newPerfect.unshift(recipe);
+          } else if (recipe.ingredients.length > payload.length) {
+            newMissing.unshift(recipe);
+          } else return recipe;
+        } else newMissing.unshift(recipe);
       });
+      if (payload.length === 0) newMissing = [];
       return {
         ...state,
         recipes: {
-          perfect_match: [],
+          perfect_match: newPerfect,
           user_excess_ingrs: newExcess,
           user_missing_ingrs: newMissing
         }

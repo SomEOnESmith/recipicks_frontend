@@ -66,10 +66,10 @@ export const fetchRecipe = recipeID => async dispatch => {
   }
 };
 
-export const deleteIngredient = ingredient => {
+export const deleteIngredient = ingredients => {
   return {
     type: DELETE_INGREDIENT,
-    payload: ingredient
+    payload: ingredients
   };
 };
 

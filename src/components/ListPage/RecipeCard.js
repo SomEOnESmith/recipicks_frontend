@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
+import { connect } from "react-redux";
 
 // Assets
 import cuisineIcon from "../../assets/icons8-globe-16.png";
@@ -9,6 +10,9 @@ class RecipeCard extends Component {
   render() {
     const { recipe } = this.props;
     const icon = this.props.type;
+    const ingredientsName = recipe.ingredients.map(ingredient =>
+      this.props.ingredients.find(ingr => ingredient === ingr.id)
+    );
     const meal = recipe.meals.map(meal => {
       return (
         <li key={meal.id} className="meal-style">
@@ -32,7 +36,7 @@ class RecipeCard extends Component {
           style={{
             width: "25rem"
           }}
-          className="card"
+          className="card image-container"
           id="recipe-card"
         >
           {span}
@@ -40,9 +44,17 @@ class RecipeCard extends Component {
             <img
               src={recipe.image}
               id="card-img"
-              className="card-img-top"
+              className="card-img-top image-overlay"
               alt="..."
             />
+            <div className="card-img-overlay img-text-container">
+              <h5 className="card-title img-text">Ingredients</h5>
+              <p className="card-text img-text">
+                {ingredientsName.map(ingr => (
+                  <p> {ingr.name} </p>
+                ))}
+              </p>
+            </div>
             <div className="card-body">
               <h5 id="title-link" className="card-title">
                 {recipe.title}
@@ -71,4 +83,8 @@ class RecipeCard extends Component {
   }
 }
 
-export default RecipeCard;
+const mapStateToProps = state => ({
+  ingredients: state.rootFilters.ingredients
+});
+
+export default connect(mapStateToProps)(RecipeCard);
