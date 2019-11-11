@@ -101,9 +101,8 @@ class SearchBar extends Component {
       temporaryValue = array[currentIndex];
       array[currentIndex] = array[randomIndex];
       array[randomIndex] = temporaryValue;
-      if (currentIndex === 9) break;
     }
-    return array.slice(0, 10);
+    return array.slice(0, 6);
   };
 
   handleChange = async event => {
