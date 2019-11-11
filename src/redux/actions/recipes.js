@@ -2,8 +2,7 @@ import {
   FETCH_RECIPES,
   FETCH_RECIPE,
   DELETE_INGREDIENT,
-  ADD_RECIPE,
-  SET_ERRORS
+  ADD_RECIPE
 } from "./actionTypes";
 import instance from "./instance";
 
@@ -80,11 +79,7 @@ export const addRecipe = (recipeData, history) => {
       dispatch({ type: ADD_RECIPE, payload: response.data });
       history.replace(`/recipes/${response.data.id}`);
     } catch (error) {
-      console.error(error.response.data);
-      dispatch({
-        type: SET_ERRORS,
-        payload: error.response.data
-      });
+      console.error(error);
     }
   };
 };
