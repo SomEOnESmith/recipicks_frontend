@@ -11,7 +11,7 @@ import Home from "./components/Homepage/HomePage";
 import Profile from "./components/Profile/Profile";
 import EditProfile from "./components/Profile/EditProfile";
 import Loading from "./components/Loading";
-import addRecipe from "./components/AddRecipe";
+import AddRecipe from "./components/CreateRecipe/AddRecipe";
 
 function App({ loading }) {
   if (loading) return <Loading />;
@@ -25,7 +25,7 @@ function App({ loading }) {
         <Route path="/profile" component={Profile} />
         <Route path="/edit-profile" component={EditProfile} />
         <Route path="/home" component={Home} />
-        <Route path="/recipe/create/" component={addRecipe} />
+        <Route path="/recipe/create/" component={AddRecipe} />
         <Redirect exact from="/" to="/home" />
       </Switch>
     </div>

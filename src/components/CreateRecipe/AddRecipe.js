@@ -1,7 +1,12 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import { Redirect } from "react-router-dom";
-import { addRecipe, resetErrors } from "../redux/actions";
+
+// Actions
+import { addRecipe, resetErrors } from "../../redux/actions";
+
+// Components
+import Steps from "./Steps";
 
 class AddRecipe extends Component {
   state = {
@@ -10,12 +15,26 @@ class AddRecipe extends Component {
     ingredients: [],
     course: [],
     meal: [],
-    cuisine: ""
+    cuisine: "",
+    steps: [],
+    currentSteps: 1
   };
 
-  submitHandler = event => {
+  handleSubmit = event => {
     event.preventDefault();
-    this.props.addRecipe(this.state, this.props.history);
+    const {
+      title,
+      description,
+      ingredients,
+      course,
+      meal,
+      cuisine,
+      steps
+    } = this.state;
+    this.props.addRecipe(
+      { title, description, ingredients, course, meal, cuisine, steps },
+      this.props.history
+    );
   };
 
   handleChange = event => {
@@ -44,16 +63,33 @@ class AddRecipe extends Component {
     });
   };
 
+  addStep = step => {
+    let exists = this.state.steps.find(
+      stateStep => stateStep.order === step.order
+    );
+    if (exists) {
+      const newSteps = this.state.steps
+        .filter(stateStep => stateStep !== exists)
+        .concat(step);
+      this.setState({ steps: newSteps });
+    } else {
+      const newSteps = this.state.steps.concat(step);
+      this.setState({ steps: newSteps });
+    }
+  };
+
   render() {
-    const { meals, courses, cuisines } = this.props.filters;
-    const { ingredients } = this.props;
+    const { meals, courses, cuisines, ingredients } = this.props.filters;
     const ingredientsOptions = this.handleOption(ingredients);
     const mealOptions = this.handleOption(meals);
     const courseOptions = this.handleOption(courses);
     const cuisineOptions = this.handleOption(cuisines);
     const errors = this.props.errors;
     const user = this.props.user;
-
+    const steps = [];
+    for (let i = 0; i < this.state.currentSteps; i++) {
+      steps.push(<Steps order={i + 1} key={i + 1} addStep={this.addStep} />);
+    }
     if (!user) return <Redirect to="/" />;
     else {
       return (
@@ -69,12 +105,9 @@ class AddRecipe extends Component {
                     style={{ textAlign: "center", color: "rgb(208, 6, 53)" }}
                     className="card-title"
                   >
-                    Add A Recipe
+                    New Recipe
                   </h1>
-                  <form
-                    onSubmit={this.submitHandler}
-                    style={{ margin: "30px" }}
-                  >
+                  <form onSubmit={this.handleSubmit} style={{ margin: "30px" }}>
                     {!!errors.length && (
                       <div role="alert">
                         {errors.map(error => (
@@ -84,13 +117,12 @@ class AddRecipe extends Component {
                         ))}
                       </div>
                     )}
-
                     <p>
                       <b style={{ color: "rgb(208, 6, 53)" }}>Title: </b>
                     </p>
                     <input
                       className="form-control rounded-pill"
-                      placeholder="title"
+                      placeholder="Add a title"
                       type="text"
                       onChange={this.handleChange}
                       name="title"
@@ -102,7 +134,7 @@ class AddRecipe extends Component {
                     </p>
                     <input
                       className="form-control rounded-pill"
-                      placeholder="description"
+                      placeholder="Add a description"
                       onChange={this.handleChange}
                       type="text"
                       name="description"
@@ -122,7 +154,7 @@ class AddRecipe extends Component {
                     </select>
                     <br />
                     <p>
-                      <b style={{ color: "rgb(208, 6, 53)" }}>Course: </b>
+                      <b style={{ color: "rgb(208, 6, 53)" }}>Courses: </b>
                     </p>
                     <div>
                       <select
@@ -134,9 +166,7 @@ class AddRecipe extends Component {
                         {courseOptions}
                       </select>
                     </div>
-
                     <br />
-
                     <p>
                       <b style={{ color: "rgb(208, 6, 53)" }}>Cuisine: </b>
                     </p>
@@ -153,9 +183,8 @@ class AddRecipe extends Component {
                       </select>
                     </div>
                     <br />
-
                     <p>
-                      <b style={{ color: "rgb(208, 6, 53)" }}>Meal: </b>
+                      <b style={{ color: "rgb(208, 6, 53)" }}>Meals: </b>
                     </p>
                     <div>
                       <select
@@ -168,20 +197,32 @@ class AddRecipe extends Component {
                       </select>
                     </div>
                     <br />
-
-                    {/* <p>
-              <b>Image: </b>
-            </p>
-            <div style={{ paddingLeft: "67px" }}>
-            ADD AN INPUT FIELD LATER FOR AN IMAGE FIELD
-            </div>
-            <br /> */}
-
+                    <p>
+                      <b style={{ color: "rgb(208, 6, 53)" }}>Instructions:</b>
+                    </p>
+                    {steps}
+                    <p>
+                      +
+                      <span
+                        style={{
+                          textDecoration: "underline",
+                          cursor: "pointer"
+                        }}
+                        onClick={() =>
+                          this.setState({
+                            currentSteps: this.state.currentSteps + 1
+                          })
+                        }
+                      >
+                        Add another step
+                      </span>
+                    </p>
+                    <br />
                     <input
                       id="registerbtn"
                       className="btn btn-danger btn-block"
                       type="submit"
-                      value="Add Recipe"
+                      value="Save"
                     />
                   </form>
                 </div>
@@ -198,7 +239,6 @@ const mapStateToProps = state => {
   return {
     user: state.authReducer.user,
     filters: state.rootFilters,
-    ingredients: state.rootFilters.ingredients,
     errors: state.errors.errors
   };
 };

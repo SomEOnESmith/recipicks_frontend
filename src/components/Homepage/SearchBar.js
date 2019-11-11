@@ -36,12 +36,10 @@ class SearchBar extends Component {
     this.setState({ suggestedItems: newSuggestedItems });
   }
 
-  handleKeyDown = async evt => {
-    if (["Enter", "Tab", ","].includes(evt.key)) {
-      evt.preventDefault();
-
+  handleKeyDown = async event => {
+    if (["Enter", "Tab", ","].includes(event.key)) {
+      event.preventDefault();
       let value = this.state.value.trim();
-
       if (value && this.isValid(value)) {
         const theItem = this.props.ingredients.find(
           ingredient => ingredient.name === value
@@ -106,15 +104,15 @@ class SearchBar extends Component {
     return array.slice(0, 10);
   };
 
-  handleChange = async evt => {
+  handleChange = async event => {
     const { ingredients } = this.props;
     const fuse = new Fuse(ingredients, fuseOptions);
-    const suggest = evt.target.value
-      ? fuse.search(evt.target.value).slice(0, 10)
+    const suggest = event.target.value
+      ? fuse.search(event.target.value).slice(0, 10)
       : this.randomIngredients(this.filterIngredients());
 
     await this.setState({
-      value: evt.target.value,
+      value: event.target.value,
       suggestedItems: suggest,
       error: null
     });
@@ -128,10 +126,10 @@ class SearchBar extends Component {
     this.props.deleteIngredient(item);
   };
 
-  // handlePaste = evt => {
-  //   evt.preventDefault();
+  // handlePaste = event => {
+  //   event.preventDefault();
 
-  //   let paste = evt.clipboardData.getData("text");
+  //   let paste = event.clipboardData.getData("text");
   //   // let ingredients = paste.match(/[\w\d\.-]+@[\w\d\.-]+\.[\w\d\.-]+/g);
 
   //   if (ingredients) {
