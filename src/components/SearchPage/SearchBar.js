@@ -126,21 +126,6 @@ class SearchBar extends Component {
     this.props.deleteIngredient(item);
   };
 
-  // handlePaste = event => {
-  //   event.preventDefault();
-
-  //   let paste = event.clipboardData.getData("text");
-  //   // let ingredients = paste.match(/[\w\d\.-]+@[\w\d\.-]+\.[\w\d\.-]+/g);
-
-  //   if (ingredients) {
-  //     let toBeAdded = ingredients.filter(ingredient => !this.isInList(ingredient));
-
-  //     this.setState({
-  //       items: [...this.state.items, ...toBeAdded]
-  //     });
-  //   }
-  // };
-
   isValid(ingredient) {
     let error = null;
 
@@ -186,11 +171,10 @@ class SearchBar extends Component {
         ))}
         <div className="row">
           <FilterButton />
-
           <input
             className={"input " + (this.state.error && " has-error")}
             value={this.state.value}
-            placeholder="Type or paste ingredients and press 'Enter'..."
+            placeholder='Type ingredients and press "Enter"...'
             onKeyDown={this.handleKeyDown}
             onChange={this.handleChange}
             id="serach-input"
@@ -233,7 +217,6 @@ class SearchBar extends Component {
             </button>
           </div>
         </div>
-        {/* This needs to be inside input onPaste={This needs to be a function} */}
         {this.state.items.map((item, idx) => (
           <div className="tag-item" key={idx}>
             {item.name}
