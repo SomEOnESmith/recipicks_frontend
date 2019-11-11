@@ -7,14 +7,15 @@ import { addRecipe, resetErrors } from "../../redux/actions";
 
 // Components
 import Steps from "./Steps";
+import FilterSelect from "./FilterSelect";
 
 class AddRecipe extends Component {
   state = {
     title: "",
     description: "",
     ingredients: [],
-    course: [],
-    meal: [],
+    courses: [],
+    meals: [],
     cuisine: "",
     steps: [],
     currentSteps: 1
@@ -26,13 +27,13 @@ class AddRecipe extends Component {
       title,
       description,
       ingredients,
-      course,
-      meal,
+      courses,
+      meals,
       cuisine,
       steps
     } = this.state;
     this.props.addRecipe(
-      { title, description, ingredients, course, meal, cuisine, steps },
+      { title, description, ingredients, courses, meals, cuisine, steps },
       this.props.history
     );
   };
@@ -53,16 +54,6 @@ class AddRecipe extends Component {
     this.setState({ [name]: value });
   };
 
-  handleOption = filter => {
-    return filter.map(filter => {
-      return (
-        <option value={filter.id} key={filter.id}>
-          {filter.name}
-        </option>
-      );
-    });
-  };
-
   addStep = step => {
     let exists = this.state.steps.find(
       stateStep => stateStep.order === step.order
@@ -79,17 +70,14 @@ class AddRecipe extends Component {
   };
 
   render() {
-    const { meals, courses, cuisines, ingredients } = this.props.filters;
-    const ingredientsOptions = this.handleOption(ingredients);
-    const mealOptions = this.handleOption(meals);
-    const courseOptions = this.handleOption(courses);
-    const cuisineOptions = this.handleOption(cuisines);
-    const errors = this.props.errors;
-    const user = this.props.user;
     const steps = [];
     for (let i = 0; i < this.state.currentSteps; i++) {
       steps.push(<Steps order={i + 1} key={i + 1} addStep={this.addStep} />);
     }
+    const { meals, courses, cuisines, ingredients } = this.props.filters;
+    const errors = this.props.errors;
+    const user = this.props.user;
+
     if (!user) return <Redirect to="/" />;
     else {
       return (
@@ -141,62 +129,26 @@ class AddRecipe extends Component {
                       value={this.state.description}
                     />
                     <br />
-                    <p>
-                      <b style={{ color: "rgb(208, 6, 53)" }}>Ingredients: </b>
-                    </p>
-                    <select
-                      className="form-control"
+                    <FilterSelect
+                      handleChange={this.handleChange}
                       name="ingredients"
-                      onChange={this.handleChange}
-                      multiple
-                    >
-                      {ingredientsOptions}
-                    </select>
-                    <br />
-                    <p>
-                      <b style={{ color: "rgb(208, 6, 53)" }}>Courses: </b>
-                    </p>
-                    <div>
-                      <select
-                        className="form-control"
-                        name="course"
-                        onChange={this.handleChange}
-                        multiple
-                      >
-                        {courseOptions}
-                      </select>
-                    </div>
-                    <br />
-                    <p>
-                      <b style={{ color: "rgb(208, 6, 53)" }}>Cuisine: </b>
-                    </p>
-                    <div>
-                      <select
-                        className="form-control"
-                        name="cuisine"
-                        onChange={this.handleChange}
-                      >
-                        <option style={{ color: "rgb(208, 6, 53)" }}>
-                          Select a cuisine
-                        </option>
-                        {cuisineOptions}
-                      </select>
-                    </div>
-                    <br />
-                    <p>
-                      <b style={{ color: "rgb(208, 6, 53)" }}>Meals: </b>
-                    </p>
-                    <div>
-                      <select
-                        className="form-control"
-                        name="meal"
-                        onChange={this.handleChange}
-                        multiple
-                      >
-                        {mealOptions}
-                      </select>
-                    </div>
-                    <br />
+                      filter={ingredients}
+                    />
+                    <FilterSelect
+                      handleChange={this.handleChange}
+                      name="courses"
+                      filter={courses}
+                    />
+                    <FilterSelect
+                      handleChange={this.handleChange}
+                      name="cuisine"
+                      filter={cuisines}
+                    />
+                    <FilterSelect
+                      handleChange={this.handleChange}
+                      name="meals"
+                      filter={meals}
+                    />
                     <p>
                       <b style={{ color: "rgb(208, 6, 53)" }}>Instructions:</b>
                     </p>
