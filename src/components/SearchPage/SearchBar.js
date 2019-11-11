@@ -272,7 +272,6 @@ const mapDispatchToProps = dispatch => ({
     dispatch(fetchRecipes(cuisine, meals, courses, ingredients));
   },
   deleteIngredient: ingredients => dispatch(deleteIngredient(ingredients))
-
 });
 
 export default connect(
