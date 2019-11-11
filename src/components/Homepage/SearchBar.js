@@ -112,7 +112,7 @@ class SearchBar extends Component {
       : this.randomIngredients(this.filterIngredients());
 
     await this.setState({
-      value: event.target.value,
+      value: event.target.value.toLowerCase(),
       suggestedItems: suggest,
       error: null
     });
