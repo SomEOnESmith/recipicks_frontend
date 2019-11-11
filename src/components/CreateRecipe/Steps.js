@@ -37,8 +37,9 @@ class Steps extends Component {
             className="form-control rounded-pill"
             onChange={this.handleChange}
             name="instruction"
-            placeholder="Write the instructions of the step here..."
+            placeholder="Write your instructions..."
             type="text"
+            value={this.state.instruction}
           />
         </div>
         <div className="row m-2">
@@ -54,9 +55,9 @@ class Steps extends Component {
                   onPaste={this.handlePaste}
                   name="hours"
                   type="number"
-                  placeholder="00"
+                  placeholder="0"
                   style={{ width: "60px" }}
-                  min="00"
+                  min="0"
                   max="72"
                 />
               </div>
@@ -70,7 +71,7 @@ class Steps extends Component {
                   onPaste={this.handlePaste}
                   name="minutes"
                   type="number"
-                  placeholder="00"
+                  placeholder="0"
                   style={{ width: "60px" }}
                   min="0"
                   max="60"
@@ -85,7 +86,7 @@ class Steps extends Component {
                   onPaste={this.handlePaste}
                   name="seconds"
                   type="number"
-                  placeholder="00"
+                  placeholder="0"
                   style={{ width: "60px" }}
                   min="0"
                   max="60"

@@ -93,7 +93,7 @@ class AddRecipe extends Component {
                     style={{ textAlign: "center", color: "rgb(208, 6, 53)" }}
                     className="card-title"
                   >
-                    New Recipe
+                    Your New Recipe
                   </h1>
                   <form onSubmit={this.handleSubmit} style={{ margin: "30px" }}>
                     {!!errors.length && (
@@ -110,7 +110,7 @@ class AddRecipe extends Component {
                     </p>
                     <input
                       className="form-control rounded-pill"
-                      placeholder="Add a title"
+                      placeholder="Give it a title..."
                       type="text"
                       onChange={this.handleChange}
                       name="title"
@@ -122,7 +122,7 @@ class AddRecipe extends Component {
                     </p>
                     <input
                       className="form-control rounded-pill"
-                      placeholder="Add a description"
+                      placeholder="Give it a description..."
                       onChange={this.handleChange}
                       type="text"
                       name="description"
