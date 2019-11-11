@@ -12,7 +12,7 @@ class Logout extends Component {
           <span
             onClick={this.props.logout}
             className="nav-link"
-            style={{ cursor: "pointer" }}
+            style={{ cursor: "pointer", fontWeight: "500" }}
           >
             Logout
           </span>
