@@ -65,7 +65,8 @@ class SearchBar extends Component {
     if (this.isValid(item.name)) {
       await this.setState({
         items: this.state.items.concat(item),
-        itemsID: this.state.itemsID.concat(item.id)
+        itemsID: this.state.itemsID.concat(item.id),
+        value: ""
       });
       const { cuisine, meals, courses } = this.props;
       this.props.fetchRecipes(cuisine, meals, courses, this.state.itemsID);
@@ -112,7 +113,7 @@ class SearchBar extends Component {
       ? fuse.search(event.target.value).slice(0, 10)
       : this.randomIngredients(this.filterIngredients());
     await this.setState({
-      value: event.target.value,
+      value: event.target.value.toLowerCase(),
       suggestedItems: suggest,
       error: null
     });
