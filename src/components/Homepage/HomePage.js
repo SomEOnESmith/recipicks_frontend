@@ -14,7 +14,8 @@ const HomePage = () => {
               <div className="typewriter">
                 <h1
                   style={{
-                    color: "white"
+                    color: "white",
+                    fontFamily: "Futura"
                   }}
                 >
                   Find a Recipe
