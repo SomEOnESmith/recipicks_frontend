@@ -17,15 +17,15 @@ class RecipeDetail extends Component {
     if (this.props.recipe === null) {
       return <Loading />;
     } else {
-      const recipe = this.props.recipe;
-      const meal = recipe.meal.map(meal => {
+      const { recipe } = this.props;
+      const meals = recipe.meals.map(meal => {
         return (
           <li id="meal-style" key={meal.id} className="white">
             {meal.name}
           </li>
         );
       });
-      const course = recipe.course.map(course => {
+      const courses = recipe.courses.map(course => {
         return (
           <li key={course.id} className="white">
             {course.name}
@@ -78,7 +78,7 @@ class RecipeDetail extends Component {
                         style={{ paddingBottom: 10 }}
                         className="white cuisine-style"
                       >
-                        {recipe.cuisine ? recipe.cuisine.name : "Others"}
+                        {recipe.cuisine ? recipe.cuisine.name : "Other"}
                       </li>
                       <span className="white" id="bold">
                         Total:
@@ -87,15 +87,15 @@ class RecipeDetail extends Component {
                     </div>
                     <div className="col">
                       <span className="white" id="bold">
-                        Meal:
+                        Meals:
                       </span>
-                      {meal}
+                      {meals}
                     </div>
                     <div className="col">
                       <span className="white" id="bold">
-                        Course:
+                        Courses:
                       </span>
-                      {course}
+                      {courses}
                     </div>
                   </div>
                 </div>

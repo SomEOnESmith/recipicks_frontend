@@ -129,6 +129,7 @@ class FilterModal extends Component {
                 <div style={{ paddingLeft: "55px" }}>
                   <select
                     className="form-control"
+                    id="form-control"
                     name="meals"
                     defaultValue={this.state.meals}
                     onChange={this.handleChange}
@@ -152,6 +153,7 @@ class FilterModal extends Component {
                 <div style={{ paddingLeft: "40px" }}>
                   <select
                     className="form-control"
+                    id="form-control"
                     name="courses"
                     defaultValue={this.state.courses}
                     onChange={this.handleChange}
@@ -173,7 +175,7 @@ class FilterModal extends Component {
                       name="cuisine"
                       defaultValue={this.state.cuisine}
                       onChange={this.handleChange}
-                      style={{ width: "60%", position:"relative", left:30 }}
+                      style={{ width: "60%", position: "relative", left: 30 }}
                     >
                       <option>Select a cuisine</option>
                       {cuisineOptions}

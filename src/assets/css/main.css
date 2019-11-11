@@ -64,6 +64,17 @@
   background-color: rgba(0, 0, 0, 0.75);
 }
 
+.header-recipe {
+  display: flex;
+  align-content: stretch;
+  justify-content: center;
+  height: 230vh;
+  position: relative;
+  background-image: url("../img/chalkboard-texture.jpg");
+
+  background-color: rgba(0, 0, 0, 0.75);
+}
+
 .header-edit-profile {
   display: flex;
   align-content: stretch;
@@ -253,7 +264,6 @@
   background-color: rgb(209, 208, 208);
 }
 .form-control {
-  width: 350px;
   background-color: rgb(209, 208, 208);
 }
 
@@ -264,6 +274,16 @@
 #btn-fliter {
   margin-bottom: 50px;
 }
+
+#error {
+  color: rgb(208, 6, 53);
+}
+
+#form-control {
+  width: 350px;
+  background-color: rgb(209, 208, 208);
+}
+
 #suggest_item {
   background: rgb(208, 6, 53);
   border: 1px solid transparent;
@@ -287,7 +307,7 @@
   background-color: rgb(209, 208, 208);
 }
 .bg-light {
-  background-color: rgb(119, 3, 30) !important;
+  background-color: rgb(46, 46, 46) !important;
 }
 
 .navbar-brand,

@@ -43,9 +43,11 @@ class SignupForm extends Component {
                 <h5 className="card-title mb-4">Register</h5>
                 <form onSubmit={this.submitHandler}>
                   {!!errors.length && (
-                    <div className="alert alert-danger" role="alert">
+                    <div role="alert">
                       {errors.map(error => (
-                        <p key={error}>{error}</p>
+                        <p id="error" key={error}>
+                          {error}
+                        </p>
                       ))}
                     </div>
                   )}

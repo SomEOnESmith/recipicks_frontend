@@ -8,12 +8,12 @@ import { connect } from "react-redux";
 
 class RecipeCard extends Component {
   render() {
-    const recipe = this.props.recipe;
+    const { recipe } = this.props;
     const icon = this.props.type;
     const ingredientsName = recipe.ingredients.map(ingredient =>
       this.props.ingredients.find(ingr => ingredient === ingr.id)
     );
-    const meal = recipe.meal.map(meal => {
+    const meal = recipe.meals.map(meal => {
       return (
         <li key={meal.id} className="meal-style">
           <span className="meal-name">{meal.name}</span>
@@ -63,7 +63,9 @@ class RecipeCard extends Component {
               <div className="row list-style">
                 <div className="cuisine-style">
                   <img src={cuisineIcon} alt="cuisine" />
-                  <span className="name-style"> {recipe.cuisine.name}</span>
+                  <span className="name-style">
+                    {recipe.cuisine ? recipe.cuisine.name : "Other"}
+                  </span>
                 </div>
                 <div className="meal-style">{meal}</div>
                 <div className="time-style">

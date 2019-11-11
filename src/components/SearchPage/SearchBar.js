@@ -36,12 +36,11 @@ class SearchBar extends Component {
     this.setState({ suggestedItems: newSuggestedItems });
   }
 
-  handleKeyDown = async evt => {
-    if (["Enter", "Tab", ","].includes(evt.key)) {
-      evt.preventDefault();
 
+  handleKeyDown = async event => {
+    if (["Enter", "Tab", ","].includes(event.key)) {
+      event.preventDefault();
       let value = this.state.value.trim();
-
       if (value && this.isValid(value)) {
         const theItem = this.props.ingredients.find(
           ingredient => ingredient.name === value
@@ -106,19 +105,20 @@ class SearchBar extends Component {
     return array.slice(0, 10);
   };
 
-  handleChange = async evt => {
+
+  handleChange = async event => {
     const { ingredients } = this.props;
     const fuse = new Fuse(ingredients, fuseOptions);
-    const suggest = evt.target.value
-      ? fuse.search(evt.target.value).slice(0, 10)
+    const suggest = event.target.value
+      ? fuse.search(event.target.value).slice(0, 10)
       : this.randomIngredients(this.filterIngredients());
-
     await this.setState({
-      value: evt.target.value,
+      value: event.target.value,
       suggestedItems: suggest,
       error: null
     });
   };
+
 
   handleDelete = async item => {
     await this.setState({
@@ -127,6 +127,7 @@ class SearchBar extends Component {
     });
     this.props.deleteIngredient(this.state.itemsID);
   };
+
 
   // handlePaste = evt => {
   //   evt.preventDefault();
@@ -142,6 +143,7 @@ class SearchBar extends Component {
   //     });
   //   }
   // };
+
 
   isValid(ingredient) {
     let error = null;
@@ -159,11 +161,13 @@ class SearchBar extends Component {
     return true;
   }
 
+
   isInList(ingredient) {
     return this.state.items
       .map(item => item.name)
       .includes(ingredient.toLowerCase());
   }
+
 
   isInIngredients(ingredient) {
     return this.props.ingredients
@@ -171,12 +175,8 @@ class SearchBar extends Component {
       .includes(ingredient.toLowerCase());
   }
 
+
   render() {
-    // console.log(
-    //   "TCL: SearchBar -> render -> this.state.suggestedItems.slice(0, 3)",
-    //   this.state.suggestedItems.slice(0, 3)
-    // );
-    // this.props.fetchRecipes("", [], [], this.state.suggestedItems.slice(0, 3));
     return (
       <>
         {this.state.suggestedItems.map((suggestItem, idx) => (
@@ -193,11 +193,10 @@ class SearchBar extends Component {
         ))}
         <div className="row">
           <FilterButton />
-
           <input
             className={"input " + (this.state.error && " has-error")}
             value={this.state.value}
-            placeholder="Type or paste ingredients and press 'Enter'..."
+            placeholder='Type ingredients and press "Enter"...'
             onKeyDown={this.handleKeyDown}
             onChange={this.handleChange}
             id="serach-input"
@@ -240,7 +239,6 @@ class SearchBar extends Component {
             </button>
           </div>
         </div>
-        {/* This needs to be inside input onPaste={This needs to be a function} */}
         {this.state.items.map((item, idx) => (
           <div className="tag-item" key={idx}>
             {item.name}
@@ -274,6 +272,7 @@ const mapDispatchToProps = dispatch => ({
     dispatch(fetchRecipes(cuisine, meals, courses, ingredients));
   },
   deleteIngredient: ingredients => dispatch(deleteIngredient(ingredients))
+
 });
 
 export default connect(
