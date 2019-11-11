@@ -127,10 +127,10 @@ class SearchBar extends Component {
     this.props.deleteIngredient(this.state.itemsID);
   };
 
-  // handlePaste = evt => {
-  //   evt.preventDefault();
+  // handlePaste = event => {
+  //   event.preventDefault();
 
-  //   let paste = evt.clipboardData.getData("text");
+  //   let paste = event.clipboardData.getData("text");
   //   // let ingredients = paste.match(/[\w\d\.-]+@[\w\d\.-]+\.[\w\d\.-]+/g);
 
   //   if (ingredients) {
@@ -189,7 +189,7 @@ class SearchBar extends Component {
           <input
             className={"input " + (this.state.error && " has-error")}
             value={this.state.value}
-            placeholder='Type ingredients and press "Enter"...'
+            placeholder='Type your ingredients and press "Enter"...'
             onKeyDown={this.handleKeyDown}
             onChange={this.handleChange}
             id="serach-input"
