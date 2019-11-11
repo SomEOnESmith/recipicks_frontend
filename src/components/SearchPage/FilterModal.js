@@ -114,7 +114,7 @@ class FilterModal extends Component {
             <h3 className="text-center" style={{ color: "gray" }}>
               Filter Options
             </h3>
-            <hr />
+            <hr style={{ marginLeft: "5%", width: "90% " }} />
             <form className="pt-3 form-group">
               <div className="row" style={{ paddingLeft: "20px" }}>
                 <h5

@@ -18,6 +18,12 @@
   padding-left: 14px;
 }
 
+.styles_closeIcon__1QwbI {
+  background-color: rgb(193, 25, 25);
+  border-radius: 25px;
+  padding: 2px;
+}
+
 .name-style {
   color: black;
   font-weight: 500;
@@ -261,7 +267,8 @@
 }
 
 .styles_modal__gNwvD {
-  background-color: rgb(209, 208, 208);
+  background-color: rgb(55, 55, 55);
+  padding-top: 30px;
 }
 .form-control {
   background-color: rgb(209, 208, 208);
