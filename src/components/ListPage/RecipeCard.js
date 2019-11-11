@@ -6,7 +6,6 @@ import { connect } from "react-redux";
 import cuisineIcon from "../../assets/icons8-globe-16.png";
 import alarmIcon from "../../assets/icons8-alarm-clock-16.png";
 
-
 class RecipeCard extends Component {
   render() {
     const { recipe } = this.props;
