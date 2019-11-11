@@ -1,10 +1,11 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
+import { connect } from "react-redux";
 
 // Assets
 import cuisineIcon from "../../assets/icons8-globe-16.png";
 import alarmIcon from "../../assets/icons8-alarm-clock-16.png";
-import { connect } from "react-redux";
+
 
 class RecipeCard extends Component {
   render() {
