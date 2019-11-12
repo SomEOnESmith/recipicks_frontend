@@ -48,15 +48,21 @@ class RecipeCard extends Component {
               alt="..."
             />
             <div className="card-img-overlay img-text-container">
-              <h5 className="card-title img-text">Ingredients</h5>
-              <p className="card-text img-text">
-                {ingredientsName.map(ingredient => (
-                  <p key={ingredient.id}>{ingredient.name}</p>
-                ))}
-              </p>
+              <h5 className="card-title img-text ingredientsCard">
+                Ingredients
+              </h5>
+              <ul className="ing-list">
+                <p className="card-text img-text ">
+                  {ingredientsName.map(ingredient => (
+                    <li className="ingredientsCardItem" key={ingredient.id}>
+                      {ingredient.name}
+                    </li>
+                  ))}
+                </p>
+              </ul>
             </div>
             <div className="card-body">
-              <h5 id="title-link" className="card-title">
+              <h5 id="title-link" className="card-title text-center">
                 {recipe.title}
               </h5>
               <hr />

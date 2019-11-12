@@ -656,3 +656,16 @@ hr {
   font-family: "futura";
   color: rgb(208, 6, 53);
 }
+
+.ingredientsCard {
+  font-family: "futura";
+  color: rgb(208, 6, 53);
+}
+.ingredientsCardItem {
+  font-family: "futura";
+  color: rgb(0, 0, 0);
+}
+
+.ing-list li {
+  display: inline;
+}

@@ -5,6 +5,9 @@ import { connect } from "react-redux";
 // Components
 import AuthButton from "./AuthButton";
 
+//Assets
+import icon from "../../assets/paniconrecipicks.png";
+
 const NavBar = () => {
   return (
     <nav className="navbar navbar-expand-lg navbar-light bg-light">
