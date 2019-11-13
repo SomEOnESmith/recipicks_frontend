@@ -15,7 +15,7 @@ class RecipeCard extends Component {
         rootIngredient => ingredient === rootIngredient.id
       );
       return (
-        <li key={ingredient}>
+        <li className="ingredientsCardItem" key={ingredient}>
           {ingredientObject.name[0].toUpperCase() +
             ingredientObject.name.slice(1)}
         </li>
@@ -56,11 +56,13 @@ class RecipeCard extends Component {
               alt="..."
             />
             <div className="card-img-overlay img-text-container">
-              <h5 className="card-title img-text">Ingredients:</h5>
+              <h5 className="card-title img-text ingredientsCard">
+                Ingredients:
+              </h5>
               <p className="card-text img-text">{ingredientList}</p>
             </div>
             <div className="card-body">
-              <h5 id="title-link" className="card-title">
+              <h5 id="title-link" className="card-title text-center">
                 {recipe.title}
               </h5>
               <hr />

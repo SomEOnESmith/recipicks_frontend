@@ -59,7 +59,9 @@
   align-items: center;
   margin: 0.9rem 0.3rem 0.3rem 0;
 }
-
+html, .gr__localhost, #root{
+  background-color: black 
+}
 .suggest-list {
   display: inline-block;
 }
