@@ -61,101 +61,134 @@ class EditProfile extends Component {
       return <Loading />;
     } else {
       return (
-        <div
-          id="update-profile"
-          className="card col-6 mx-auto p-0"
-          style={{ marginTop: "10%" }}
-        >
-          <form id="update-profile" onSubmit={this.submitHandler}>
-            {!!errors.length && (
-              <div className="alert alert-danger" role="alert">
-                {errors.map(error => (
-                  <p key={error}>{error}</p>
-                ))}
-              </div>
-            )}
-
-            <p>
-              <b>First Name: </b> {profile.user.first_name}
-            </p>
-            <input
-              className="form-control rounded-pill"
-              placeholder={profile.user.first_name}
-              onChange={this.changeHandler}
-              name="first_name"
-              value={this.state.first_name}
-            />
-            <br />
-            <p>
-              <b>Last Name: </b>
-              {profile.user.last_name}
-            </p>
-            <input
-              className="form-control rounded-pill"
-              placeholder={profile.user.last_name}
-              onChange={this.changeHandler}
-              name="last_name"
-              value={this.state.last_name}
-            />
-            <br />
-            <p>
-              <b>Email: </b> {profile.user.email}
-            </p>
-            <input
-              className="form-control rounded-pill"
-              placeholder={profile.user.email}
-              onChange={this.changeHandler}
-              name="email"
-              type="email"
-              value={this.state.email}
-            />
-            <br />
-            <p>
-              <b>Phone: </b> {profile.user.phone}
-            </p>
-            <input
-              className="form-control rounded-pill"
-              placeholder={profile.phone}
-              onChange={this.changeHandler}
-              name="phone"
-              type="phone"
-              value={this.state.phone}
-            />
-            <br />
-            <div class="form-group rounded-pill">
-              <label for="exampleFormControlSelect1">Gender:</label>
-              <select
-                name="gender"
-                onChange={this.changeHandler}
-                class="form-control"
-                id="exampleFormControlSelect1"
+        <div className="main">
+          <section className="header-edit-profile">
+            <div className="header-container">
+              <div
+                className="card col-lg-10 col-md-10 col-sm-12 col-xs-12 mx-auto p-3  jumbotron profile"
+                style={{ marginTop: "10%" }}
               >
-                <option>choose gender</option>
-                <option>Male</option>
-                <option>Female</option>
-              </select>
-            </div>
-            <br />
-            <p>
-              <b>Date of Birth: </b>
-              {profile.date_of_birth}
-            </p>
-            <input
-              className="form-control rounded-pill"
-              placeholder={profile.user.date_of_birth}
-              onChange={this.changeHandler}
-              name="age"
-              value={this.state.date_of_birth}
-            />
-            <br />
+                <section id="overlay" className="single-section">
+                  <h1
+                    className="mt-5 profile-head"
+                    style={{
+                      textAlign: "center",
+                      color: "rgb(208, 6, 53)"
+                    }}
+                  >
+                    Update Profile
+                  </h1>
+                </section>
 
-            <input
-              id="registerbtn"
-              className="btn btn-primary btn-block"
-              type="submit"
-              value="Update Profile"
-            />
-          </form>
+                <form id="update-profile" onSubmit={this.submitHandler}>
+                  {!!errors.length && (
+                    <div role="alert">
+                      {errors.map(error => (
+                        <p id="error" key={error}>
+                          {error}
+                        </p>
+                      ))}
+                    </div>
+                  )}
+
+                  <p>
+                    <b style={{ color: "rgb(208, 6, 53)" }}> First Name: </b>
+                    <span style={{ color: "black" }}>
+                      {profile.user.first_name}
+                    </span>
+                  </p>
+                  <input
+                    className="form-control rounded-pill"
+                    placeholder={profile.user.first_name}
+                    onChange={this.changeHandler}
+                    name="first_name"
+                    value={this.state.first_name}
+                  />
+                  <br />
+                  <p>
+                    <b style={{ color: "rgb(208, 6, 53)" }}>Last Name: </b>
+                    <span style={{ color: "black" }}>
+                      {profile.user.last_name}
+                    </span>
+                  </p>
+                  <input
+                    className="form-control rounded-pill"
+                    placeholder={profile.user.last_name}
+                    onChange={this.changeHandler}
+                    name="last_name"
+                    value={this.state.last_name}
+                  />
+                  <br />
+                  <p>
+                    <b style={{ color: "rgb(208, 6, 53)" }}>Email: </b>
+                    <span style={{ color: "black" }}>{profile.user.email}</span>
+                  </p>
+                  <input
+                    className="form-control rounded-pill"
+                    placeholder={profile.user.email}
+                    onChange={this.changeHandler}
+                    name="email"
+                    type="email"
+                    value={this.state.email}
+                  />
+                  <br />
+                  <p>
+                    <b style={{ color: "rgb(208, 6, 53)" }}>Phone: </b>
+                    <span style={{ color: "black" }}>{profile.user.phone}</span>
+                  </p>
+                  <input
+                    className="form-control rounded-pill"
+                    placeholder={profile.phone}
+                    onChange={this.changeHandler}
+                    name="phone"
+                    type="phone"
+                    value={this.state.phone}
+                  />
+                  <br />
+                  <div class="form-group rounded-pill">
+                    <label
+                      style={{ color: "rgb(208, 6, 53)", fontWeight: "bold" }}
+                      for="exampleFormControlSelect1"
+                    >
+                      Gender:
+                    </label>
+                    <select
+                      name="gender"
+                      onChange={this.changeHandler}
+                      class="form-control"
+                      id="exampleFormControlSelect1"
+                    >
+                      <option>choose a gender</option>
+                      <option>Male</option>
+                      <option>Female</option>
+                    </select>
+                  </div>
+
+                  <p>
+                    <b style={{ color: "rgb(208, 6, 53)" }}>Date of Birth: </b>
+                    <span style={{ color: "black" }}>
+                      {profile.date_of_birth}
+                    </span>
+                  </p>
+                  <input
+                    className="form-control rounded-pill"
+                    placeholder={profile.user.date_of_birth}
+                    onChange={this.changeHandler}
+                    name="age"
+                    value={this.state.date_of_birth}
+                  />
+                  <br />
+
+                  <input
+                    id="registerbtn"
+                    className="btn rounded-pill btn-block btn-danger"
+                    type="submit"
+                    value="Update Profile"
+                  />
+                </form>
+              </div>
+            </div>
+          </section>
         </div>
       );
     }

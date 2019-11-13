@@ -5,6 +5,19 @@ import SearchBar from "./SearchBar";
 import RecipesList from "../ListPage/RecipesList";
 
 const HomePage = () => {
+  const currentTime = new Date().getHours();
+  let message;
+  if (currentTime > 6 && currentTime < 12) {
+    message = "What's for Breakfast?";
+  } else if (currentTime >= 12 && currentTime < 14) {
+    message = "What's for Brunch?";
+  } else if (currentTime >= 14 && currentTime < 16) {
+    message = "What's for Lunch?";
+  } else if (currentTime >= 16 && currentTime < 23) {
+    message = "What's for Dinner?";
+  } else {
+    message = "Keep Cookin'";
+  }
   return (
     <div className="main">
       <section className="header">
@@ -14,20 +27,17 @@ const HomePage = () => {
               <div className="typewriter">
                 <h1
                   style={{
-                    color: "white"
+                    color: "white",
+                    fontFamily: "Futura"
                   }}
                 >
-                  Find a Recipe
+                  {message}
                 </h1>
               </div>
             </div>
           </div>
-          <div className="row">
-            <div className="col">
-              <div className="search">
-                <SearchBar />
-              </div>
-            </div>
+          <div className="container">
+            <SearchBar />
           </div>
         </div>
       </section>

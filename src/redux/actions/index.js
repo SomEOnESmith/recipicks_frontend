@@ -1,5 +1,10 @@
-export { fetchRecipes, fetchRecipe } from "./recipes";
-export { fetchFilters } from "./filters";
+export {
+  fetchRecipes,
+  fetchRecipe,
+  deleteIngredient,
+  addRecipe
+} from "./recipes";
+export { fetchFilters, selectFilters } from "./filters";
 export {
   login,
   logout,

@@ -18,28 +18,96 @@ class Profile extends Component {
         return <Loading />;
       } else {
         return (
-          <div className="card col-6 mx-auto p-0" style={{ marginTop: "10%" }}>
-            <section id="overlay" className="single-section">
-              <h1 id="my-cart" className="mt-5" style={{ fontSize: "3em" }}>
-                My Profile
-              </h1>
-            </section>
-            <div className="jumbotron">
-              <p> Username: {profile.user.username}</p>
-              <p> First Name: {profile.user.first_name} </p>
-              <p> Last Name: {profile.user.last_name} </p>
-              <p> Email: {profile.user.email} </p>
-              <p> Birthdate: {profile.date_of_birth} </p>
-              <p> Gender: {profile.gender} </p>
-              <p> Phone: {profile.phone} </p>
-            </div>
+          <div className="main">
+            <section className="header-profile">
+              <div className="header-container">
+                <div
+                  className="card col-lg-10 col-md-10 col-sm-12 col-xs-12 mx-auto p-3  jumbotron profile"
+                  style={{ marginTop: "10%" }}
+                >
+                  <section id="overlay" className="single-section">
+                    <h1
+                      className="mt-5 profile-head"
+                      style={{
+                        textAlign: "center",
+                        color: "rgb(208, 6, 53)"
+                      }}
+                    >
+                      My Profile
+                    </h1>
+                  </section>
 
-            <br />
-            <Link to="/edit-profile">
-              <button className="btn rounded-pill btn-outline-secondary">
-                Edit Profile
-              </button>
-            </Link>
+                  <p style={{ color: "black", paddingLeft: 10, fontSize: 15 }}>
+                    <span
+                      style={{ fontWeight: "bold", color: "rgb(208, 6, 53)" }}
+                    >
+                      Username:{" "}
+                    </span>
+                    {profile.user.username}
+                  </p>
+
+                  <p style={{ color: "black", paddingLeft: 10, fontSize: 15 }}>
+                    <span
+                      style={{ fontWeight: "bold", color: "rgb(208, 6, 53)" }}
+                    >
+                      First Name:{" "}
+                    </span>
+                    {profile.user.first_name}
+                  </p>
+
+                  <p style={{ color: "black", paddingLeft: 10, fontSize: 15 }}>
+                    <span
+                      style={{ fontWeight: "bold", color: "rgb(208, 6, 53)" }}
+                    >
+                      Last Name:{" "}
+                    </span>
+                    {profile.user.last_name}
+                  </p>
+
+                  <p style={{ color: "black", paddingLeft: 10, fontSize: 15 }}>
+                    <span
+                      style={{ fontWeight: "bold", color: "rgb(208, 6, 53)" }}
+                    >
+                      Email:{" "}
+                    </span>
+                    {profile.user.email}
+                  </p>
+
+                  <p style={{ color: "black", paddingLeft: 10, fontSize: 15 }}>
+                    <span
+                      style={{ fontWeight: "bold", color: "rgb(208, 6, 53)" }}
+                    >
+                      Birthdate:{" "}
+                    </span>
+                    {profile.date_of_birth}
+                  </p>
+
+                  <p style={{ color: "black", paddingLeft: 10, fontSize: 15 }}>
+                    <span
+                      style={{ fontWeight: "bold", color: "rgb(208, 6, 53)" }}
+                    >
+                      Gender:{" "}
+                    </span>
+                    {profile.gender}
+                  </p>
+
+                  <p style={{ color: "black", paddingLeft: 10, fontSize: 15 }}>
+                    <span
+                      style={{ fontWeight: "bold", color: "rgb(208, 6, 53)" }}
+                    >
+                      Phone Number:{" "}
+                    </span>
+                    {profile.phone}
+                  </p>
+
+                  <Link id="edit" style={{ padding: 20 }} to="/edit-profile">
+                    <button className="btn rounded-pill btn-block btn-danger">
+                      Edit Profile
+                    </button>
+                  </Link>
+                </div>
+              </div>
+            </section>
           </div>
         );
       }

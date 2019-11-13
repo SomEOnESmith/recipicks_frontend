@@ -6,8 +6,7 @@ import ReactDOM from "react-dom";
 import "./index.css";
 import "./assets/style.css";
 import "bootstrap/dist/css/bootstrap.min.css";
-import "./assets/css/style.css";
-import "./assets/css/style.scss";
+import 'bootstrap/dist/js/bootstrap.js';
 import "./assets/css/main.css";
 
 import { BrowserRouter } from "react-router-dom";

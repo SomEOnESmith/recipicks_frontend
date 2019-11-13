@@ -10,6 +10,7 @@ import searchIcon from "../../assets/search.png";
 
 // Actions
 import { fetchRecipes } from "../../redux/actions";
+import { deleteIngredient } from "../../redux/actions";
 
 const fuseOptions = {
   shouldSort: true,
@@ -33,16 +34,15 @@ class SearchBar extends Component {
   componentDidMount() {
     const newSuggestedItems = this.randomIngredients(this.filterIngredients());
     this.setState({ suggestedItems: newSuggestedItems });
+    this.props.fetchRecipes("", [], [], []);
   }
 
-  handleKeyDown = async evt => {
-    if (["Enter", "Tab", ","].includes(evt.key)) {
-      evt.preventDefault();
-
+  handleKeyDown = async event => {
+    if (["Enter", "Tab", ","].includes(event.key)) {
+      event.preventDefault();
       let value = this.state.value.trim();
-
       if (value && this.isValid(value)) {
-        const theItem = this.props.filters.ingredients.find(
+        const theItem = this.props.ingredients.find(
           ingredient => ingredient.name === value
         );
         const newItems = this.state.items.concat(theItem);
@@ -55,7 +55,8 @@ class SearchBar extends Component {
           this.filterIngredients()
         );
         this.setState({ suggestedItems: newSuggestedItems });
-        this.props.fetch(this.state.itemsID);
+        const { cuisine, meals, courses } = this.props;
+        this.props.fetchRecipes(cuisine, meals, courses, this.state.itemsID);
       }
     }
   };
@@ -64,9 +65,11 @@ class SearchBar extends Component {
     if (this.isValid(item.name)) {
       await this.setState({
         items: this.state.items.concat(item),
-        itemsID: this.state.itemsID.concat(item.id)
+        itemsID: this.state.itemsID.concat(item.id),
+        value: ""
       });
-      this.props.fetch(this.state.itemsID);
+      const { cuisine, meals, courses } = this.props;
+      this.props.fetchRecipes(cuisine, meals, courses, this.state.itemsID);
       if (!this.state.value) {
         const newSuggestedItems = this.randomIngredients(
           this.filterIngredients()
@@ -83,7 +86,7 @@ class SearchBar extends Component {
   };
 
   filterIngredients = () => {
-    return this.props.filters.ingredients.filter(
+    return this.props.ingredients.filter(
       ingredient => !this.state.items.includes(ingredient)
     );
   };
@@ -98,36 +101,35 @@ class SearchBar extends Component {
       temporaryValue = array[currentIndex];
       array[currentIndex] = array[randomIndex];
       array[randomIndex] = temporaryValue;
-      if (currentIndex === 9) break;
     }
-    return array.slice(0, 10);
+    return array.slice(0, 6);
   };
 
-  handleChange = async evt => {
-    const { ingredients } = this.props.filters;
+  handleChange = async event => {
+    const { ingredients } = this.props;
     const fuse = new Fuse(ingredients, fuseOptions);
-    const suggest = evt.target.value
-      ? fuse.search(evt.target.value).slice(0, 10)
+    const suggest = event.target.value
+      ? fuse.search(event.target.value).slice(0, 10)
       : this.randomIngredients(this.filterIngredients());
-
     await this.setState({
-      value: evt.target.value,
+      value: event.target.value.toLowerCase(),
       suggestedItems: suggest,
       error: null
     });
   };
 
-  handleDelete = item => {
-    this.setState({
+  handleDelete = async item => {
+    await this.setState({
       items: this.state.items.filter(i => i !== item),
       itemsID: this.state.itemsID.filter(i => i !== item.id)
     });
+    this.props.deleteIngredient(this.state.itemsID);
   };
 
-  // handlePaste = evt => {
-  //   evt.preventDefault();
+  // handlePaste = event => {
+  //   event.preventDefault();
 
-  //   let paste = evt.clipboardData.getData("text");
+  //   let paste = event.clipboardData.getData("text");
   //   // let ingredients = paste.match(/[\w\d\.-]+@[\w\d\.-]+\.[\w\d\.-]+/g);
 
   //   if (ingredients) {
@@ -141,7 +143,6 @@ class SearchBar extends Component {
 
   isValid(ingredient) {
     let error = null;
-
     if (this.isInList(ingredient)) {
       error = `${ingredient} has already been added.`;
     }
@@ -162,14 +163,14 @@ class SearchBar extends Component {
   }
 
   isInIngredients(ingredient) {
-    return this.props.filters.ingredients
+    return this.props.ingredients
       .map(ing => ing.name.toLowerCase())
       .includes(ingredient.toLowerCase());
   }
 
   render() {
     return (
-      <div>
+      <>
         {this.state.suggestedItems.map((suggestItem, idx) => (
           <div className="suggest-list" key={idx}>
             <button
@@ -182,69 +183,49 @@ class SearchBar extends Component {
             </button>
           </div>
         ))}
-        <div
-          className="row"
-          style={{
-            backgroundColor: "#D00635",
-            borderRadius: "35px",
-            height: "70px",
-            paddingBottom: "5px"
-          }}
-        >
-          <div
-            className="col-2"
-            style={{ paddingTop: "18px", paddingLeft: "30px", height: "50px" }}
-          >
-            <FilterButton />
-          </div>
-          <div className="col-8">
-            <input
-              className={"input " + (this.state.error && " has-error")}
-              value={this.state.value}
-              placeholder="Type or paste ingredients and press 'Enter'..."
-              onKeyDown={this.handleKeyDown}
-              onChange={this.handleChange}
-              style={{
-                borderRadius: "25px",
-                backgroundColor: "white",
-                borderColor: "transparent",
-                width: "840px",
-                position: "relative",
-                left: "-100px"
-              }}
-            />
-          </div>
+        <div className="row">
+          <FilterButton />
+          <input
+            className={"input " + (this.state.error && " has-error")}
+            value={this.state.value}
+            placeholder='Type your ingredients and press "Enter"...'
+            onKeyDown={this.handleKeyDown}
+            onChange={this.handleChange}
+            id="serach-input"
+            style={{
+              backgroundColor: "white",
+              borderColor: "transparent"
+            }}
+          />
 
           <div
-            className="col-2"
             style={{
-              paddingTop: "17px",
-              height: "50px",
-              width: "50px",
-              position: "relative",
-              left: "80px"
+              paddingTop: "17px"
             }}
           >
             <button
               id="suggest_btn"
               style={{
-                backgroundColor: "transparent",
-                borderColor: "transparent"
+                backgroundColor: "#D00635",
+                borderColor: "transparent",
+                padding: 10
               }}
-              onClick={() => this.props.fetch(this.state.itemsID)}
+              onClick={() => {
+                const { cuisine, meals, courses, fetchRecipes } = this.props;
+                fetchRecipes(cuisine, meals, courses, this.state.itemsID);
+              }}
             >
               <img
                 src={searchIcon}
                 style={{
                   backgroundColor: "transparent",
-                  height: "30px"
+                  height: "23px"
                 }}
                 alt=""
               />
             </button>
           </div>
         </div>
-        {/* This needs to be inside input onPaste="This needs to be a function" */}
         {this.state.items.map((item, idx) => (
           <div className="tag-item" key={idx}>
             {item.name}
@@ -261,17 +242,23 @@ class SearchBar extends Component {
 
         {this.state.error && <p className="error">{this.state.error}</p>}
         <br />
-      </div>
+      </>
     );
   }
 }
 
 const mapStateToProps = state => ({
-  filters: state.rootFilters
+  ingredients: state.rootFilters.ingredients,
+  cuisine: state.rootFilters.selectedFilters.cuisine,
+  meals: state.rootFilters.selectedFilters.meals,
+  courses: state.rootFilters.selectedFilters.courses
 });
 
 const mapDispatchToProps = dispatch => ({
-  fetch: ingredients => dispatch(fetchRecipes("", [], [], ingredients))
+  fetchRecipes: (cuisine, meals, courses, ingredients) => {
+    dispatch(fetchRecipes(cuisine, meals, courses, ingredients));
+  },
+  deleteIngredient: ingredients => dispatch(deleteIngredient(ingredients))
 });
 
 export default connect(

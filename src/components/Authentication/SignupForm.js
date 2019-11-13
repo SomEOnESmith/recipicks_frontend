@@ -31,53 +31,67 @@ class SignupForm extends Component {
     const errors = this.props.errors;
 
     return (
-      <div id="loginCard" className="card col-6 mx-auto p-0 mt-5">
-        <div className="card-body">
-          <h5 className="card-title mb-4">Register an account</h5>
-          <form onSubmit={this.submitHandler}>
-            {!!errors.length && (
-              <div className="alert alert-danger" role="alert">
-                {errors.map(error => (
-                  <p key={error}>{error}</p>
-                ))}
-              </div>
-            )}
+      <div className="main">
+        <section className="header-profile">
+          <div className="header-container">
+            <div
+              id="loginCard"
+              style={{ postion: "relative", top: 100 }}
+              className="card col-lg-7 col-md-7 col-sm-12 col-xs-12 mx-auto p-3  jumbotron  "
+            >
+              <div className="card-body">
+                <h5 className="card-title mb-4">Register</h5>
+                <form onSubmit={this.submitHandler}>
+                  {!!errors.length && (
+                    <div role="alert">
+                      {errors.map(error => (
+                        <p id="error" key={error}>
+                          {error}
+                        </p>
+                      ))}
+                    </div>
+                  )}
 
-            <div className="form-group">
-              <input
-                className="form-control"
-                type="text"
-                placeholder="Username"
-                name="username"
-                onChange={this.changeHandler}
-              />
+                  <div className="form-group">
+                    <input
+                      className="form-control"
+                      type="text"
+                      placeholder="Username"
+                      name="username"
+                      onChange={this.changeHandler}
+                    />
+                  </div>
+                  <div className="form-group">
+                    <input
+                      className="form-control"
+                      type="password"
+                      placeholder="Password"
+                      name="password"
+                      onChange={this.changeHandler}
+                    />
+                  </div>
+                  <input
+                    id="registerbtn"
+                    className="btn rounded-pill btn-block btn-danger"
+                    type="submit"
+                    value="Signup"
+                  />
+                </form>
+              </div>
+              <div className="card-footer">
+                <Link
+                  id="nav-link-auth"
+                  to="/login"
+                  className="btn btn-small btn-link"
+                >
+                  <span className="create-account">
+                    I'm already registered!
+                  </span>
+                </Link>
+              </div>
             </div>
-            <div className="form-group">
-              <input
-                className="form-control"
-                type="password"
-                placeholder="Password"
-                name="password"
-                onChange={this.changeHandler}
-              />
-            </div>
-            <input
-              id="registerbtn"
-              className="btn btn-primary btn-block"
-              type="submit"
-              value="signup"
-            />
-          </form>
-        </div>
-        <div className="card-footer">
-          <Link
-            id="nav-link-auth"
-            to="/login"
-            className="btn btn-small btn-link"
-          >
-            I'm already registered!
-          </Link>
-        </div>
+          </div>
+        </section>
       </div>
     );
   }

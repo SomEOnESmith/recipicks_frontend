@@ -1,96 +1,96 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
+import { connect } from "react-redux";
+
+// Assets
+import cuisineIcon from "../../assets/icons8-globe-16.png";
+import alarmIcon from "../../assets/icons8-alarm-clock-16.png";
 
 class RecipeCard extends Component {
   render() {
-    const recipe = this.props.recipe;
+    const { recipe, ingredients } = this.props;
     const icon = this.props.type;
+    const ingredientList = recipe.ingredients.map(ingredient => {
+      let ingredientObject = ingredients.find(
+        rootIngredient => ingredient === rootIngredient.id
+      );
+      return (
+        <li className="ingredientsCardItem" key={ingredient}>
+          {ingredientObject.name[0].toUpperCase() +
+            ingredientObject.name.slice(1)}
+        </li>
+      );
+    });
+    const meal = recipe.meals.map(meal => {
+      return (
+        <li key={meal.id} className="meal-style">
+          <span className="meal-name">{meal.name}</span>
+        </li>
+      );
+    });
     let span;
-    if (icon === "exact") {
-      span = (
-        <span class="badge badge-success">exact amount of ingredients</span>
-      );
+    if (icon === "perfect") {
+      span = <span className="badge badge-pill badge-success">Perfect</span>;
     } else if (icon === "excess") {
-      span = (
-        <span class="badge badge-warning">excess amount of ingredients</span>
-      );
+      span = <span className="badge badge-pill badge-warning">Excess</span>;
     } else if (icon === "missing") {
-      span = <span class="badge badge-danger">missing some ingredients</span>;
+      span = <span className="badge badge-pill badge-danger">Missing</span>;
     } else {
-      span = <></>;
+      span = null;
     }
-
     return (
       <>
         <div
           style={{
             width: "25rem"
           }}
-          className="card my-3"
+          className="card image-container"
           id="recipe-card"
         >
           {span}
-          <img
-            src={recipe.image}
-            id="card-img"
-            className="card-img-top"
-            alt="..."
-          />
-
-          <div className="card-body">
-            <Link to={`/recipes/${recipe.id}`}>
-              <h5 id="title-link" className="card-title">
+          <Link id="link" to={`/recipes/${recipe.id}`}>
+            <img
+              src={recipe.image}
+              id="card-img"
+              className="card-img-top image-overlay"
+              alt="..."
+            />
+            <div className="card-img-overlay img-text-container">
+              <h5 className="card-title img-text ingredientsCard">
+                Ingredients:
+              </h5>
+              <p className="card-text img-text">{ingredientList}</p>
+            </div>
+            <div className="card-body">
+              <h5 id="title-link" className="card-title text-center">
                 {recipe.title}
               </h5>
-            </Link>
-            <hr />
-
-            <div className="row">
-              <div className="col">
-                <p id="card-text-orange">
-                  <img
-                    src="https://img.icons8.com/small/16/000000/halal-food.png"
-                    alt=""
-                  />
-                  American
-                </p>
-              </div>
-              <div className="col">
-                <p id="card-text-orange">
-                  <img
-                    src="https://img.icons8.com/small/16/000000/pizza.png"
-                    alt=""
-                  />
-                  Dinner
-                </p>
-              </div>
-              <div className="col">
-                <p id="card-text-orange">
-                  <img
-                    src="https://img.icons8.com/small/16/000000/alarm-clock.png"
-                    alt=""
-                  />
-                  15 min
-                </p>
+              <hr />
+              <div className="row list-style">
+                <div className="cuisine-style">
+                  <img src={cuisineIcon} alt="cuisine" />
+                  <span className="name-style">
+                    {recipe.cuisine ? recipe.cuisine.name : "Other"}
+                  </span>
+                </div>
+                <div className="meal-style">{meal}</div>
+                <div className="time-style">
+                  <img src={alarmIcon} alt="time" />
+                  <span className="name-style">
+                    <span style={{ paddingLeft: 3 }}>{recipe.total_time}</span>
+                  </span>
+                </div>
               </div>
             </div>
-
-            <p id="card-text-black" className="card-text">
-              Some quick example text to build on the card title and make up the
-              bulk of the card's content.
-            </p>
-            <a
-              href={`/recipes/${recipe.id}`}
-              id="card-btn"
-              className="btn btn-block"
-            >
-              Let's Cook!
-            </a>
-          </div>
+          </Link>
         </div>
       </>
     );
   }
 }
 
-export default RecipeCard;
+const mapStateToProps = state => ({
+  ingredients: state.rootFilters.ingredients
+});
+
+export default connect(mapStateToProps)(RecipeCard);

@@ -48,7 +48,8 @@
 }
 
 .tag-item {
-  background-color: #d4d5d6;
+  background-color: rgb(196, 196, 196);
+  color: black;
   display: inline-block;
   font-size: 14px;
   border-radius: 30px;
@@ -58,12 +59,15 @@
   align-items: center;
   margin: 0.9rem 0.3rem 0.3rem 0;
 }
-
+html, .gr__localhost, #root{
+  background-color: black 
+}
 .suggest-list {
   display: inline-block;
 }
 .suggestion-item {
   background-color: #d4d5d6;
+
   display: inline-block;
   font-size: 14px;
   border-radius: 30px;

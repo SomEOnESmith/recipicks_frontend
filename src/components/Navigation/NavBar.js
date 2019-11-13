@@ -7,41 +7,24 @@ import AuthButton from "./AuthButton";
 
 const NavBar = () => {
   return (
-    <nav id="navbar" className="navbar navbar-expand-lg ">
-      <Link
-        style={{
-          textDecoration: "none"
-        }}
-        className="logo-text"
-        to="/"
-      >
-        <div className="row">
-          <h3
-            id="logo-text-2"
-            style={{
-              textDecoration: "none",
-              paddingLeft: "10px",
-              paddingTop: "5px",
-              color: "red"
-            }}
-          >
-            Recipicks
-          </h3>
-        </div>
+    <nav className="navbar navbar-expand-lg navbar-light bg-light">
+      <Link className="navbar-brand" to="/">
+        Recipicks
       </Link>
-
       <button
-        className="navbar-toggler navbar-toggler-right"
+        className="navbar-toggler custom-toggler"
         type="button"
         data-toggle="collapse"
-        data-target="#navbarResponsive"
-        aria-controls="navbarResponsive"
+        data-target="#navbarNav"
+        aria-controls="navbarNav"
         aria-expanded="false"
         aria-label="Toggle navigation"
       >
-        <span className="navbar-toggler-icon" />
+        <span className="navbar-toggler-icon"></span>
       </button>
-      <AuthButton />
+      <div className="collapse navbar-collapse" id="navbarNav">
+        <AuthButton />
+      </div>
     </nav>
   );
 };

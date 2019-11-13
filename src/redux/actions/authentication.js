@@ -76,7 +76,7 @@ export const login = (userData, history) => {
       dispatch(resetErrors());
       history.replace("/");
     } catch (error) {
-      console.log(error);
+      console.error(error);
       dispatch({
         type: SET_ERRORS,
         payload: error.response.data

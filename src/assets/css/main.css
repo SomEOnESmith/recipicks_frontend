@@ -8,6 +8,46 @@
 
   background-color: rgba(0, 0, 0, 0.75);
 }
+.meal-style {
+  list-style: url("../../assets/icons8-meal-16.png");
+  position: relative;
+
+  top: 2px;
+  color: black;
+  font-weight: 500;
+  padding-left: 14px;
+}
+
+.styles_closeIcon__1QwbI {
+  background-color: rgb(193, 25, 25);
+  border-radius: 25px;
+  padding: 2px;
+}
+
+.name-style {
+  color: black;
+  font-weight: 500;
+}
+
+.row-details {
+  background-color: rgb(119, 3, 30);
+  padding: 18px;
+
+  opacity: 0.9;
+}
+.time-style {
+  padding-left: 20px;
+}
+
+.meal-name {
+  position: relative;
+  bottom: 3px;
+  right: 6px;
+}
+
+.list-style {
+  padding-left: 20px;
+}
 
 .header-detail {
   display: flex;
@@ -18,6 +58,41 @@
   background-image: url("../img/chalkboard-texture.jpg");
 
   background-color: rgba(0, 0, 0, 0.75);
+}
+.header-profile {
+  display: flex;
+  align-content: stretch;
+  justify-content: center;
+  height: 120vh;
+  position: relative;
+  background-image: url("../img/chalkboard-texture.jpg");
+
+  background-color: rgba(0, 0, 0, 0.75);
+}
+
+.header-recipe {
+  display: flex;
+  align-content: stretch;
+  justify-content: center;
+  height: 230vh;
+  position: relative;
+  background-image: url("../img/chalkboard-texture.jpg");
+
+  background-color: rgba(0, 0, 0, 0.75);
+}
+
+.header-edit-profile {
+  display: flex;
+  align-content: stretch;
+  justify-content: center;
+  height: 160vh;
+  position: relative;
+  background-image: url("../img/chalkboard-texture.jpg");
+
+  background-color: rgba(0, 0, 0, 0.75);
+}
+#edit {
+  text-decoration: none;
 }
 
 #detail-row {
@@ -62,16 +137,6 @@
   background-color: black;
 }
 
-.navbar {
-  background-color: transparent;
-  border: 1 solid red;
-}
-.navbar-expand-lg {
-  background-color: transparent;
-}
-#navbar {
-  background-color: transparent;
-}
 #padding {
   padding-top: 100px;
 }
@@ -111,43 +176,207 @@
 }
 
 .typewriter h1 {
-  /* overflow: hidden; Ensures the content is not revealed until the animation */
-  /* border-right: 0.15em solid orange; The typwriter cursor */
-  /* white-space: nowrap; Keeps the content on a single line */
-  /* margin: 0 auto; Gives that scrolling effect as the typing happens */
-  letter-spacing: 0.15em; /* Adjust as needed */
-  /* animation: typing 2.5s steps(40, end), blink-caret 0.75s step-end infinite; */
+  letter-spacing: 0.15em;
   font: bold 2.1875rem/2.875rem "Source Serif Pro", serif;
-  font-size: 4.125rem;
   margin: 9.25rem auto 1.8125rem;
-  padding: 10px;
   position: relative;
   text-align: center;
-  /* left: 400px; */
 }
 
+@media screen and (min-width: 601px) {
+  .typewriter h1 {
+    font-size: 5vw;
+  }
+  #serach-input {
+    width: 65%;
+    position: relative;
+    left: 130px;
+  }
+  #suggest_btn {
+    position: relative;
+    bottom: 5px;
+    left: 100px;
+  }
+  #model-btn {
+    position: relative;
+    left: 130px;
+    top: 14px;
+  }
+
+  .profile-head {
+    font-size: 3vw;
+  }
+}
+
+.badge {
+  width: 80px;
+  position: absolute;
+  right: 15px;
+  top: 10px;
+  padding: 5px 10px;
+}
+
+.the-list {
+  background-color: rgb(209, 208, 208);
+}
+/* If the screen size is 600px wide or less, set the font-size of <div> to 30px */
+@media screen and (max-width: 600px) {
+  div.example {
+    font-size: 13vw;
+  }
+  #img-mobile {
+    max-width: 100%;
+    height: auto;
+    position: relative;
+    left: 15px;
+  }
+
+  .suggest-list {
+    position: relative;
+    right: 160px;
+  }
+  #suggest_btn {
+    display: block;
+    margin: 0 auto;
+    top: 50%;
+    left: 50%;
+    position: absolute;
+  }
+  #model-btn {
+    position: relative;
+    left: 30px;
+    top: 14px;
+  }
+  .profile-head {
+    font-size: 7vw;
+    padding-bottom: 10px;
+  }
+}
+
+.profile {
+  height: auto;
+}
 #spacing {
   color: black;
 }
+
+#mealBox,
+#courseBox {
+  width: 400px;
+  height: 70px;
+}
+
+.styles_modal__gNwvD {
+  background-color: rgb(55, 55, 55);
+  padding-top: 30px;
+}
+.form-control {
+  background-color: rgb(209, 208, 208);
+}
+
+#cuisineBox {
+  width: 400px;
+  margin-bottom: 20px;
+}
+#btn-fliter {
+  margin-bottom: 50px;
+}
+
+#error {
+  color: rgb(208, 6, 53);
+}
+
+#form-control {
+  width: 350px;
+  background-color: rgb(209, 208, 208);
+}
+
 #suggest_item {
-  background-color: orange;
-  border: 1px solid white;
+  background: rgb(208, 6, 53);
+  border: 1px solid transparent;
+  margin-bottom: 10px;
+  position: relative;
+  left: 180px;
+  color: white;
+  margin-top: 10px;
+}
+
+.name-detail {
+  font-size: 4vw;
+  color: white;
+  font-weight: 500;
+  position: relative;
+  left: 50px;
+  top: 50px;
+}
+
+.detailBG {
+  background-color: rgb(209, 208, 208);
+}
+.bg-light {
+  background-color: rgb(46, 46, 46) !important;
+}
+
+.navbar-brand,
+.nav-item,
+.nav-link {
+  color: white !important;
+}
+
+#mainNav.navbar--home {
+  background-color: transparent;
 }
 
 .name-padding {
   padding-bottom: 20px;
+  color: white;
 }
-
-#suggest_item:hover {
-  background-color: black;
+.red {
+  color: rgb(208, 6, 53);
+}
+.white {
   color: white;
 }
 
+#suggest_item:hover {
+  background-color: rgb(129, 3, 32);
+  color: white;
+}
+
+#red {
+  color: rgb(208, 6, 53);
+}
 #bold {
   font-weight: bold;
   font-size: 17px;
 }
 
+.create-account {
+  color: black;
+}
+.create-account:hover {
+  color: rgb(208, 6, 53);
+  text-decoration: none;
+}
+#btn-fliter {
+  background-color: rgb(129, 3, 32);
+  color: white;
+}
+
+link,
+link:hover,
+#link {
+  text-decoration: none !important;
+}
+
+.navbar-light .navbar-toggler,
+.navbar-toggler-icon {
+  border-color: white !important;
+  color: white !important;
+}
+#btn-fliter:hover {
+  background-color: rgb(208, 6, 53);
+}
 #suggest_btn {
   background-color: black;
   border-radius: 50px;
@@ -160,12 +389,12 @@
 }
 
 #cancel {
-  background-color: rgb(185, 30, 30);
+  background-color: rgb(208, 6, 53);
   color: white;
 }
 
 #cancel:hover {
-  background-color: rgb(233, 45, 45);
+  background-color: rgb(129, 3, 32);
   color: white;
 }
 
@@ -173,9 +402,6 @@
   color: black;
 }
 
-.navbar {
-  background-color: transparent;
-}
 .search {
   position: relative;
   padding: 20px;
@@ -188,19 +414,26 @@
   color: black;
 }
 #title-link:hover {
-  color: orange;
+  color: rgb(208, 6, 53);
 }
 hr {
-  border-color: orange;
+  border-color: rgb(208, 6, 53);
 }
 #card-text-orange {
   color: orange;
 }
 
+#model-btn {
+  border-radius: 50px 0px 0px 50px;
+}
+
+#serach-input {
+  border-radius: 0px 50px 50px 0px;
+}
+
 #detail-space {
   position: relative;
-  bottom: 200px;
-  left: 100px;
+  bottom: 300px;
 }
 #recipe-list {
   position: relative;
@@ -215,7 +448,7 @@ hr {
 }
 
 .image-container:hover .image-overlay {
-  opacity: 1;
+  opacity: 0;
 }
 
 .text {
@@ -231,21 +464,31 @@ hr {
 }
 
 .image-overlay {
-  position: absolute;
   top: 0;
   bottom: 0;
   left: 0;
   right: 0;
   height: 100%;
   width: 100%;
-  opacity: 0;
+  opacity: 1;
   transition: 0.5s ease;
   background-color: #008cba;
+}
+
+.img-text-container:hover .img-text {
+  opacity: 1;
+}
+
+.img-text {
+  color: black;
+  transition: 0.5s ease;
+  opacity: 0;
 }
 
 #recipe-card {
   margin-right: 20px;
   margin-bottom: 60px;
+  background-color: rgb(224, 224, 224);
 }
 
 #card-img {
@@ -259,7 +502,7 @@ hr {
   transform: scale(1);
 }
 .card {
-  border-color: orange;
+  border-color: rgb(208, 6, 53);
   border-radius: 0;
   background-color: 0.3em 0.3em 1em rgba(0, 0, 0, 0.3);
   box-shadow: 0.3em 0.3em 1em rgba(0, 0, 0, 0.3);
@@ -272,6 +515,12 @@ hr {
   border-radius: 30px;
 }
 
+.custom-toggler .navbar-toggler-icon {
+  background-image: url("data:image/svg+xml;charset=utf8,%3Csvg viewBox='0 0 32 32' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath stroke='rgba(255,255,255,1)' stroke-width='2' stroke-linecap='round' stroke-miterlimit='10' d='M4 8h24M4 16h24M4 24h24'/%3E%3C/svg%3E");
+}
+.custom-toggler.navbar-toggler {
+  border-color: white;
+}
 #card-btn:hover {
   background-color: black;
   border-color: black;
@@ -391,4 +640,32 @@ hr {
 .ingredients {
   font-size: 18px;
   padding-left: 10px;
+}
+
+.stepTitle {
+  font-weight: bold;
+  font-family: "futura";
+}
+
+.stepTime {
+  font-weight: normal;
+  color: dimgrey;
+}
+
+.addRecipeTitles {
+  font-family: "futura";
+  color: rgb(208, 6, 53);
+}
+
+.ing-list li {
+  display: inline;
+}
+
+.ingredientsCard {
+  font-family: "futura";
+  color: rgb(208, 6, 53);
+}
+.ingredientsCardItem {
+  font-family: "futura";
+  color: rgb(0, 0, 0);
 }

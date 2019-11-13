@@ -7,10 +7,11 @@ import RecipeDetail from "./components/DetailPage/RecipeDetail";
 import LoginForm from "./components/Authentication/LoginForm";
 import SignupForm from "./components/Authentication/SignupForm";
 import NavBar from "./components/Navigation/NavBar";
-import Home from "./components/Homepage/HomePage";
+import Home from "./components/SearchPage/HomePage";
 import Profile from "./components/Profile/Profile";
 import EditProfile from "./components/Profile/EditProfile";
 import Loading from "./components/Loading";
+import AddRecipe from "./components/CreateRecipe/AddRecipe";
 
 function App({ loading }) {
   if (loading) return <Loading />;
@@ -24,6 +25,7 @@ function App({ loading }) {
         <Route path="/profile" component={Profile} />
         <Route path="/edit-profile" component={EditProfile} />
         <Route path="/home" component={Home} />
+        <Route path="/recipe/create/" component={AddRecipe} />
         <Redirect exact from="/" to="/home" />
       </Switch>
     </div>
