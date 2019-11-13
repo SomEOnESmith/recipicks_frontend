@@ -218,17 +218,19 @@
 
 .the-list {
   background-color: rgb(209, 208, 208);
+  position: top;
 }
 /* If the screen size is 600px wide or less, set the font-size of <div> to 30px */
+.img-mobile {
+  object-fit: cover;
+  max-width: 350px;
+  height: auto;
+  position: relative;
+  /* left: 15px; */
+}
 @media screen and (max-width: 600px) {
   div.example {
     font-size: 13vw;
-  }
-  #img-mobile {
-    max-width: 100%;
-    height: auto;
-    position: relative;
-    left: 15px;
   }
 
   .suggest-list {
@@ -657,6 +659,11 @@ hr {
   color: rgb(208, 6, 53);
 }
 
+
+.image-detail {
+  object-fit: cover;
+}
+
 .ing-list li {
   display: inline;
 }
@@ -665,6 +672,7 @@ hr {
   font-family: "futura";
   color: rgb(208, 6, 53);
 }
+
 .ingredientsCardItem {
   font-family: "futura";
   color: rgb(0, 0, 0);
