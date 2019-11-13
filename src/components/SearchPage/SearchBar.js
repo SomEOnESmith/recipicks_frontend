@@ -109,7 +109,7 @@ class SearchBar extends Component {
     const { ingredients } = this.props;
     const fuse = new Fuse(ingredients, fuseOptions);
     const suggest = event.target.value
-      ? fuse.search(event.target.value).slice(0, 10)
+      ? fuse.search(event.target.value).slice(0, 6)
       : this.randomIngredients(this.filterIngredients());
     await this.setState({
       value: event.target.value.toLowerCase(),
@@ -261,7 +261,4 @@ const mapDispatchToProps = dispatch => ({
   deleteIngredient: ingredients => dispatch(deleteIngredient(ingredients))
 });
 
-export default connect(
-  mapStateToProps,
-  mapDispatchToProps
-)(SearchBar);
+export default connect(mapStateToProps, mapDispatchToProps)(SearchBar);

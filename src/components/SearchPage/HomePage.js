@@ -15,8 +15,10 @@ const HomePage = () => {
     message = "What's for Lunch?";
   } else if (currentTime >= 16 && currentTime < 23) {
     message = "What's for Dinner?";
+  } else if (currentTime >= 23 && currentTime < 2) {
+    message = "Midnight Snack?";
   } else {
-    message = "Keep Cookin'";
+    message = "Binge Eating?";
   }
   return (
     <div className="main">
