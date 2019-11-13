@@ -106,7 +106,7 @@ class RecipeDetail extends Component {
                   width: 350,
                   borderRadius: 10
                 }}
-                id="img-mobile"
+                className="image-detail"
                 src={recipe.image}
                 alt="recipe"
               />
