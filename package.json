@@ -17,6 +17,7 @@
     "pug": "^2.0.4",
     "react": "^16.11.0",
     "react-dom": "^16.11.0",
+    "react-file-base64": "^1.0.3",
     "react-fontawesome": "^1.6.1",
     "react-redux": "^7.1.1",
     "react-responsive-modal": "^4.0.1",

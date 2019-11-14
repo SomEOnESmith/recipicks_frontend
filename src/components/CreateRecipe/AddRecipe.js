@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import { Redirect } from "react-router-dom";
+import FileBase64 from "react-file-base64";
 
 // Actions
 import { addRecipe, resetErrors } from "../../redux/actions";
@@ -18,6 +19,7 @@ class AddRecipe extends Component {
     meals: [],
     cuisine: "",
     steps: [],
+    image: "",
     currentSteps: 1
   };
 
@@ -32,8 +34,18 @@ class AddRecipe extends Component {
       cuisine,
       steps
     } = this.state;
+    const image = this.state.image.base64;
     this.props.addRecipe(
-      { title, description, ingredients, courses, meals, cuisine, steps },
+      {
+        title,
+        description,
+        ingredients,
+        courses,
+        meals,
+        cuisine,
+        steps,
+        image
+      },
       this.props.history
     );
   };
@@ -67,6 +79,10 @@ class AddRecipe extends Component {
       const newSteps = this.state.steps.concat(step);
       this.setState({ steps: newSteps });
     }
+  };
+
+  getFiles = image => {
+    this.setState({ image });
   };
 
   render() {
@@ -105,6 +121,9 @@ class AddRecipe extends Component {
                         ))}
                       </div>
                     )}
+                    <FileBase64 multiple={false} onDone={this.getFiles} />
+                    <br />
+                    <br />
                     <p>
                       <b className="addRecipeTitles">Title: </b>
                     </p>
@@ -207,7 +226,4 @@ const mapDispatchToProps = dispatch => {
   };
 };
 
-export default connect(
-  mapStateToProps,
-  mapDispatchToProps
-)(AddRecipe);
+export default connect(mapStateToProps, mapDispatchToProps)(AddRecipe);
