@@ -439,7 +439,7 @@ hr {
 }
 #recipe-list {
   position: relative;
-  bottom: 150px;
+  bottom: 320px;
 }
 
 #ingredients-box {
@@ -658,7 +658,6 @@ hr {
   font-family: "futura";
   color: rgb(208, 6, 53);
 }
-
 
 .image-detail {
   object-fit: cover;
